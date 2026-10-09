@@ -18,3 +18,12 @@ layout: default
     {% unless page.url == '/suporte' %}<a href="{{ '/suporte' | relative_url }}">Suporte</a>{% endunless %}
   </nav>
 </article>
+<script>
+  // Phones show tables as cards: each cell gets its column name.
+  document.querySelectorAll(".prose table").forEach(function (table) {
+    var labels = Array.prototype.map.call(table.querySelectorAll("thead th"), function (th) { return th.textContent.trim(); });
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+      Array.prototype.forEach.call(row.children, function (cell, i) { if (labels[i]) cell.setAttribute("data-label", labels[i]); });
+    });
+  });
+</script>

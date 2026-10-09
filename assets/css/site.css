@@ -1111,3 +1111,52 @@ a:hover {
   margin: 0 0 24px;
   color: var(--muted);
 }
+
+/* Tables become stacked cards on phones (labels come from the header row) */
+@media (max-width: 640px) {
+  .prose table,
+  .prose thead,
+  .prose tbody,
+  .prose tr,
+  .prose th,
+  .prose td {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+  .prose table {
+    overflow: visible;
+  }
+  .prose thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .prose tr {
+    margin: 0 0 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
+  }
+  .prose td {
+    padding: 4px 0;
+    border: 0;
+  }
+  .prose td:first-child {
+    padding-bottom: 6px;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .prose td[data-label]:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+}
