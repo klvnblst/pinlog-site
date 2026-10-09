@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#F8F9FE" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D0B18" media="(prefers-color-scheme: dark)" />
+    {% seo %}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32.png' | relative_url }}" />
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/img/icon-192.png' | relative_url }}" />
+    <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}" />
+    <link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
+    {% if page.schema %}{{ page.schema }}{% endif %}
+  </head>
+  <body class="{{ page.body_class | default: 'page' }}">
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <div class="ambient" aria-hidden="true"><span class="orb orb-violet"></span><span class="orb orb-cyan"></span><span class="orb orb-magenta"></span></div>
+
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="PinLog, página inicial">
+          <picture>
+            <source srcset="{{ '/assets/img/logo-dark.png' | relative_url }}" media="(prefers-color-scheme: dark)" />
+            <img src="{{ '/assets/img/logo-light.png' | relative_url }}" alt="PinLog" width="160" height="39" />
+          </picture>
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="{{ '/#recursos' | relative_url }}">Recursos</a>
+          <a href="{{ '/#privacidade' | relative_url }}">Privacidade</a>
+          <a href="{{ '/#premium' | relative_url }}">Premium</a>
+          <a class="nav-cta" href="{{ '/suporte' | relative_url }}">Suporte</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <picture>
+            <source srcset="{{ '/assets/img/logo-dark.png' | relative_url }}" media="(prefers-color-scheme: dark)" />
+            <img src="{{ '/assets/img/logo-light.png' | relative_url }}" alt="PinLog" width="132" height="32" loading="lazy" />
+          </picture>
+          <p>Organizador pessoal de aplicações e rotinas. Não é um dispositivo médico e não substitui orientação profissional.</p>
+        </div>
+        <nav class="footer-links" aria-label="Documentos e ajuda">
+          <a href="{{ '/privacidade' | relative_url }}">Política de Privacidade</a>
+          <a href="{{ '/termos' | relative_url }}">Termos de Uso</a>
+          <a href="{{ '/excluir-conta' | relative_url }}">Excluir conta</a>
+          <a href="{{ '/suporte' | relative_url }}">Suporte</a>
+        </nav>
+        <div class="footer-contact">
+          <a href="mailto:{{ site.company.support_email }}">{{ site.company.support_email }}</a>
+          <a href="mailto:{{ site.company.privacy_email }}">{{ site.company.privacy_email }}</a>
+        </div>
+      </div>
+      <div class="container footer-legal">
+        <p>© {{ site.time | date: '%Y' }} {{ site.company.name }} · CNPJ {{ site.company.cnpj }} · Este site não usa cookies nem rastreadores.</p>
+      </div>
+    </footer>
+  </body>
+</html>

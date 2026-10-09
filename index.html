@@ -1,0 +1,254 @@
+---
+layout: default
+title: PinLog — organizador de aplicações e rotinas
+description: >-
+  Registre aplicações, veja a próxima data, faça o rodízio das regiões do corpo e acompanhe
+  sintomas, peso e estoque. Organizador pessoal, sem anúncios, com seus dados protegidos.
+body_class: home
+permalink: /
+---
+{% assign apple = site.stores.app_store %}{% assign google = site.stores.google_play %}
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Organizador pessoal</p>
+      <h1>Sua rotina de aplicações, <span class="gradient-text">sempre em dia.</span></h1>
+      <p class="lead">
+        Registre cada aplicação em poucos toques, saiba quando é a próxima, alterne as regiões do corpo e
+        acompanhe sintomas, peso e estoque. Tudo num só lugar, com seus dados protegidos.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#recursos">Conhecer o PinLog</a>
+        <a class="btn btn-ghost" href="#privacidade">Como cuidamos dos seus dados</a>
+      </div>
+      <div class="stores">
+        {% if apple != "" %}<a class="store" href="{{ apple }}" rel="noopener">{% else %}<span class="store" aria-disabled="true">{% endif %}
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c.02 2.43 2.13 3.24 2.15 3.25-.02.06-.34 1.15-1.11 2.28-.67.98-1.36 1.95-2.45 1.97-1.07.02-1.42-.63-2.64-.63-1.23 0-1.61.61-2.63.65-1.05.04-1.85-1.06-2.52-2.03-1.37-1.99-2.42-5.62-1.01-8.07.7-1.22 1.95-1.99 3.31-2.01 1.03-.02 2 .69 2.63.69.63 0 1.81-.86 3.05-.73.52.02 1.98.21 2.92 1.59-.08.05-1.74 1.02-1.72 3.03M14.36 5.08c.56-.68.94-1.62.83-2.56-.81.03-1.79.54-2.37 1.21-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.4-1.13"/></svg>
+          <span><small>{% if apple != "" %}Baixar na{% else %}Em breve na{% endif %}</small><strong>App Store</strong></span>
+        {% if apple != "" %}</a>{% else %}</span>{% endif %}
+        {% if google != "" %}<a class="store" href="{{ google }}" rel="noopener">{% else %}<span class="store" aria-disabled="true">{% endif %}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7z"/><path fill="#FBBC04" d="m16.5 15.3-3.2-3.3 3.2-3.3 3.8 2.2c1.1.6 1.1 1.6 0 2.2z"/><path fill="#EA4335" d="M16.5 15.3 13.3 12l-9.7 9.7c.4.4 1 .4 1.7 0z"/><path fill="#4285F4" d="M16.5 8.7 5.3 2.3c-.7-.4-1.3-.4-1.7 0l9.7 9.7z"/></svg>
+          <span><small>{% if google != "" %}Disponível no{% else %}Em breve no{% endif %}</small><strong>Google Play</strong></span>
+        {% if google != "" %}</a>{% else %}</span>{% endif %}
+      </div>
+      <p class="hero-note">Grátis para baixar. Em português, inglês e espanhol.</p>
+    </div>
+
+    <div class="preview" aria-label="Exemplo da tela inicial do PinLog">
+      <div class="preview-icon">
+        <img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="96" height="96" />
+      </div>
+      <div class="card preview-card">
+        <p class="preview-label">PRÓXIMA APLICAÇÃO</p>
+        <p class="preview-title">Minha rotina <span class="chip">semanal</span></p>
+        <div class="ring"><div><span>FALTAM</span><strong>2 dias</strong><span>SÁB · 21:00</span></div></div>
+        <span class="preview-btn">APLICAR →</span>
+      </div>
+      <div class="card preview-card">
+        <div class="mini-row">
+          <div><p>Estoque</p><strong>6 doses restantes</strong></div>
+          <span class="chip">repor em 30 dias</span>
+        </div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="trust" role="list">
+      <div role="listitem"><strong>Sem anúncios</strong><span>nem rastreadores</span></div>
+      <div role="listitem"><strong>Dados protegidos</strong><span>conexão criptografada</span></div>
+      <div role="listitem"><strong>Fotos no aparelho</strong><span>nunca vão para a nuvem</span></div>
+      <div role="listitem"><strong>Backup em arquivo</strong><span>seus dados com você</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="recursos">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Recursos</p>
+      <h2>Tudo o que a sua rotina precisa, sem complicação</h2>
+      <p>Pensado para ser rápido: a tela inicial mostra o último registro, a próxima data e o que fazer agora.</p>
+    </div>
+    <div class="features">
+      <article class="card feature">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></span>
+        <h3>Calendário e próxima data</h3>
+        <p>Defina o intervalo da rotina e veja quando é a próxima aplicação. O histórico fica organizado por mês.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><path d="M12 8v7M8 10.5l4-1 4 1M9.5 21l2.5-6 2.5 6"/></svg></span>
+        <h3>Mapa do corpo e rodízio</h3>
+        <p>Marque a região de cada aplicação no mapa e veja onde aplicou por último, para alternar com facilidade.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
+        <h3>Sintomas e anotações</h3>
+        <p>Registre como se sentiu e escreva observações em cada aplicação, para lembrar depois com clareza.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 19 9.5 12l4 3.5L20 6"/><path d="M15 6h5v5"/></svg></span>
+        <h3>Peso, medidas e fotos</h3>
+        <p>Acompanhe peso, metas e medidas ao longo do tempo. As fotos de evolução ficam guardadas só no seu aparelho.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+        <h3>Estoque com previsão</h3>
+        <p>Saiba quantas doses restam e receba o aviso na hora certa de repor, considerando o prazo de entrega que você define.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10.3 20a2 2 0 0 0 3.4 0"/></svg></span>
+        <h3>Lembretes discretos</h3>
+        <p>Avisos no dia da aplicação e na hora de repor. Por padrão, o aviso não diz o que é, para ninguém ver na tela bloqueada.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 4v16M17 4v16M3 9h8M13 15h8"/></svg></span>
+        <h3>Conversor de unidades</h3>
+        <p>Converte mg, mL e unidades da seringa com os valores que você digita. Não indica doses nem substitui orientação médica.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5M15 14.5c2.6 0 4.6 1.6 5.5 4.5"/></svg></span>
+        <h3>Dois perfis</h3>
+        <p>Acompanhe também a rotina de outra pessoa adulta, com histórico, mapa e estoque separados. Recurso Premium.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg></span>
+        <h3>Sincronização e backup</h3>
+        <p>Seus registros ficam no aparelho e na sua conta, para trocar de celular sem perder nada. Exporte um backup completo quando quiser.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacidade">
+  <div class="container">
+    <div class="card privacy-panel">
+      <div>
+        <p class="eyebrow">Privacidade</p>
+        <h2>Seus dados de saúde servem a <span class="gradient-text">você</span>, e só a você.</h2>
+        <p>
+          O PinLog guarda seus registros com uma única finalidade: permitir que você acesse sua rotina e não perca nada se
+          trocar, perder ou danificar o celular. Eles não são usados para publicidade nem para qualquer outro fim.
+        </p>
+        <a class="btn btn-ghost" href="{{ '/privacidade' | relative_url }}">Ler a Política de Privacidade</a>
+      </div>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Sem anúncios, análise de uso ou rastreadores</strong><span>Nada de pixels, gravação de tela ou venda de dados.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Cada conta só vê os próprios dados</strong><span>Conexão criptografada e servidores no Brasil.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Fotos de evolução só no seu aparelho</strong><span>Elas nunca são enviadas para a nuvem.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Você decide e pode sair quando quiser</strong><span>Consentimento claro no primeiro acesso e exclusão da conta pelo próprio app.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="premium">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">PinLog Premium</p>
+      <h2>Comece grátis. Libere mais quando quiser.</h2>
+      <p>O essencial é gratuito. O Premium amplia o histórico, o conversor e os perfis.</p>
+    </div>
+    <div class="plans">
+      <div class="card plan">
+        <h3>Mensal</h3>
+        <p class="price">R$ 14,90 <small>/mês</small></p>
+      </div>
+      <div class="card plan featured">
+        <span class="badge">Economize 33%</span>
+        <h3>Anual</h3>
+        <p class="price">R$ 118,80 <small>/ano</small></p>
+        <p class="equiv">equivale a R$ 9,90/mês</p>
+      </div>
+    </div>
+    <ul class="premium-list">
+      <li><strong>Histórico completo</strong>O gratuito mostra os últimos 60 dias; nada é apagado.</li>
+      <li><strong>Misturas ilimitadas</strong>Salve quantas receitas quiser no conversor.</li>
+      <li><strong>Segundo perfil</strong>Para acompanhar outra pessoa adulta.</li>
+    </ul>
+    <p class="fine">
+      Assinatura com renovação automática, cobrada pela App Store ou pelo Google Play. Cancele quando quiser nos
+      ajustes de assinaturas da loja, até 24 horas antes do fim do período. Veja os <a href="{{ '/termos' | relative_url }}">Termos de Uso</a>.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="perguntas">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Perguntas frequentes</p>
+      <h2>Dúvidas comuns</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>O PinLog é gratuito?</summary>
+        <p>Sim. O download e os recursos essenciais são gratuitos. O PinLog Premium é opcional e libera o histórico completo, receitas de mistura ilimitadas e o segundo perfil.</p>
+      </details>
+      <details>
+        <summary>Onde ficam os meus dados?</summary>
+        <p>No seu aparelho e na sua conta na nuvem, em servidores no Brasil, para você não perder nada ao trocar de celular. As fotos de evolução ficam só no aparelho. Os dados não são usados para publicidade nem para qualquer outro fim.</p>
+      </details>
+      <details>
+        <summary>O PinLog indica doses ou tratamentos?</summary>
+        <p>Não. O PinLog organiza o que você registra. O conversor de unidades só transforma os valores que você digita e não indica, recomenda nem confere doses. Decisões de saúde devem ser tomadas com um profissional habilitado.</p>
+      </details>
+      <details>
+        <summary>Posso excluir minha conta?</summary>
+        <p>Sim, a qualquer momento, em Ajustes › Zona de Perigo › Excluir Conta Permanentemente. A conta e os registros na nuvem são apagados na hora. <a href="{{ '/excluir-conta' | relative_url }}">Veja como funciona</a>.</p>
+      </details>
+      <details>
+        <summary>Quem pode usar?</summary>
+        <p>O PinLog é destinado a maiores de 18 anos. A idade é confirmada no primeiro acesso.</p>
+      </details>
+      <details>
+        <summary>Em quais idiomas o app funciona?</summary>
+        <p>Português do Brasil, inglês e espanhol.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="disclaimer">
+      O PinLog é um organizador pessoal e não é um dispositivo médico. Não diagnostica, trata, cura nem previne qualquer
+      condição e não substitui a orientação de médicos, farmacêuticos ou outros profissionais de saúde. Não é um serviço de emergência.
+    </p>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "PinLog",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, Android",
+      "inLanguage": ["pt-BR", "en-US", "es"],
+      "description": "Organizador pessoal de aplicações e rotinas: calendário, rodízio de regiões do corpo, sintomas, peso, medidas e estoque.",
+      "url": "https://pinlog.life/",
+      "image": "https://pinlog.life/assets/img/icon-512.jpg",
+      "offers": [
+        { "@type": "Offer", "price": "0", "priceCurrency": "BRL", "name": "Gratuito" },
+        { "@type": "Offer", "price": "14.90", "priceCurrency": "BRL", "name": "PinLog Premium mensal" },
+        { "@type": "Offer", "price": "118.80", "priceCurrency": "BRL", "name": "PinLog Premium anual" }
+      ],
+      "publisher": { "@type": "Organization", "name": "T DE A ROCHA", "url": "https://pinlog.life/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "O PinLog é gratuito?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O download e os recursos essenciais são gratuitos. O PinLog Premium é opcional." } },
+        { "@type": "Question", "name": "Onde ficam os meus dados?", "acceptedAnswer": { "@type": "Answer", "text": "No seu aparelho e na sua conta na nuvem, em servidores no Brasil. As fotos de evolução ficam só no aparelho. Os dados não são usados para publicidade nem para qualquer outro fim." } },
+        { "@type": "Question", "name": "O PinLog indica doses ou tratamentos?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O PinLog organiza o que você registra e o conversor só transforma os valores que você digita." } },
+        { "@type": "Question", "name": "Posso excluir minha conta?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, a qualquer momento, pelo próprio app em Ajustes › Zona de Perigo › Excluir Conta Permanentemente." } },
+        { "@type": "Question", "name": "Quem pode usar?", "acceptedAnswer": { "@type": "Answer", "text": "O PinLog é destinado a maiores de 18 anos." } }
+      ]
+    }
+  ]
+}
+</script>

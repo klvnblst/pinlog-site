@@ -1,0 +1,55 @@
+# Configuração do site pinlog.life (GitHub Pages + Jekyll).
+# Para editar um texto, abra o arquivo .md da página no GitHub e use o lápis.
+
+title: PinLog
+tagline: Organizador pessoal de aplicações e rotinas
+description: >-
+  Registre aplicações, acompanhe o calendário, o rodízio de regiões do corpo,
+  sintomas, peso e estoque. Organizador pessoal com seus dados protegidos.
+url: https://pinlog.life
+baseurl: ""
+lang: pt_BR
+locale: pt_BR
+
+logo: /assets/img/icon-512.jpg
+image: /assets/img/og-pinlog.png
+
+author:
+  name: PinLog
+
+social:
+  name: PinLog
+  links: []
+
+company:
+  name: T DE A ROCHA
+  cnpj: 28.442.137/0001-15
+  support_email: suporte@pinlog.life
+  privacy_email: privacidade@pinlog.life
+
+# Quando o app estiver nas lojas, coloque os links aqui e os botões da página inicial ativam sozinhos.
+stores:
+  app_store: ""
+  google_play: ""
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+exclude:
+  - README.md
+  - COMO-EDITAR.md
+  - Gemfile
+  - Gemfile.lock

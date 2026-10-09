@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="container doc">
+  <header class="doc-header">
+    {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+    {% if page.updated %}<p class="doc-meta">{{ page.updated }}</p>{% endif %}
+  </header>
+  <div class="doc-card prose">
+    {{ content }}
+  </div>
+  <nav class="doc-more" aria-label="Outros documentos">
+    {% unless page.url == '/privacidade' %}<a href="{{ '/privacidade' | relative_url }}">Política de Privacidade</a>{% endunless %}
+    {% unless page.url == '/termos' %}<a href="{{ '/termos' | relative_url }}">Termos de Uso</a>{% endunless %}
+    {% unless page.url == '/excluir-conta' %}<a href="{{ '/excluir-conta' | relative_url }}">Excluir conta</a>{% endunless %}
+    {% unless page.url == '/suporte' %}<a href="{{ '/suporte' | relative_url }}">Suporte</a>{% endunless %}
+  </nav>
+</article>
