@@ -14,9 +14,6 @@ locale: pt_BR
 logo: /assets/img/icon-512.jpg
 image: /assets/img/og-pinlog.png
 
-author:
-  name: PinLog
-
 social:
   name: PinLog
   links: []
@@ -47,6 +44,7 @@ defaults:
       path: ""
     values:
       layout: page
+      image: /assets/img/og-pinlog.png
 
 exclude:
   - README.md
