@@ -1,0 +1,151 @@
+---
+layout: default
+title: Conversor de unidades
+description: >-
+  Converta mg, mL e unidades da seringa com os valores que você digita. Gratuito, sem cadastro e sem
+  enviar nada: a conta é feita no seu navegador.
+body_class: page tool
+permalink: /conversor
+---
+<article class="container doc cv-page">
+  <header class="doc-header">
+    <p class="eyebrow">Ferramenta gratuita</p>
+    <h1>Conversor de unidades</h1>
+    <p class="lead">
+      Transforma mg em mL e em unidades da seringa a partir dos valores que você digita. Sem cadastro: a conta é
+      feita no seu navegador e nada é salvo nem enviado.
+    </p>
+  </header>
+
+  <p class="cv-notice" role="note">
+    <strong>Só converte unidades.</strong> O conversor transforma os valores que você digita (mg, mL e unidades da
+    seringa); ele não indica, recomenda nem confere doses e não substitui orientação médica. O resultado depende
+    exclusivamente dos valores de conteúdo do frasco, volume de diluente e quantidade informados por você. Um cálculo
+    numérico não determina se uma substância, dosagem, via de aplicação ou seringa é clinicamente segura para você.
+    Confirme sempre os parâmetros e cálculos com seu médico ou farmacêutico antes da preparação. Valores de entrada
+    incorretos produzem resultados perigosos.
+  </p>
+
+  <form id="conversor" class="cv-grid" data-mode="single" novalidate>
+    <div class="cv-inputs">
+      <fieldset class="cv-segment">
+        <legend>O que você quer converter?</legend>
+        <label><input type="radio" name="cv-mode" value="single" checked /><span>Um produto</span></label>
+        <label><input type="radio" name="cv-mode" value="blend" /><span>Mistura na mesma seringa</span></label>
+      </fieldset>
+
+      <div id="cv-items" class="cv-items"></div>
+
+      <button type="button" id="cv-add" class="cv-add" hidden>+ Adicionar produto à mistura</button>
+
+      <fieldset class="cv-segment cv-syringe">
+        <legend>Modelo da seringa</legend>
+        <label><input type="radio" name="cv-syringe" value="U-100" checked /><span>U-100 <small>1 mL</small></span></label>
+        <label><input type="radio" name="cv-syringe" value="U-50" /><span>U-50 <small>0,5 mL</small></span></label>
+        <label><input type="radio" name="cv-syringe" value="U-30" /><span>U-30 <small>0,3 mL</small></span></label>
+      </fieldset>
+
+      <button type="button" id="cv-reset" class="cv-link">Limpar e começar de novo</button>
+    </div>
+
+    <aside class="cv-result card" id="cv-result" data-state="ok" aria-labelledby="cv-result-title">
+      <p class="eyebrow" id="cv-result-title">Resultado</p>
+      <div class="cv-big" aria-live="polite">
+        <strong id="cv-units">–</strong>
+        <span>unidades na seringa</span>
+      </div>
+
+      <figure class="cv-syringe-figure">
+        <svg viewBox="0 0 320 64" role="img" aria-labelledby="cv-caption">
+          <rect class="cv-barrel" x="20" y="14" width="260" height="30" rx="6" />
+          <rect class="cv-liquid" id="cv-fill" x="20" y="14" width="0" height="30" rx="6" />
+          <g class="cv-tick-lines" id="cv-ticks"></g>
+          <rect class="cv-barrel-edge" x="20" y="14" width="260" height="30" rx="6" />
+          <rect class="cv-plunger" x="280" y="20" width="26" height="18" rx="3" />
+          <rect class="cv-plunger" x="306" y="10" width="6" height="38" rx="2" />
+          <line class="cv-needle" x1="2" x2="20" y1="29" y2="29" />
+          <text class="cv-scale" x="20" y="60">0</text>
+          <text class="cv-scale" x="280" y="60" text-anchor="end" id="cv-scale-max">100</text>
+        </svg>
+        <figcaption id="cv-caption">Preencha os campos para ver a conversão.</figcaption>
+      </figure>
+
+      <p class="cv-warning" id="cv-warning" role="alert" hidden></p>
+      <p class="cv-empty" id="cv-empty" hidden>Use números maiores que zero, com vírgula ou ponto.</p>
+
+      <dl class="cv-stats">
+        <div><dt>Volume</dt><dd id="cv-volume">–</dd></div>
+        <div id="cv-conc-row"><dt>Concentração</dt><dd id="cv-concentration">–</dd></div>
+        <div id="cv-times-row"><dt>O frasco rende</dt><dd id="cv-times">–</dd></div>
+      </dl>
+      <ul class="cv-parts" id="cv-parts" aria-label="Unidades de cada produto da mistura"></ul>
+    </aside>
+  </form>
+
+  <div class="doc-card prose cv-howto">
+    <h2>Como a conta é feita</h2>
+    <ol>
+      <li><strong>Concentração</strong> = conteúdo do frasco (mg) ÷ água adicionada (mL).</li>
+      <li><strong>Volume</strong> = quantidade a converter (mg) ÷ concentração.</li>
+      <li><strong>Unidades da seringa</strong> = volume (mL) × 100. Seringas U-100, U-50 e U-30 têm 100 unidades por mL; muda só a capacidade.</li>
+    </ol>
+    <p>
+      Na mistura, cada produto é convertido separadamente e as unidades são somadas. Quantidades em mcg são divididas
+      por 1.000 antes da conta.
+    </p>
+    <h2>Registre no PinLog</h2>
+    <p>
+      O app PinLog organiza a sua rotina: próxima data, rodízio das regiões do corpo, sintomas, peso e estoque.
+      Anote a quantidade em mg (ou na unidade que preferir) ao cadastrar a rotina no app.
+      <a href="{{ '/' | relative_url }}">Conheça o PinLog</a>.
+    </p>
+  </div>
+</article>
+
+<template id="cv-item-template">
+  <section class="cv-item card">
+    <div class="cv-item-head">
+      <h2 class="cv-item-title">Produto 1</h2>
+      <button type="button" class="cv-remove" hidden>Remover</button>
+    </div>
+    <div class="cv-name-row" hidden>
+      <label data-for="name">Nome</label>
+      <input data-field="name" type="text" maxlength="40" autocomplete="off" />
+    </div>
+    <div class="cv-field">
+      <label data-for="vial">1. Conteúdo do frasco <small>mg</small></label>
+      <input data-field="vial" type="text" inputmode="decimal" autocomplete="off" />
+      <div class="cv-presets" aria-label="Valores rápidos de conteúdo">
+        <button type="button" data-target="vial" data-preset="5">5</button>
+        <button type="button" data-target="vial" data-preset="10">10</button>
+        <button type="button" data-target="vial" data-preset="15">15</button>
+        <button type="button" data-target="vial" data-preset="20">20</button>
+        <button type="button" data-target="vial" data-preset="30">30</button>
+        <button type="button" data-target="vial" data-preset="60">60</button>
+      </div>
+    </div>
+    <div class="cv-field">
+      <label data-for="water">2. Água adicionada <small>mL</small></label>
+      <input data-field="water" type="text" inputmode="decimal" autocomplete="off" />
+      <div class="cv-presets" aria-label="Valores rápidos de água">
+        <button type="button" data-target="water" data-preset="1">1</button>
+        <button type="button" data-target="water" data-preset="1,5">1,5</button>
+        <button type="button" data-target="water" data-preset="2">2</button>
+        <button type="button" data-target="water" data-preset="3">3</button>
+      </div>
+    </div>
+    <div class="cv-field">
+      <label data-for="amount">3. Quantidade a converter</label>
+      <div class="cv-amount">
+        <input data-field="amount" type="text" inputmode="decimal" autocomplete="off" />
+        <select data-field="unit">
+          <option value="mg" selected>mg</option>
+          <option value="mcg">mcg</option>
+        </select>
+      </div>
+      <p class="cv-hint">O valor que você já tem, informado por um profissional.</p>
+    </div>
+  </section>
+</template>
+
+<script src="{{ '/assets/js/conversor.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

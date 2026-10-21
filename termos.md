@@ -4,7 +4,7 @@ description: "Termos de Uso do PinLog: idade mínima, uso adequado, plano gratui
 permalink: "/termos"
 eyebrow: "Termos"
 lead: "As regras de uso do PinLog e da assinatura Premium."
-updated: "Versão 2.0 · vigente desde 8 de outubro de 2026"
+updated: "Versão 2.1 · vigente desde 21 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
@@ -19,7 +19,9 @@ Para usar o PinLog você precisa ter **18 anos ou mais** e concordar com estes t
 
 O PinLog é um **organizador pessoal**: você registra suas rotinas, aplicações, sintomas, peso, medidas e estoque, e o aplicativo organiza essas informações em calendário e histórico.
 
-A **Peppédia** (catálogo de referência) e o **conversor de unidades** são ferramentas informativas e matemáticas. Elas **não são prescrição, orientação médica nem incentivo ao uso** de qualquer substância. O conversor só transforma os valores que você digita (mg, mL e unidades da seringa): não indica, recomenda nem confere doses. Os números exibidos na Peppédia indicam sua origem: apenas itens aprovados pela autoridade sanitária mostram apresentações da bula, e itens em estudo ou sem aprovação nunca são apresentados como orientação de uso.
+A **Peppédia** (catálogo de referência) é uma ferramenta informativa. Ela **não é prescrição, orientação médica nem incentivo ao uso** de qualquer substância. Os números exibidos na Peppédia indicam sua origem: apenas itens aprovados pela autoridade sanitária mostram apresentações da bula, e itens em estudo ou sem aprovação nunca são apresentados como orientação de uso.
+
+O aplicativo não faz contas de dose, diluição nem unidades de seringa. O **conversor de unidades** fica no site [pinlog.life/conversor](https://pinlog.life/conversor), é gratuito e não exige conta: ele só transforma os valores que você digita (mg, mL e unidades da seringa) e não indica, recomenda nem confere doses.
 
 O PinLog não é um dispositivo médico, não diagnostica, não trata e não substitui profissionais de saúde. Não é um serviço de emergência.
 
@@ -42,8 +44,7 @@ O segundo perfil (PinLog Premium) serve para acompanhar a rotina de **outra pess
 O download e os recursos essenciais são gratuitos. O **PinLog Premium** libera:
 
 1. **Histórico completo:** o plano gratuito mostra as aplicações dos últimos 60 dias. Os registros mais antigos continuam guardados e voltam a aparecer com o Premium.
-2. **Receitas de mistura ilimitadas** no conversor. O plano gratuito salva 1 receita de mistura.
-3. **Segundo perfil.** Contas gratuitas que já tinham dois perfis antes desta regra continuam com acesso aos dois.
+2. **Segundo perfil.** Contas gratuitas que já tinham dois perfis antes desta regra continuam com acesso aos dois.
 
 **Preços (Brasil):** plano mensal de R$ 14,90 por mês; plano anual de R$ 118,80 por ano (equivalente a R$ 9,90 por mês). O preço vigente é sempre o exibido na loja no momento da compra.
 

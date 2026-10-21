@@ -4,7 +4,7 @@ description: "Como o PinLog trata seus dados: o que guardamos, para quê, onde f
 permalink: "/privacidade"
 eyebrow: "Privacidade"
 lead: "O que o PinLog guarda, para quê, onde e como você controla tudo."
-updated: "Versão 2.0 · vigente desde 8 de outubro de 2026"
+updated: "Versão 2.1 · vigente desde 21 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
@@ -37,7 +37,7 @@ O controlador dos dados é **T DE A ROCHA**, inscrita no CNPJ sob o nº **28.442
 
 **Compromisso sobre os dados de saúde.** Seus dados de saúde (registros, corpo, metas, fotos e segundo perfil) têm uma única finalidade: permitir que você acesse seus registros e não os perca se trocar, perder ou danificar o celular. A cópia na nuvem existe só para isso. Esses dados **não são vendidos, não são usados para publicidade e não são usados para nenhum outro fim**: não fazemos análises, estatísticas, perfis de consumo nem pesquisas com eles, e não os usamos para treinar sistemas de inteligência artificial. Se um dia quisermos usar algum dado para outra finalidade, pediremos uma nova autorização específica antes, e você poderá recusar.
 
-O conversor de unidades faz as contas na memória do aparelho. As receitas de mistura que você decide salvar viram um composto da sua rotina e passam a ser sincronizadas como os demais registros.
+O conversor de unidades fica no site [pinlog.life/conversor](https://pinlog.life/conversor) e faz as contas no seu navegador: os valores digitados não são salvos nem enviados ao PinLog. Misturas salvas em versões anteriores do aplicativo continuam na sua rotina e são sincronizadas como os demais registros.
 
 O PinLog **não usa** ferramentas de publicidade, análise de uso (analytics), gravação de tela, pixels de rastreamento nem rastreamento entre aplicativos, **não vende** dados e **não toma decisões automatizadas** que afetem seus interesses.
 
