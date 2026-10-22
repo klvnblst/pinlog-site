@@ -2773,8 +2773,7 @@ a:hover {
 }
 
 /* Calculadora no mesmo visual escuro do painel do afiliado: troca as cores só dentro dela */
-.calc-grid,
-.calc-foot {
+.calc-grid {
   --text: #ffffff;
   --text-2: #e6e0f5;
   --muted: rgba(255, 255, 255, 0.6);
@@ -2791,8 +2790,7 @@ a:hover {
   color: var(--text);
 }
 
-.calc-panel,
-.calc-foot {
+.calc-panel {
   background: radial-gradient(120% 80% at 100% 0%, rgba(236, 72, 153, 0.24), transparent 55%),
     linear-gradient(160deg, #1d1436 0%, #26174a 55%, #331a5c 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -2857,15 +2855,14 @@ a:hover {
   margin: 0;
 }
 
-/* Painel do afiliado: uma tela de app escura, para não lembrar a calculadora */
+/* Painel do afiliado: desenho de tela de app, nas cores do site (claro ou escuro) */
 .dash {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  color: #fff;
-  background: radial-gradient(120% 80% at 100% 0%, rgba(236, 72, 153, 0.28), transparent 55%),
-    linear-gradient(160deg, #1d1436 0%, #26174a 55%, #331a5c 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 30px 60px -24px rgba(49, 18, 94, 0.55), var(--shadow);
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow), 0 30px 60px -30px rgba(124, 58, 237, 0.35);
 }
 
 .dash-bar {
@@ -2873,8 +2870,8 @@ a:hover {
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-soft);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .dash-dots {
@@ -2886,7 +2883,7 @@ a:hover {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--border);
 }
 
 .dash-title {
@@ -2896,7 +2893,7 @@ a:hover {
   gap: 8px;
   font-size: 13px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-2);
 }
 
 .dash-title img {
@@ -2911,8 +2908,8 @@ a:hover {
   gap: 7px;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: rgba(52, 211, 153, 0.16);
-  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--mint);
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
@@ -2929,10 +2926,10 @@ a:hover {
 
 @keyframes dash-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
   }
   100% {
-    box-shadow: 0 0 0 9px rgba(52, 211, 153, 0);
+    box-shadow: 0 0 0 9px rgba(16, 185, 129, 0);
   }
 }
 
@@ -2951,7 +2948,7 @@ a:hover {
 .dash-area small {
   display: block;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--muted);
 }
 
 .dash-balance strong {
@@ -2968,8 +2965,8 @@ a:hover {
   display: inline-block;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: rgba(52, 211, 153, 0.16);
-  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--mint);
   font-size: 12px;
   font-weight: 700;
 }
@@ -2978,7 +2975,8 @@ a:hover {
   flex: none;
   padding: 8px 14px;
   border-radius: 14px;
-  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  border: 1.5px dashed var(--border);
+  color: var(--primary);
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -2990,7 +2988,7 @@ a:hover {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
 }
 
 .dash-stats {
@@ -3003,19 +3001,19 @@ a:hover {
 .dash-stats span {
   padding: 6px 11px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--card-soft);
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-2);
 }
 
 .dash-stats b {
-  color: #fff;
+  color: var(--text);
 }
 
 .dash-area {
   padding: 12px 12px 8px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-soft);
 }
 
 .dash-area svg {
@@ -3023,6 +3021,7 @@ a:hover {
   width: 100%;
   height: 104px;
   margin-top: 8px;
+  color: var(--mint);
 }
 
 .dash-axis {
@@ -3030,7 +3029,7 @@ a:hover {
   justify-content: space-between;
   margin-top: 4px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
 }
 
 .dash-feed {
@@ -3045,13 +3044,13 @@ a:hover {
   align-items: center;
   gap: 10px;
   padding: 8px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-soft);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-2);
 }
 
 .dash-feed strong {
-  color: #fff;
+  color: var(--text);
 }
 
 .dash-av {
@@ -3060,31 +3059,31 @@ a:hover {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(168, 115, 255, 0.28);
-  color: #e9d5ff;
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--primary);
   font-size: 11px;
   font-weight: 800;
 }
 
 .dash-feed b {
-  color: #34d399;
+  color: var(--mint);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .dash-feed .paid .dash-av {
-  background: rgba(52, 211, 153, 0.2);
-  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.14);
+  color: var(--mint);
 }
 
 .dash-feed .paid b {
-  color: #fff;
+  color: var(--text);
 }
 
 .dash-note {
   margin: 8px 0 0;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
   text-align: right;
 }
 
