@@ -2264,6 +2264,120 @@ a:hover {
   font-weight: 700;
 }
 
+.earn-card .earn-big {
+  display: table;
+  margin: 16px 0 0;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.earn-card .earn-big + h3 {
+  margin-top: 8px;
+}
+
+.code-note {
+  max-width: 860px;
+  margin: 18px auto 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.22);
+  color: var(--text-2);
+  font-size: 15px;
+}
+
+.code-note svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  color: var(--magenta);
+}
+
+.sim {
+  max-width: 860px;
+  margin: 24px auto 0;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px 32px;
+  align-items: center;
+}
+
+.sim h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.sim label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.sim output {
+  min-width: 54px;
+  padding: 1px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--primary);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.sim input[type='range'] {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.sim-result {
+  padding: 22px;
+  border-radius: var(--radius-md);
+  background: var(--card-soft);
+  text-align: center;
+}
+
+.sim-label {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sim-big {
+  margin: 2px 0 14px;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  color: var(--mint);
+}
+
+.sim-big.sim-year {
+  margin-bottom: 0;
+  font-size: 26px;
+  color: var(--text);
+}
+
+.sim-note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
 @media (max-width: 960px) {
   .steps {
     grid-template-columns: repeat(2, 1fr);
@@ -2299,6 +2413,10 @@ a:hover {
   .chip-earn {
     right: 0;
     bottom: 56px;
+  }
+  .sim {
+    grid-template-columns: 1fr;
+    padding: 22px;
   }
   .steps,
   .earn-grid {
