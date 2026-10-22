@@ -43,11 +43,104 @@ permalink: /afiliados
 
 </section>
 
+<section class="section band band-rose" id="ganhos">
+  <div class="container">
+    <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.9-2.8 2.1 0 2.8 5.8 1.5 5.8 4.3 0 1.2-1.3 2.1-3 2.1-1.3 0-2.4-.6-2.9-1.5M12 6.3v1.5M12 16.6v1.3"/></svg></span><span class="chapter-line"></span></div>
+    <div class="section-head">
+      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">01</span>Ganhos</p>
+      <h2>25% de cada pagamento, enquanto a pessoa assinar</h2>
+      <p>Assinatura se paga todo mês ou todo ano. A sua comissão volta junto, a cada pagamento, enquanto a pessoa seguir no PinLog.</p>
+    </div>
+    <div class="earn-grid">
+      <div class="card earn-card">
+        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg></span>
+        <p class="earn-big">25%</p>
+        <h3>Para você, a cada pagamento</h3>
+        <p>No plano mensal e no anual, a cada renovação, enquanto a pessoa seguir assinando. Quanto mais gente continua, maior fica o seu ganho.</p>
+      </div>
+      <div class="card earn-card">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8" width="17" height="12.5" rx="2"/><path d="M3.5 12h17M12 8v12.5M12 8c-1.6-3.2-5.5-3.6-5.5-1.3C6.5 8 9.3 8 12 8c2.7 0 5.5 0 5.5-1.3 0-2.3-3.9-1.9-5.5 1.3"/></svg></span>
+        <p class="earn-big">20% off</p>
+        <h3>Para o seu público, no plano anual</h3>
+        <p>Quem assina o plano anual com o seu código paga 20% a menos. O plano mensal fica com o preço normal.</p>
+      </div>
+    </div>
+    <p class="code-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.2v.1"/></svg>
+      <span><strong>Tudo depende do código.</strong> Sem o seu código, a assinatura segue o preço normal da loja: sem desconto para a pessoa e sem comissão para você.</span>
+    </p>
+
+    <div class="card sim" id="simulador">
+      <div class="sim-inputs">
+        <h3>Simule os seus ganhos</h3>
+        <label for="sim-m">Assinantes no plano mensal <output id="sim-m-out" for="sim-m">100</output></label>
+        <input type="range" id="sim-m" min="0" max="1000" step="10" value="100" />
+        <label for="sim-a">Assinantes no plano anual <output id="sim-a-out" for="sim-a">50</output></label>
+        <input type="range" id="sim-a" min="0" max="1000" step="10" value="50" />
+      </div>
+      <div class="sim-result" aria-live="polite">
+        <p class="sim-label">Por mês, só com o plano mensal</p>
+        <p class="sim-big" id="sim-month">R$ 372,50</p>
+        <p class="sim-label">Em 12 meses, somando o anual</p>
+        <p class="sim-big sim-year" id="sim-year">R$ 5.658,00</p>
+      </div>
+      <p class="sim-note">Simulação: todos seguem assinando por 12 meses. 25% de R$ 14,90 por mês no mensal e 25% de R$ 95,04 por ano no anual com 20% de desconto.</p>
+    </div>
+    <p class="fine">As regras completas (prazo de confirmação, reembolsos e forma de pagamento) vão no contrato do programa.</p>
+  </div>
+</section>
+
+<section class="section" id="painel">
+  <div class="container">
+    <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="chapter-line"></span></div>
+    <div class="section-head">
+      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">02</span>Seu painel</p>
+      <h2>Acompanhe tudo no seu painel, <span class="gradient-text">em tempo real</span></h2>
+      <p>Cada afiliado tem um painel próprio, em português, para ver assinantes, renovações e quanto já ganhou, sem precisar perguntar para ninguém.</p>
+    </div>
+    <div class="dash-wrap">
+      <ul class="checks dash-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Assinantes e renovações</strong><span>Quantas pessoas assinaram com o seu código e quantas seguem ativas.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Comissão de cada pagamento</strong><span>Cada assinatura e renovação aparece assim que a loja confirma o pagamento.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>A receber e já recebido</strong><span>Saiba quanto vem no próximo pagamento e veja o histórico do que já caiu.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Aviso por e-mail</strong><span>Receba um aviso quando entrar uma nova assinatura com o seu código.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Kit de divulgação à mão</strong><span>Prints do app, textos prontos e as regras, tudo no mesmo lugar.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Seu público protegido</strong><span>Você vê números, não pessoas: cada assinante aparece só com um código anônimo.</span></div></li>
+      </ul>
+
+      <div class="dash" aria-label="Exemplo ilustrativo do painel do afiliado" role="img">
+        <div class="dash-top">
+          <span class="dash-brand"><img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="28" height="28" />Painel do afiliado</span>
+          <span class="dash-live"><i></i>ao vivo</span>
+        </div>
+        <div class="dash-kpis">
+          <div><small>Assinantes ativos</small><strong>148</strong><em>+12 este mês</em></div>
+          <div><small>Ganhos no mês</small><strong class="mint">R$ 515,46</strong><em>25% de cada pagamento</em></div>
+          <div><small>A receber</small><strong>R$ 515,46</strong><em>no dia 05</em></div>
+          <div><small>Já recebido</small><strong>R$ 3.284,10</strong><em>desde o início</em></div>
+        </div>
+        <div class="dash-chart">
+          <small>Ganhos por mês</small>
+          <div class="dash-bars"><i style="--h: 22%"></i><i style="--h: 34%"></i><i style="--h: 45%"></i><i style="--h: 58%"></i><i style="--h: 74%"></i><i style="--h: 92%"></i></div>
+          <div class="dash-months"><span>mai</span><span>jun</span><span>jul</span><span>ago</span><span>set</span><span>out</span></div>
+        </div>
+        <ul class="dash-feed">
+          <li><span class="dot"></span><span><strong>Assinante #A3F9</strong> renovou o mensal</span><b>+ R$ 3,73</b><time>agora</time></li>
+          <li><span class="dot"></span><span><strong>Assinante #7KQ2</strong> assinou o anual</span><b>+ R$ 23,76</b><time>2 h</time></li>
+          <li><span class="dot"></span><span><strong>Assinante #C81D</strong> assinou o mensal</span><b>+ R$ 3,73</b><time>ontem</time></li>
+          <li class="paid"><span class="dot"></span><span><strong>Pagamento enviado</strong> para você</span><b>R$ 485,66</b><time>05/10</time></li>
+        </ul>
+        <p class="dash-note">Exemplo ilustrativo. Os números são fictícios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section band band-violet" id="app">
   <div class="container">
     <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg></span><span class="chapter-line"></span></div>
     <div class="section-head">
-      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">01</span>O que o seu público ganha</p>
+      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">03</span>O que o seu público ganha</p>
       <h2>Um app fácil de mostrar e que faz falta no dia a dia</h2>
       <p>Cada recurso responde a uma frase que quem tem rotina de aplicações já disse. É conteúdo pronto para vídeo.</p>
     </div>
@@ -96,99 +189,6 @@ permalink: /afiliados
   </div>
 </section>
 
-<section class="section" id="ganhos">
-  <div class="container">
-    <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.9-2.8 2.1 0 2.8 5.8 1.5 5.8 4.3 0 1.2-1.3 2.1-3 2.1-1.3 0-2.4-.6-2.9-1.5M12 6.3v1.5M12 16.6v1.3"/></svg></span><span class="chapter-line"></span></div>
-    <div class="section-head">
-      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">02</span>Ganhos</p>
-      <h2>25% de cada pagamento, enquanto a pessoa assinar</h2>
-      <p>Assinatura se paga todo mês ou todo ano. A sua comissão volta junto, a cada pagamento, enquanto a pessoa seguir no PinLog.</p>
-    </div>
-    <div class="earn-grid">
-      <div class="card earn-card">
-        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg></span>
-        <p class="earn-big">25%</p>
-        <h3>Para você, a cada pagamento</h3>
-        <p>No plano mensal e no anual, a cada renovação, enquanto a pessoa seguir assinando. Quanto mais gente continua, maior fica o seu ganho.</p>
-      </div>
-      <div class="card earn-card">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8" width="17" height="12.5" rx="2"/><path d="M3.5 12h17M12 8v12.5M12 8c-1.6-3.2-5.5-3.6-5.5-1.3C6.5 8 9.3 8 12 8c2.7 0 5.5 0 5.5-1.3 0-2.3-3.9-1.9-5.5 1.3"/></svg></span>
-        <p class="earn-big">20% off</p>
-        <h3>Para o seu público, no plano anual</h3>
-        <p>Quem assina o plano anual com o seu código paga 20% a menos. O plano mensal fica com o preço normal.</p>
-      </div>
-    </div>
-    <p class="code-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.2v.1"/></svg>
-      <span><strong>Tudo depende do código.</strong> Sem o seu código, a assinatura segue o preço normal da loja: sem desconto para a pessoa e sem comissão para você.</span>
-    </p>
-
-    <div class="card sim" id="simulador">
-      <div class="sim-inputs">
-        <h3>Simule os seus ganhos</h3>
-        <label for="sim-m">Assinantes no plano mensal <output id="sim-m-out" for="sim-m">100</output></label>
-        <input type="range" id="sim-m" min="0" max="1000" step="10" value="100" />
-        <label for="sim-a">Assinantes no plano anual <output id="sim-a-out" for="sim-a">50</output></label>
-        <input type="range" id="sim-a" min="0" max="1000" step="10" value="50" />
-      </div>
-      <div class="sim-result" aria-live="polite">
-        <p class="sim-label">Por mês, só com o plano mensal</p>
-        <p class="sim-big" id="sim-month">R$ 372,50</p>
-        <p class="sim-label">Em 12 meses, somando o anual</p>
-        <p class="sim-big sim-year" id="sim-year">R$ 5.658,00</p>
-      </div>
-      <p class="sim-note">Simulação: todos seguem assinando por 12 meses. 25% de R$ 14,90 por mês no mensal e 25% de R$ 95,04 por ano no anual com 20% de desconto.</p>
-    </div>
-    <p class="fine">As regras completas (prazo de confirmação, reembolsos e forma de pagamento) vão no contrato do programa.</p>
-  </div>
-</section>
-
-<section class="section band band-rose" id="painel">
-  <div class="container">
-    <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span class="chapter-line"></span></div>
-    <div class="section-head">
-      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">03</span>Seu painel</p>
-      <h2>Acompanhe tudo no seu painel, <span class="gradient-text">em tempo real</span></h2>
-      <p>Cada afiliado tem um painel próprio, em português, para ver assinantes, renovações e quanto já ganhou, sem precisar perguntar para ninguém.</p>
-    </div>
-    <div class="dash-wrap">
-      <ul class="checks dash-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Assinantes e renovações</strong><span>Quantas pessoas assinaram com o seu código e quantas seguem ativas.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Comissão de cada pagamento</strong><span>Cada assinatura e renovação aparece assim que a loja confirma o pagamento.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>A receber e já recebido</strong><span>Saiba quanto vem no próximo pagamento e veja o histórico do que já caiu.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Aviso por e-mail</strong><span>Receba um aviso quando entrar uma nova assinatura com o seu código.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Kit de divulgação à mão</strong><span>Prints do app, textos prontos e as regras, tudo no mesmo lugar.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Seu público protegido</strong><span>Você vê números, não pessoas: cada assinante aparece só com um código anônimo.</span></div></li>
-      </ul>
-
-      <div class="dash" aria-label="Exemplo ilustrativo do painel do afiliado" role="img">
-        <div class="dash-top">
-          <span class="dash-brand"><img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="28" height="28" />Painel do afiliado</span>
-          <span class="dash-live"><i></i>ao vivo</span>
-        </div>
-        <div class="dash-kpis">
-          <div><small>Assinantes ativos</small><strong>148</strong><em>+12 este mês</em></div>
-          <div><small>Ganhos no mês</small><strong class="mint">R$ 515,46</strong><em>25% de cada pagamento</em></div>
-          <div><small>A receber</small><strong>R$ 515,46</strong><em>no dia 05</em></div>
-          <div><small>Já recebido</small><strong>R$ 3.284,10</strong><em>desde o início</em></div>
-        </div>
-        <div class="dash-chart">
-          <small>Ganhos por mês</small>
-          <div class="dash-bars"><i style="--h: 22%"></i><i style="--h: 34%"></i><i style="--h: 45%"></i><i style="--h: 58%"></i><i style="--h: 74%"></i><i style="--h: 92%"></i></div>
-          <div class="dash-months"><span>mai</span><span>jun</span><span>jul</span><span>ago</span><span>set</span><span>out</span></div>
-        </div>
-        <ul class="dash-feed">
-          <li><span class="dot"></span><span><strong>Assinante #A3F9</strong> renovou o mensal</span><b>+ R$ 3,73</b><time>agora</time></li>
-          <li><span class="dot"></span><span><strong>Assinante #7KQ2</strong> assinou o anual</span><b>+ R$ 23,76</b><time>2 h</time></li>
-          <li><span class="dot"></span><span><strong>Assinante #C81D</strong> assinou o mensal</span><b>+ R$ 3,73</b><time>ontem</time></li>
-          <li class="paid"><span class="dot"></span><span><strong>Pagamento enviado</strong> para você</span><b>R$ 485,66</b><time>05/10</time></li>
-        </ul>
-        <p class="dash-note">Exemplo ilustrativo. Os números são fictícios.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="como-funciona">
   <div class="container">
     <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></svg></span><span class="chapter-line"></span></div>
@@ -222,7 +222,7 @@ permalink: /afiliados
   </div>
 </section>
 
-<section class="section band band-violet" id="regras">
+<section class="section band band-rose" id="regras">
   <div class="container">
     <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6z"/><path d="m8.8 12.2 2.2 2.2 4.3-4.4"/></svg></span><span class="chapter-line"></span></div>
     <div class="card privacy-panel">
