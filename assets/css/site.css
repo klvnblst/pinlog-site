@@ -1865,3 +1865,17 @@ a:hover {
   display: grid;
   gap: 6px;
 }
+
+/* Recursos: a real screen of the app on top of each card */
+.feature-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 13 / 12;
+  object-fit: cover;
+  object-position: top;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  background: var(--card-soft);
+}
