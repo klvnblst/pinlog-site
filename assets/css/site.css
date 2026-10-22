@@ -2772,6 +2772,33 @@ a:hover {
   color: var(--text-2);
 }
 
+/* Calculadora no mesmo visual escuro do painel do afiliado: troca as cores só dentro dela */
+.calc-grid,
+.calc-foot {
+  --text: #ffffff;
+  --text-2: #e6e0f5;
+  --muted: rgba(255, 255, 255, 0.6);
+  --card: #2a1c4f;
+  --card-soft: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.16);
+  --border-soft: rgba(255, 255, 255, 0.09);
+  --primary: #c4a5ff;
+  --primary-bright: #b48bff;
+  --magenta: #ff7cc0;
+  --mint: #34d399;
+  --calc-m: #a873ff;
+  --calc-a: #ff5fae;
+  color: var(--text);
+}
+
+.calc-panel,
+.calc-foot {
+  background: radial-gradient(120% 80% at 100% 0%, rgba(236, 72, 153, 0.24), transparent 55%),
+    linear-gradient(160deg, #1d1436 0%, #26174a 55%, #331a5c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px -24px rgba(49, 18, 94, 0.55), var(--shadow);
+}
+
 @media (max-width: 1000px) {
   .calc-grid {
     grid-template-columns: minmax(0, 1fr);
