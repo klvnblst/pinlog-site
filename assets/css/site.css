@@ -2227,28 +2227,6 @@ a:hover {
   font-size: 15px;
 }
 
-.earn-grid {
-  max-width: 860px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.earn-card {
-  padding: 30px;
-}
-
-.earn-card h3 {
-  margin: 16px 0 8px;
-  font-size: 20px;
-}
-
-.earn-card p {
-  margin: 0;
-  color: var(--text-2);
-}
-
 .cta-panel {
   max-width: 860px;
   margin: 0 auto;
@@ -2282,28 +2260,10 @@ a:hover {
   color: #7c3aed;
 }
 
-.earn-card .earn-big {
-  display: table;
-  margin: 16px 0 0;
-  font-size: 40px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.earn-card .earn-big + h3 {
-  margin-top: 8px;
-}
-
 /* Calculadora de ganhos (/afiliados) */
 .calc {
   --calc-m: #8b5cf6;
   --calc-a: #f472b6;
-  margin-top: 56px;
 }
 
 .calc-head {
@@ -2312,27 +2272,8 @@ a:hover {
   text-align: center;
 }
 
-.calc-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  background: rgba(124, 58, 237, 0.12);
-  color: var(--primary);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.calc-pill svg {
-  width: 17px;
-  height: 17px;
-}
-
 .calc-title {
-  margin: 14px 0 10px;
+  margin: 0 0 10px;
   font-size: clamp(26px, 3.6vw, 36px);
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -2889,45 +2830,63 @@ a:hover {
   margin: 0;
 }
 
+/* Painel do afiliado: uma tela de app escura, para não lembrar a calculadora */
 .dash {
-  padding: 22px;
   border-radius: var(--radius-lg);
-  background: var(--card);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--shadow), 0 30px 60px -30px rgba(124, 58, 237, 0.35);
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(120% 80% at 100% 0%, rgba(236, 72, 153, 0.28), transparent 55%),
+    linear-gradient(160deg, #1d1436 0%, #26174a 55%, #331a5c 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px -24px rgba(49, 18, 94, 0.55), var(--shadow);
 }
 
-.dash-top {
+.dash-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.dash-brand {
+.dash-dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.dash-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.dash-title {
+  flex: 1;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 15px;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.dash-brand img {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+.dash-title img {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
 }
 
 .dash-live {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 4px 11px;
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: rgba(16, 185, 129, 0.12);
-  color: var(--mint);
-  font-size: 12px;
+  background: rgba(52, 211, 153, 0.16);
+  color: #34d399;
+  font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -2943,90 +2902,108 @@ a:hover {
 
 @keyframes dash-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
   }
   100% {
-    box-shadow: 0 0 0 9px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 9px rgba(52, 211, 153, 0);
   }
 }
 
-.dash-kpis {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+.dash-body {
+  padding: 20px;
 }
 
-.dash-kpis div {
-  padding: 12px;
-  border-radius: var(--radius-md);
-  background: var(--card-soft);
-}
-
-.dash-kpis small,
-.dash-chart small {
-  display: block;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.dash-kpis strong {
-  display: block;
-  margin: 2px 0;
-  font-size: 18px;
-  line-height: 1.2;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.dash-kpis strong.mint {
-  color: var(--mint);
-}
-
-.dash-kpis em {
-  font-style: normal;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.dash-chart {
-  margin-top: 12px;
-  padding: 12px 14px 10px;
-  border-radius: var(--radius-md);
-  background: var(--card-soft);
-}
-
-.dash-bars {
+.dash-balance {
   display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  height: 92px;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dash-balance small,
+.dash-area small {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.dash-balance strong {
+  display: block;
+  margin: 2px 0 8px;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-payday {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(52, 211, 153, 0.16);
+  color: #6ee7b7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dash-code {
+  flex: none;
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.35);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.dash-code small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dash-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 14px;
+}
+
+.dash-stats span {
+  padding: 6px 11px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dash-stats b {
+  color: #fff;
+}
+
+.dash-area {
+  padding: 12px 12px 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dash-area svg {
+  display: block;
+  width: 100%;
+  height: 104px;
   margin-top: 8px;
 }
 
-.dash-bars i {
-  flex: 1;
-  height: var(--h);
-  border-radius: 8px 8px 3px 3px;
-  background: var(--grad);
-  opacity: 0.55;
-}
-
-.dash-bars i:last-child {
-  opacity: 1;
-  box-shadow: var(--shadow-glow);
-}
-
-.dash-months {
+.dash-axis {
   display: flex;
-  gap: 10px;
-  margin-top: 6px;
-}
-
-.dash-months span {
-  flex: 1;
-  text-align: center;
+  justify-content: space-between;
+  margin-top: 4px;
   font-size: 11px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dash-feed {
@@ -3037,47 +3014,50 @@ a:hover {
 
 .dash-feed li {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 10px;
-  padding: 9px 4px;
-  border-top: 1px solid var(--border-soft);
+  padding: 8px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 13px;
-  color: var(--text-2);
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.dash-feed .dot {
-  width: 8px;
-  height: 8px;
+.dash-feed strong {
+  color: #fff;
+}
+
+.dash-av {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: var(--primary-bright);
+  background: rgba(168, 115, 255, 0.28);
+  color: #e9d5ff;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .dash-feed b {
-  color: var(--mint);
+  color: #34d399;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-.dash-feed .paid .dot {
-  background: var(--mint);
+.dash-feed .paid .dash-av {
+  background: rgba(52, 211, 153, 0.2);
+  color: #6ee7b7;
 }
 
 .dash-feed .paid b {
-  color: var(--text);
-}
-
-.dash-feed time {
-  min-width: 38px;
-  text-align: right;
-  font-size: 11px;
-  color: var(--muted);
+  color: #fff;
 }
 
 .dash-note {
   margin: 8px 0 0;
   font-size: 11px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.5);
   text-align: right;
 }
 
@@ -3091,17 +3071,11 @@ a:hover {
 }
 
 @media (max-width: 600px) {
-  .dash {
-    padding: 16px;
+  .dash-body {
+    padding: 14px;
   }
-  .dash-kpis {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .dash-feed li {
-    grid-template-columns: auto 1fr auto;
-  }
-  .dash-feed time {
-    display: none;
+  .dash-balance strong {
+    font-size: 28px;
   }
 }
 
@@ -3141,8 +3115,7 @@ a:hover {
     right: 0;
     bottom: 56px;
   }
-  .steps,
-  .earn-grid {
+  .steps {
     grid-template-columns: 1fr;
   }
   .cta-panel {

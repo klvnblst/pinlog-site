@@ -46,29 +46,10 @@ permalink: /afiliados
 <section class="section band band-rose" id="ganhos">
   <div class="container">
     <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.6 0-2.8.9-2.8 2.1 0 2.8 5.8 1.5 5.8 4.3 0 1.2-1.3 2.1-3 2.1-1.3 0-2.4-.6-2.9-1.5M12 6.3v1.5M12 16.6v1.3"/></svg></span><span class="chapter-line"></span></div>
-    <div class="section-head">
-      <p class="eyebrow"><span class="chapter-num" aria-hidden="true">01</span>Ganhos</p>
-      <h2>Uma indicação continua rendendo por muito tempo</h2>
-      <p>Você sempre recebe sobre todos os pagamentos do indicado. Seu indicado renovou? Você ganha de novo. E continua ganhando em todas as próximas renovações.</p>
-    </div>
-    <div class="earn-grid">
-      <div class="card earn-card">
-        <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg></span>
-        <p class="earn-big">25%</p>
-        <h3>Sua comissão</h3>
-        <p>Sobre todas as mensalidades e renovações dos seus indicados.</p>
-      </div>
-      <div class="card earn-card">
-        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8" width="17" height="12.5" rx="2"/><path d="M3.5 12h17M12 8v12.5M12 8c-1.6-3.2-5.5-3.6-5.5-1.3C6.5 8 9.3 8 12 8c2.7 0 5.5 0 5.5-1.3 0-2.3-3.9-1.9-5.5 1.3"/></svg></span>
-        <p class="earn-big">20% OFF</p>
-        <h3>Desconto para seu público</h3>
-        <p>Desconto exclusivo no plano anual usando seu código exclusivo.</p>
-      </div>
-    </div>
     <div class="calc" id="simulador">
       <div class="calc-head">
-        <span class="calc-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M8 18h8"/></svg>Calculadora de ganhos</span>
-        <h3 class="calc-title">Veja quanto suas indicações <span class="gradient-text">podem gerar</span></h3>
+        <p class="eyebrow"><span class="chapter-num" aria-hidden="true">01</span>Calculadora de ganhos</p>
+        <h2 class="calc-title">Veja quanto suas indicações <span class="gradient-text">podem gerar</span></h2>
         <p>Você não começa do zero todo mês. Cada assinante que continua no PinLog continua gerando comissão para você, mês após mês.</p>
       </div>
 
@@ -178,28 +159,47 @@ permalink: /afiliados
       </ul>
 
       <div class="dash" aria-label="Exemplo ilustrativo do painel do afiliado" role="img">
-        <div class="dash-top">
-          <span class="dash-brand"><img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="28" height="28" />Painel do afiliado</span>
+        <div class="dash-bar">
+          <span class="dash-dots"><i></i><i></i><i></i></span>
+          <span class="dash-title"><img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="22" height="22" />Painel do afiliado</span>
           <span class="dash-live"><i></i>ao vivo</span>
         </div>
-        <div class="dash-kpis">
-          <div><small>Assinantes ativos</small><strong>148</strong><em>+12 este mês</em></div>
-          <div><small>Ganhos no mês</small><strong class="mint">R$ 515,46</strong><em>25% de cada pagamento</em></div>
-          <div><small>A receber</small><strong>R$ 515,46</strong><em>no dia 05</em></div>
-          <div><small>Já recebido</small><strong>R$ 3.284,10</strong><em>desde o início</em></div>
+        <div class="dash-body">
+          <div class="dash-balance">
+            <div>
+              <small>Saldo a receber</small>
+              <strong>R$ 515,46</strong>
+              <span class="dash-payday">Pagamento em 05/11</span>
+            </div>
+            <span class="dash-code"><small>Seu código</small>SEUNOME</span>
+          </div>
+          <div class="dash-stats">
+            <span><b>148</b> assinantes ativos</span>
+            <span><b>+12</b> novos este mês</span>
+            <span><b>R$ 3.284,10</b> já recebidos</span>
+          </div>
+          <div class="dash-area">
+            <small>Comissões nos últimos 30 dias</small>
+            <svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="dash-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#34d399" stop-opacity="0.45" />
+                  <stop offset="1" stop-color="#34d399" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M0,84 C18,80 30,72 48,74 S78,62 98,60 S128,64 148,52 S182,42 200,44 S232,30 250,28 S282,16 300,12 L300,100 L0,100 Z" fill="url(#dash-fill)" />
+              <path d="M0,84 C18,80 30,72 48,74 S78,62 98,60 S128,64 148,52 S182,42 200,44 S232,30 250,28 S282,16 300,12" fill="none" stroke="#34d399" stroke-width="2.5" vector-effect="non-scaling-stroke" />
+            </svg>
+            <div class="dash-axis"><span>1 out</span><span>15 out</span><span>hoje</span></div>
+          </div>
+          <ul class="dash-feed">
+            <li><span class="dash-av">A3</span><span><strong>#A3F9</strong> renovou o mensal</span><b>+ R$ 3,73</b></li>
+            <li><span class="dash-av">7K</span><span><strong>#7KQ2</strong> assinou o anual</span><b>+ R$ 23,76</b></li>
+            <li><span class="dash-av">C8</span><span><strong>#C81D</strong> assinou o mensal</span><b>+ R$ 3,73</b></li>
+            <li class="paid"><span class="dash-av">R$</span><span><strong>Pagamento enviado</strong> para você</span><b>R$ 485,66</b></li>
+          </ul>
+          <p class="dash-note">Exemplo ilustrativo. Os números são fictícios.</p>
         </div>
-        <div class="dash-chart">
-          <small>Ganhos por mês</small>
-          <div class="dash-bars"><i style="--h: 22%"></i><i style="--h: 34%"></i><i style="--h: 45%"></i><i style="--h: 58%"></i><i style="--h: 74%"></i><i style="--h: 92%"></i></div>
-          <div class="dash-months"><span>mai</span><span>jun</span><span>jul</span><span>ago</span><span>set</span><span>out</span></div>
-        </div>
-        <ul class="dash-feed">
-          <li><span class="dot"></span><span><strong>Assinante #A3F9</strong> renovou o mensal</span><b>+ R$ 3,73</b><time>agora</time></li>
-          <li><span class="dot"></span><span><strong>Assinante #7KQ2</strong> assinou o anual</span><b>+ R$ 23,76</b><time>2 h</time></li>
-          <li><span class="dot"></span><span><strong>Assinante #C81D</strong> assinou o mensal</span><b>+ R$ 3,73</b><time>ontem</time></li>
-          <li class="paid"><span class="dot"></span><span><strong>Pagamento enviado</strong> para você</span><b>R$ 485,66</b><time>05/10</time></li>
-        </ul>
-        <p class="dash-note">Exemplo ilustrativo. Os números são fictícios.</p>
       </div>
     </div>
   </div>
