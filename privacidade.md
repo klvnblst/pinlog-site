@@ -37,6 +37,8 @@ O controlador dos dados é **T DE A ROCHA**, inscrita no CNPJ sob o nº **28.442
 
 **Compromisso sobre os dados de saúde.** Seus dados de saúde (registros, corpo, metas, fotos e segundo perfil) têm uma única finalidade: permitir que você acesse seus registros e não os perca se trocar, perder ou danificar o celular. A cópia na nuvem existe só para isso. Esses dados **não são vendidos, não são usados para publicidade e não são usados para nenhum outro fim**: não fazemos análises, estatísticas, perfis de consumo nem pesquisas com eles, e não os usamos para treinar sistemas de inteligência artificial. Se um dia quisermos usar algum dado para outra finalidade, pediremos uma nova autorização específica antes, e você poderá recusar.
 
+O **relatório em PDF** é montado no seu aparelho e só sai dele se você decidir compartilhar. O **bloqueio do app** usa o Face ID, a digital ou o código do próprio aparelho: o PinLog recebe apenas a resposta "desbloqueado ou não" e não tem acesso a dados biométricos. A escolha de usar o bloqueio fica guardada só no aparelho.
+
 O conversor de unidades fica no site [pinlog.life/conversor](https://pinlog.life/conversor) e faz as contas no seu navegador: os valores digitados não são salvos nem enviados ao PinLog. Misturas salvas em versões anteriores do aplicativo continuam na sua rotina e são sincronizadas como os demais registros.
 
 O PinLog **não usa** ferramentas de publicidade, análise de uso (analytics), gravação de tela, pixels de rastreamento nem rastreamento entre aplicativos, **não vende** dados e **não toma decisões automatizadas** que afetem seus interesses.
