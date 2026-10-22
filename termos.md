@@ -45,13 +45,16 @@ O download e os recursos essenciais são gratuitos. O **PinLog Premium** libera:
 
 1. **Histórico completo:** o plano gratuito mostra as aplicações dos últimos 60 dias. Os registros mais antigos continuam guardados e voltam a aparecer com o Premium.
 2. **Segundo perfil.** Contas gratuitas que já tinham dois perfis antes desta regra continuam com acesso aos dois.
-3. **Relatório em PDF e gráficos** feitos a partir dos seus registros.
+3. **Relatório em PDF, planilha (CSV) e gráficos** feitos a partir dos seus registros.
 4. **Plano da rotina:** fases de dose, ciclos de uso e pausa e validade do estoque, sempre com os valores que você anota. O PinLog não sugere doses, intervalos nem pausas.
 5. **Bloqueio do app** com Face ID, digital ou o código do aparelho.
+6. **Vários lotes** de frasco por rotina ao mesmo tempo. O plano gratuito guarda um lote por vez.
 
 Se a assinatura terminar, nada é apagado: os planos já salvos continuam valendo e aparecendo, mas criar ou editar planos, gerar o PDF, abrir os gráficos e ligar o bloqueio voltam a exigir o Premium.
 
 **Preços (Brasil):** plano mensal de R$ 14,90 por mês; plano anual de R$ 118,80 por ano (equivalente a R$ 9,90 por mês). O preço vigente é sempre o exibido na loja no momento da compra.
+
+**Teste grátis:** quando a loja oferecer um período de teste, a duração e o preço cobrado depois aparecem na tela de assinatura antes da compra. A cobrança começa ao fim do teste, a menos que você cancele pelo menos 24 horas antes de ele terminar.
 
 **Cobrança e renovação automática:** a assinatura é cobrada na sua conta da App Store ou do Google Play quando você confirma a compra e **renova automaticamente** pelo mesmo período e preço, a menos que você cancele pelo menos 24 horas antes do fim do período em curso.
 

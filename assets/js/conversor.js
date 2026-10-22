@@ -25,8 +25,9 @@
   function convert(vialMg, waterMl, amountMg) {
     if (!(vialMg > 0) || !(waterMl > 0) || !(amountMg > 0)) return null;
     var concentration = vialMg / waterMl;
-    var volumeMl = amountMg / concentration;
-    var units = volumeMl * 100;
+    // Fewest operations, so values that end in exactly ,x5 round up as on paper.
+    var volumeMl = (amountMg * waterMl) / vialMg;
+    var units = (amountMg * waterMl * 100) / vialMg;
     var timesInVial = vialMg / amountMg;
     if (![concentration, volumeMl, units, timesInVial].every(function (v) { return isFinite(v) && v > 0; })) {
       return null;
@@ -34,16 +35,28 @@
     return {
       concentration: concentration,
       volumeMl: volumeMl,
-      units: Math.round(units * 10) / 10,
-      timesInVial: Math.floor(timesInVial * 10) / 10,
+      units: Math.round(units * 10 + 1e-9) / 10,
+      timesInVial: Math.floor(timesInVial * 10 + 1e-9) / 10,
     };
+  }
+
+  /** The same math backwards: units read on the syringe -> volume and amount (mg). */
+  function reverse(vialMg, waterMl, units) {
+    if (!(vialMg > 0) || !(waterMl > 0) || !(units > 0)) return null;
+    var concentration = vialMg / waterMl;
+    var volumeMl = units / 100;
+    var amountMg = volumeMl * concentration;
+    if (![concentration, volumeMl, amountMg].every(function (v) { return isFinite(v) && v > 0; })) {
+      return null;
+    }
+    return { concentration: concentration, volumeMl: volumeMl, units: units, amountMg: amountMg };
   }
 
   function toMg(value, unit) {
     return unit === 'mcg' ? value / 1000 : value;
   }
 
-  var api = { convert: convert, parseDecimal: parseDecimal, toMg: toMg, SYRINGES: SYRINGES };
+  var api = { convert: convert, reverse: reverse, parseDecimal: parseDecimal, toMg: toMg, SYRINGES: SYRINGES };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof document === 'undefined') return;
 
@@ -61,6 +74,8 @@
   var out = {
     card: document.getElementById('cv-result'),
     units: document.getElementById('cv-units'),
+    bigLabel: document.getElementById('cv-big-label'),
+    timesLabel: document.getElementById('cv-times-label'),
     volume: document.getElementById('cv-volume'),
     concentration: document.getElementById('cv-concentration'),
     times: document.getElementById('cv-times'),
@@ -81,8 +96,8 @@
 
   var counter = 0;
   var DEFAULTS = [
-    { vial: '10', water: '2', amount: '2,5' },
-    { vial: '5', water: '1', amount: '1' },
+    { vial: '10', water: '2', amount: '2,5', unitsIn: '50' },
+    { vial: '5', water: '1', amount: '1', unitsIn: '20' },
   ];
 
   function currentMode() {
@@ -112,6 +127,7 @@
       node.querySelector('[data-field="vial"]').value = values.vial;
       node.querySelector('[data-field="water"]').value = values.water;
       node.querySelector('[data-field="amount"]').value = values.amount;
+      node.querySelector('[data-field="unitsIn"]').value = values.unitsIn || '';
     }
     list.appendChild(node);
     renumber();
@@ -125,17 +141,20 @@
       nameInput.placeholder = 'Nome (opcional), ex.: Produto ' + String.fromCharCode(65 + index);
     });
     var isBlend = currentMode() === 'blend';
+    var isReverse = currentMode() === 'reverse';
     addButton.hidden = !isBlend || items.length >= MAX_ITEMS;
     items.forEach(function (item) {
       item.querySelector('.cv-remove').hidden = !isBlend || items.length <= 2;
       item.querySelector('.cv-name-row').hidden = !isBlend;
+      item.querySelector('.cv-amount-field').hidden = isReverse;
+      item.querySelector('.cv-reverse-field').hidden = !isReverse;
     });
   }
 
   function setMode(mode) {
     var items = list.querySelectorAll('.cv-item');
     if (mode === 'blend' && items.length < 2) addItem(DEFAULTS[1]);
-    if (mode === 'single') {
+    if (mode !== 'blend') {
       for (var i = items.length - 1; i >= 1; i--) items[i].remove();
     }
     form.setAttribute('data-mode', mode);
@@ -151,6 +170,14 @@
       var vial = parseDecimal(get('vial').value);
       var water = parseDecimal(get('water').value);
       var amount = toMg(parseDecimal(get('amount').value), get('unit').value);
+      if (currentMode() === 'reverse') {
+        var unitsIn = parseDecimal(get('unitsIn').value);
+        [['vial', vial], ['water', water], ['unitsIn', unitsIn]].forEach(function (pair) {
+          var field = get(pair[0]);
+          field.setAttribute('aria-invalid', field.value.trim() !== '' && !(pair[1] > 0) ? 'true' : 'false');
+        });
+        return { name: 'Produto 1', result: reverse(vial, water, unitsIn) };
+      }
       [['vial', vial], ['water', water], ['amount', amount]].forEach(function (pair) {
         var input = get(pair[0]);
         var invalid = input.value.trim() !== '' && !(pair[1] > 0);
@@ -196,16 +223,29 @@
       return;
     }
 
-    var totalUnits = Math.round(items.reduce(function (sum, i) { return sum + i.result.units; }, 0) * 10) / 10;
+    // Sum the exact volumes, then round once (rounding each part first would add up errors).
     var totalMl = items.reduce(function (sum, i) { return sum + i.result.volumeMl; }, 0);
+    var totalUnits = Math.round(totalMl * 1000 + 1e-9) / 10;
+    var isReverse = currentMode() === 'reverse';
 
-    out.units.textContent = numberFormat(totalUnits, 1);
-    out.volume.textContent = numberFormat(totalMl, 3) + ' mL';
     out.concRow.hidden = isBlend;
     out.timesRow.hidden = isBlend;
-    if (!isBlend) {
-      out.concentration.textContent = numberFormat(items[0].result.concentration, 3) + ' mg/mL';
-      out.times.textContent = '~' + numberFormat(items[0].result.timesInVial, 1) + ' vezes';
+    out.volume.textContent = numberFormat(totalMl, 3) + ' mL';
+    if (isReverse) {
+      var r = items[0].result;
+      out.units.textContent = numberFormat(r.amountMg, 3);
+      out.bigLabel.textContent = 'mg nessa marcação';
+      out.concentration.textContent = numberFormat(r.concentration, 3) + ' mg/mL';
+      out.timesLabel.textContent = 'Em mcg';
+      out.times.textContent = numberFormat(r.amountMg * 1000, 1) + ' mcg';
+    } else {
+      out.units.textContent = numberFormat(totalUnits, 1);
+      out.bigLabel.textContent = 'unidades na seringa';
+      out.timesLabel.textContent = 'O frasco rende';
+      if (!isBlend) {
+        out.concentration.textContent = numberFormat(items[0].result.concentration, 3) + ' mg/mL';
+        out.times.textContent = '~' + numberFormat(items[0].result.timesInVial, 1) + ' vezes';
+      }
     }
 
     out.parts.innerHTML = '';
@@ -216,7 +256,8 @@
         name.textContent = item.name;
         var value = document.createElement('strong');
         value.textContent =
-          numberFormat(item.result.units, 1) + ' unid. · ' + numberFormat(item.result.volumeMl, 3) + ' mL';
+          numberFormat(item.result.units, 1) + ' unid. · ' + numberFormat(item.result.volumeMl, 3) + ' mL · ' +
+          numberFormat(item.result.concentration, 3) + ' mg/mL';
         li.appendChild(name);
         li.appendChild(value);
         out.parts.appendChild(li);

@@ -31,7 +31,8 @@ permalink: /conversor
       <fieldset class="cv-segment">
         <legend>O que você quer converter?</legend>
         <label><input type="radio" name="cv-mode" value="single" checked /><span>Um produto</span></label>
-        <label><input type="radio" name="cv-mode" value="blend" /><span>Mistura na mesma seringa</span></label>
+        <label><input type="radio" name="cv-mode" value="blend" /><span>Mistura</span></label>
+        <label><input type="radio" name="cv-mode" value="reverse" /><span>Unidades → mg</span></label>
       </fieldset>
 
       <div id="cv-items" class="cv-items"></div>
@@ -52,7 +53,7 @@ permalink: /conversor
       <p class="eyebrow" id="cv-result-title">Resultado</p>
       <div class="cv-big" aria-live="polite">
         <strong id="cv-units">–</strong>
-        <span>unidades na seringa</span>
+        <span id="cv-big-label">unidades na seringa</span>
       </div>
 
       <figure class="cv-syringe-figure">
@@ -76,7 +77,7 @@ permalink: /conversor
       <dl class="cv-stats">
         <div><dt>Volume</dt><dd id="cv-volume">–</dd></div>
         <div id="cv-conc-row"><dt>Concentração</dt><dd id="cv-concentration">–</dd></div>
-        <div id="cv-times-row"><dt>O frasco rende</dt><dd id="cv-times">–</dd></div>
+        <div id="cv-times-row"><dt id="cv-times-label">O frasco rende</dt><dd id="cv-times">–</dd></div>
       </dl>
       <ul class="cv-parts" id="cv-parts" aria-label="Unidades de cada produto da mistura"></ul>
     </aside>
@@ -89,6 +90,10 @@ permalink: /conversor
       <li><strong>Volume</strong> = quantidade a converter (mg) ÷ concentração.</li>
       <li><strong>Unidades da seringa</strong> = volume (mL) × 100. Seringas U-100, U-50 e U-30 têm 100 unidades por mL; muda só a capacidade.</li>
     </ol>
+    <p>
+      No modo <strong>Unidades → mg</strong> a conta é a mesma ao contrário: volume = unidades ÷ 100 e
+      quantidade = volume × concentração.
+    </p>
     <p>
       Na mistura, cada produto é convertido separadamente e as unidades são somadas. Quantidades em mcg são divididas
       por 1.000 antes da conta.
@@ -134,7 +139,12 @@ permalink: /conversor
         <button type="button" data-target="water" data-preset="3">3</button>
       </div>
     </div>
-    <div class="cv-field">
+    <div class="cv-field cv-reverse-field" hidden>
+      <label data-for="unitsIn">3. Unidades na seringa</label>
+      <input data-field="unitsIn" type="text" inputmode="decimal" autocomplete="off" />
+      <p class="cv-hint">A marcação que você vê na seringa (seringas de insulina têm 100 unidades por mL).</p>
+    </div>
+    <div class="cv-field cv-amount-field">
       <label data-for="amount">3. Quantidade a converter</label>
       <div class="cv-amount">
         <input data-field="amount" type="text" inputmode="decimal" autocomplete="off" />

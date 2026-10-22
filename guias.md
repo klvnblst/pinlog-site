@@ -14,6 +14,10 @@ updated: "Atualizado em 21 de outubro de 2026"
 **Outubro de 2026**
 
 - **PinLog Premium mais completo:** relatório em PDF para levar à consulta, gráficos com peso, aplicações e sintomas lado a lado, fases de dose e ciclos de pausa que você anota, validade do estoque com aviso na véspera e bloqueio do app com Face ID ou digital.
+- **Lote do frasco:** anote o lote em uso e ele fica gravado em cada aplicação. No Premium, vários lotes ao mesmo tempo.
+- **Registrar pela notificação:** o lembrete do dia tem o botão **Registrar**, que abre direto a tela da aplicação.
+- **Mais sintomas:** dor de cabeça, cansaço, intestino preso, diarreia, vermelhidão local e tontura.
+- **Planilha (CSV) no Premium** e **conta reversa no conversor do site** (unidades da seringa para mg).
 - **Doses só suas:** no cadastro, os atalhos de dose mostram apenas as doses que você já usou. O PinLog não sugere doses nem intervalos.
 - **Conversor de unidades no site:** ele agora fica aqui, em [pinlog.life/conversor](/conversor).
 
@@ -46,6 +50,8 @@ Seus registros ficam no aparelho e na sua conta. Ao entrar com o mesmo e-mail em
 - **Fases de dose e ciclos:** ao editar a rotina, em **Plano da rotina**. Anote a partir de que data cada dose vale e, se houver, os dias de uso e de pausa. Durante a pausa, a próxima data vai para o primeiro dia de uso.
 - **Validade do estoque:** também em **Plano da rotina**. Anote quando abriu o frasco, por quantos dias pode usar e a validade do rótulo. O PinLog avisa na véspera.
 - **Bloqueio do app:** em **Ajustes › Bloqueio do app**. Pede Face ID, digital ou o código do aparelho ao abrir o PinLog.
+- **Planilha (CSV):** em **Ajustes › Backup › Planilha**. Aplicações e pesos, uma linha cada, para abrir no Excel ou no Planilhas.
+- **Vários lotes:** ao editar a rotina, adicione os lotes e marque qual está em uso.
 
 Tudo isso só organiza o que você anota. O PinLog não indica, recomenda nem confere doses.
 
