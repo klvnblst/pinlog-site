@@ -1714,12 +1714,6 @@ a:hover {
   }
 }
 
-.cv-field label small.cv-unit {
-  color: var(--red);
-  font-weight: 800;
-  font-size: 14px;
-  margin-left: 2px;
-}
 
 .cv-presets button[aria-pressed='true'] {
   color: #fff;

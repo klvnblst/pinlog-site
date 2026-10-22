@@ -109,7 +109,13 @@
 
   function currentSyringe() {
     for (var i = 0; i < syringeInputs.length; i++) if (syringeInputs[i].checked) return syringeInputs[i].value;
-    return 'U-100';
+    return 'U-50';
+  }
+
+  /** Display name: every insulin syringe is U-100; they differ only in capacity. */
+  var SYRINGE_NAMES = { 'U-100': '1 mL (100 UI)', 'U-50': '0,5 mL (50 UI)', 'U-30': '0,3 mL (30 UI)' };
+  function syringeName() {
+    return 'seringa de insulina de ' + SYRINGE_NAMES[currentSyringe()];
   }
 
   function syncChips(item) {
@@ -237,17 +243,17 @@
       return;
     }
     var mode = currentMode();
-    var syringe = currentSyringe() + ' (' + numberFormat(SYRINGES[currentSyringe()].maxMl, 1) + ' mL)';
+    var syringe = 'Insulina, ' + SYRINGE_NAMES[currentSyringe()];
     var rows = [];
     var mg = function (v) { return numberFormat(v, 3) + ' mg'; };
     var withMcg = function (v) { return mg(v) + ' (' + numberFormat(v * 1000, 1) + ' mcg)'; };
     if (mode === 'reverse') {
       var r = items[0];
-      out.summaryLine.textContent = numberFormat(r.unitsIn, 1) + ' unidades numa seringa ' + currentSyringe() +
+      out.summaryLine.textContent = numberFormat(r.unitsIn, 1) + ' unidades numa ' + syringeName() +
         ' correspondem a ' + withMcg(r.result.amountMg) + '.';
       rows = [
         ['Conteúdo do frasco', mg(r.vial)],
-        ['Água adicionada', numberFormat(r.water, 3) + ' mL'],
+        ['Diluente adicionado', numberFormat(r.water, 3) + ' mL'],
         ['Concentração', numberFormat(r.result.concentration, 3) + ' mg/mL'],
         ['Marcação na seringa', numberFormat(r.unitsIn, 1) + ' unidades'],
         ['Volume', numberFormat(r.result.volumeMl, 3) + ' mL'],
@@ -256,7 +262,7 @@
       ];
     } else if (mode === 'blend') {
       out.summaryLine.textContent = 'A mistura soma ' + numberFormat(totals.units, 1) + ' unidades (' +
-        numberFormat(totals.ml, 3) + ' mL) numa seringa ' + currentSyringe() + '.';
+        numberFormat(totals.ml, 3) + ' mL) numa ' + syringeName() + '.';
       items.forEach(function (item) {
         rows.push([item.name, mg(item.amount) + ' de um frasco com ' + mg(item.vial) + ' em ' +
           numberFormat(item.water, 3) + ' mL = ' + numberFormat(item.result.units, 1) + ' unidades (' +
@@ -267,12 +273,12 @@
     } else {
       var s = items[0];
       out.summaryLine.textContent = withMcg(s.amount) + ' correspondem a ' + numberFormat(s.result.units, 1) +
-        ' unidades (' + numberFormat(s.result.volumeMl, 3) + ' mL) numa seringa ' + currentSyringe() + '.';
+        ' unidades (' + numberFormat(s.result.volumeMl, 3) + ' mL) numa ' + syringeName() + '.';
       rows = [
         ['Conteúdo do frasco', mg(s.vial)],
-        ['Água adicionada', numberFormat(s.water, 3) + ' mL'],
+        ['Diluente adicionado', numberFormat(s.water, 3) + ' mL'],
         ['Concentração', numberFormat(s.result.concentration, 3) + ' mg/mL'],
-        ['Quantidade', withMcg(s.amount)],
+        ['Dose desejada', withMcg(s.amount)],
         ['Na seringa', numberFormat(s.result.units, 1) + ' unidades (' + numberFormat(s.result.volumeMl, 3) + ' mL)', true],
         ['Seringa', syringe],
         ['O frasco rende', '~' + numberFormat(s.result.timesInVial, 1) + ' vezes'],
@@ -363,7 +369,7 @@
         numberFormat(spec.maxMl, 1) + ' mL). Confira os valores digitados.';
     }
     out.caption.textContent =
-      numberFormat(totalUnits, 1) + ' de ' + spec.maxUnits + ' unidades numa seringa ' + currentSyringe() + '.';
+      numberFormat(totalUnits, 1) + ' de ' + spec.maxUnits + ' unidades (' + syringeName() + ').';
     drawSyringe(totalUnits, spec.maxUnits);
     renderSummary(items, true, { units: totalUnits, ml: totalMl });
   }
