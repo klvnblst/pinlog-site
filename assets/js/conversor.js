@@ -21,6 +21,18 @@
     return isFinite(value) ? value : 0;
   }
 
+  function allPositive(values) {
+    return values.every(function (v) { return isFinite(v) && v > 0; });
+  }
+
+  function roundUnits(units) {
+    return Math.round(units * 10 + 1e-9) / 10;
+  }
+
+  function roundTimes(times) {
+    return Math.floor(times * 10 + 1e-9) / 10;
+  }
+
   /** One product: vial content (mg), water added (mL) and the amount to convert (mg). */
   function convert(vialMg, waterMl, amountMg) {
     if (!(vialMg > 0) || !(waterMl > 0) || !(amountMg > 0)) return null;
@@ -29,14 +41,39 @@
     var volumeMl = (amountMg * waterMl) / vialMg;
     var units = (amountMg * waterMl * 100) / vialMg;
     var timesInVial = vialMg / amountMg;
-    if (![concentration, volumeMl, units, timesInVial].every(function (v) { return isFinite(v) && v > 0; })) {
-      return null;
-    }
+    if (!allPositive([concentration, volumeMl, units, timesInVial])) return null;
     return {
       concentration: concentration,
       volumeMl: volumeMl,
-      units: Math.round(units * 10 + 1e-9) / 10,
-      timesInVial: Math.floor(timesInVial * 10 + 1e-9) / 10,
+      units: roundUnits(units),
+      timesInVial: roundTimes(timesInVial),
+    };
+  }
+
+  /**
+   * Several products dissolved together in ONE vial with ONE diluent.
+   * The syringe draws all of them at once, in the vial's proportion, so only one dose can be chosen:
+   * the dose of the reference product sets the volume, and every other amount follows from it.
+   */
+  function convertBlend(vialsMg, waterMl, refIndex, amountMg) {
+    if (!vialsMg || !vialsMg.length || !(waterMl > 0) || !(amountMg > 0)) return null;
+    if (!allPositive(vialsMg)) return null;
+    var refMg = vialsMg[refIndex];
+    if (!(refMg > 0)) return null;
+    var volumeMl = (amountMg * waterMl) / refMg;
+    var units = (amountMg * waterMl * 100) / refMg;
+    var timesInVial = refMg / amountMg;
+    var concentrations = vialsMg.map(function (mg) { return mg / waterMl; });
+    var amounts = vialsMg.map(function (mg, i) { return i === refIndex ? amountMg : (amountMg * mg) / refMg; });
+    var totalMg = vialsMg.reduce(function (sum, mg) { return sum + mg; }, 0);
+    if (!allPositive([volumeMl, units, timesInVial, totalMg].concat(concentrations, amounts))) return null;
+    return {
+      volumeMl: volumeMl,
+      units: roundUnits(units),
+      concentrations: concentrations,
+      amounts: amounts,
+      totalMg: totalMg,
+      timesInVial: roundTimes(timesInVial),
     };
   }
 
@@ -46,9 +83,7 @@
     var concentration = vialMg / waterMl;
     var volumeMl = units / 100;
     var amountMg = volumeMl * concentration;
-    if (![concentration, volumeMl, amountMg].every(function (v) { return isFinite(v) && v > 0; })) {
-      return null;
-    }
+    if (!allPositive([concentration, volumeMl, amountMg])) return null;
     return { concentration: concentration, volumeMl: volumeMl, units: units, amountMg: amountMg };
   }
 
@@ -56,7 +91,14 @@
     return unit === 'mcg' ? value / 1000 : value;
   }
 
-  var api = { convert: convert, reverse: reverse, parseDecimal: parseDecimal, toMg: toMg, SYRINGES: SYRINGES };
+  var api = {
+    convert: convert,
+    convertBlend: convertBlend,
+    reverse: reverse,
+    parseDecimal: parseDecimal,
+    toMg: toMg,
+    SYRINGES: SYRINGES,
+  };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof document === 'undefined') return;
 
@@ -71,6 +113,19 @@
   var resetButton = document.getElementById('cv-reset');
   var modeInputs = form.querySelectorAll('input[name="cv-mode"]');
   var syringeInputs = form.querySelectorAll('input[name="cv-syringe"]');
+  var field = {
+    water: document.getElementById('cv-water'),
+    waterHint: document.getElementById('cv-water-hint'),
+    amount: document.getElementById('cv-amount'),
+    unit: document.getElementById('cv-unit'),
+    amountUnit: document.getElementById('cv-amount-unit'),
+    amountHint: document.getElementById('cv-amount-hint'),
+    amountBox: form.querySelector('.cv-amount-field'),
+    unitsIn: document.getElementById('cv-units-in'),
+    unitsInBox: form.querySelector('.cv-reverse-field'),
+    refRow: document.getElementById('cv-ref-row'),
+    ref: document.getElementById('cv-ref'),
+  };
   var out = {
     card: document.getElementById('cv-result'),
     units: document.getElementById('cv-units'),
@@ -92,15 +147,32 @@
     summaryRows: document.getElementById('cv-summary-rows'),
   };
 
+  var HINTS = {
+    water: {
+      single: 'Quanto diluente (água bacteriostática, soro…) foi colocado no frasco.',
+      blend: 'Um frasco só: o mesmo diluente dissolve todos os produtos da mistura.',
+    },
+    vial: {
+      single: 'Quantos mg do ativo vêm no frasco.',
+      blend: 'Quantos mg deste produto estão no frasco.',
+    },
+    amount: {
+      single: 'Em mg ou mcg, escolha ao lado.',
+      blend: 'Todos os produtos saem juntos na seringa. Informe a dose de um deles; o conversor mostra quanto vem dos outros.',
+    },
+  };
+
   var numberFormat = function (value, digits) {
     return value.toLocaleString('pt-BR', { maximumFractionDigits: digits, minimumFractionDigits: 0 });
   };
+  var mg = function (v) { return numberFormat(v, 3) + ' mg'; };
+  var withMcg = function (v) { return mg(v) + ' (' + numberFormat(v * 1000, 1) + ' mcg)'; };
+  var unitsAndMl = function (units, ml) {
+    return numberFormat(units, 1) + ' unidades (' + numberFormat(ml, 3) + ' mL)';
+  };
 
   var counter = 0;
-  var DEFAULTS = [
-    { vial: '10', water: '2', amount: '2,5', unitsIn: '50' },
-    { vial: '5', water: '1', amount: '1', unitsIn: '20' },
-  ];
+  var START = { water: '2', amount: '2,5', unitsIn: '50', vials: ['10', '5'] };
 
   function currentMode() {
     for (var i = 0; i < modeInputs.length; i++) if (modeInputs[i].checked) return modeInputs[i].value;
@@ -118,11 +190,11 @@
     return 'seringa de insulina de ' + SYRINGE_NAMES[currentSyringe()];
   }
 
-  function syncChips(item) {
-    item.querySelectorAll('.cv-presets[data-field-for]').forEach(function (row) {
-      var field = row.getAttribute('data-field-for');
-      var input = item.querySelector('[data-field="' + field + '"]');
-      var box = input.closest('.cv-other-input');
+  /** Highlights the preset that matches the typed value, or opens "Outro" when none does. */
+  function syncChips(scope) {
+    scope.querySelectorAll('.cv-presets[data-field-for]').forEach(function (row) {
+      var box = row.closest('.cv-field').querySelector('.cv-other-input');
+      var input = box.querySelector('input');
       var typing = box.getAttribute('data-open') === 'true';
       var value = parseDecimal(input.value);
       var matched = false;
@@ -131,57 +203,77 @@
         button.setAttribute('aria-pressed', String(on));
         if (on) matched = true;
       });
-      var other = !matched;
-      row.querySelector('.cv-other').setAttribute('aria-pressed', String(other));
-      box.hidden = !other;
+      row.querySelector('.cv-other').setAttribute('aria-pressed', String(!matched));
+      box.hidden = matched;
     });
   }
 
-  function addItem(values) {
-    if (list.children.length >= MAX_ITEMS) return;
+  function addItem(vial) {
+    if (list.children.length >= MAX_ITEMS) return null;
     counter += 1;
     var node = template.content.firstElementChild.cloneNode(true);
     var id = 'cv' + counter;
+    node.setAttribute('data-id', id);
     node.querySelectorAll('[data-for]').forEach(function (label) {
       label.setAttribute('for', id + '-' + label.getAttribute('data-for'));
     });
     node.querySelectorAll('[data-field]').forEach(function (input) {
       input.id = id + '-' + input.getAttribute('data-field');
     });
-    var unitSelect = node.querySelector('[data-field="unit"]');
-    unitSelect.setAttribute('aria-label', 'Unidade da quantidade');
-    if (values) {
-      node.querySelector('[data-field="vial"]').value = values.vial;
-      node.querySelector('[data-field="water"]').value = values.water;
-      node.querySelector('[data-field="amount"]').value = values.amount;
-      node.querySelector('[data-field="unitsIn"]').value = values.unitsIn || '';
-    }
+    node.querySelector('[data-field="vial"]').value = vial || '';
     list.appendChild(node);
     syncChips(node);
     renumber();
+    return node;
+  }
+
+  function itemName(item, index) {
+    return item.querySelector('[data-field="name"]').value.trim() || 'Produto ' + (index + 1);
+  }
+
+  /** Keeps the "De qual produto" list in step with the products, preserving the choice. */
+  function syncRefOptions() {
+    var items = list.querySelectorAll('.cv-item');
+    var selected = field.ref.value;
+    while (field.ref.options.length > items.length) field.ref.remove(field.ref.options.length - 1);
+    items.forEach(function (item, index) {
+      var option = field.ref.options[index];
+      if (!option) {
+        option = document.createElement('option');
+        field.ref.appendChild(option);
+      }
+      option.value = item.getAttribute('data-id');
+      option.textContent = itemName(item, index);
+    });
+    field.ref.value = selected;
+    if (field.ref.selectedIndex < 0) field.ref.selectedIndex = 0;
   }
 
   function renumber() {
+    var mode = currentMode();
+    var isBlend = mode === 'blend';
+    var hintMode = isBlend ? 'blend' : 'single';
     var items = list.querySelectorAll('.cv-item');
     items.forEach(function (item, index) {
       item.querySelector('.cv-item-title').textContent = 'Produto ' + (index + 1);
-      var nameInput = item.querySelector('[data-field="name"]');
-      nameInput.placeholder = 'Nome (opcional), ex.: Produto ' + String.fromCharCode(65 + index);
-    });
-    var isBlend = currentMode() === 'blend';
-    var isReverse = currentMode() === 'reverse';
-    addButton.hidden = !isBlend || items.length >= MAX_ITEMS;
-    items.forEach(function (item) {
+      item.querySelector('[data-field="name"]').placeholder = 'Nome (opcional), ex.: Produto ' + String.fromCharCode(65 + index);
+      item.querySelector('.cv-item-head').hidden = !isBlend;
       item.querySelector('.cv-remove').hidden = !isBlend || items.length <= 2;
       item.querySelector('.cv-name-row').hidden = !isBlend;
-      item.querySelector('.cv-amount-field').hidden = isReverse;
-      item.querySelector('.cv-reverse-field').hidden = !isReverse;
+      item.querySelector('[data-vial-hint]').textContent = HINTS.vial[hintMode];
     });
+    addButton.hidden = !isBlend || items.length >= MAX_ITEMS;
+    field.waterHint.textContent = HINTS.water[hintMode];
+    field.amountHint.textContent = HINTS.amount[hintMode];
+    field.refRow.hidden = !isBlend;
+    field.amountBox.hidden = mode === 'reverse';
+    field.unitsInBox.hidden = mode !== 'reverse';
+    syncRefOptions();
   }
 
   function setMode(mode) {
     var items = list.querySelectorAll('.cv-item');
-    if (mode === 'blend' && items.length < 2) addItem(DEFAULTS[1]);
+    if (mode === 'blend' && items.length < 2) addItem(START.vials[1]);
     if (mode !== 'blend') {
       for (var i = items.length - 1; i >= 1; i--) items[i].remove();
     }
@@ -190,43 +282,44 @@
     update();
   }
 
-  function readItems() {
-    return Array.prototype.map.call(list.querySelectorAll('.cv-item'), function (item, index) {
-      var get = function (field) {
-        return item.querySelector('[data-field="' + field + '"]');
-      };
-      var vial = parseDecimal(get('vial').value);
-      var water = parseDecimal(get('water').value);
-      var amount = toMg(parseDecimal(get('amount').value), get('unit').value);
-      if (currentMode() === 'reverse') {
-        var unitsIn = parseDecimal(get('unitsIn').value);
-        [['vial', vial], ['water', water], ['unitsIn', unitsIn]].forEach(function (pair) {
-          var field = get(pair[0]);
-          field.setAttribute('aria-invalid', field.value.trim() !== '' && !(pair[1] > 0) ? 'true' : 'false');
-        });
-        return { name: 'Produto 1', vial: vial, water: water, unitsIn: unitsIn, result: reverse(vial, water, unitsIn) };
-      }
-      [['vial', vial], ['water', water], ['amount', amount]].forEach(function (pair) {
-        var input = get(pair[0]);
-        var invalid = input.value.trim() !== '' && !(pair[1] > 0);
-        input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
-      });
-      var name = get('name').value.trim() || 'Produto ' + (index + 1);
+  /** Marks a typed but unusable value as invalid; an empty field is just "not filled yet". */
+  function check(input, value) {
+    input.setAttribute('aria-invalid', input.value.trim() !== '' && !(value > 0) ? 'true' : 'false');
+    return value;
+  }
+
+  function readForm() {
+    var mode = currentMode();
+    var items = Array.prototype.map.call(list.querySelectorAll('.cv-item'), function (item, index) {
       return {
-        name: name,
-        vial: vial,
-        water: water,
-        amount: amount,
-        result: convert(vial, water, amount),
+        id: item.getAttribute('data-id'),
+        name: itemName(item, index),
+        vial: check(item.querySelector('[data-field="vial"]'), parseDecimal(item.querySelector('[data-field="vial"]').value)),
       };
     });
+    var data = {
+      mode: mode,
+      items: items,
+      water: check(field.water, parseDecimal(field.water.value)),
+      refIndex: Math.max(0, field.ref.selectedIndex),
+    };
+    if (mode === 'reverse') {
+      data.unitsIn = check(field.unitsIn, parseDecimal(field.unitsIn.value));
+      data.result = reverse(items[0].vial, data.water, data.unitsIn);
+    } else {
+      data.amount = toMg(check(field.amount, parseDecimal(field.amount.value)), field.unit.value);
+      data.result = mode === 'blend'
+        ? convertBlend(items.map(function (i) { return i.vial; }), data.water, data.refIndex, data.amount)
+        : convert(items[0].vial, data.water, data.amount);
+    }
+    return data;
   }
 
   function drawSyringe(units, maxUnits) {
     var ratio = Math.max(0, Math.min(units / maxUnits, 1));
     out.fill.setAttribute('width', String(Math.round(ratio * 260 * 10) / 10));
     out.scaleMax.textContent = String(maxUnits);
-    var step = maxUnits === 100 ? 10 : maxUnits === 50 ? 5 : 5;
+    var step = maxUnits === 100 ? 10 : 5;
     var ticks = '';
     for (var u = 0; u <= maxUnits; u += step) {
       var x = 20 + (u / maxUnits) * 260;
@@ -236,52 +329,62 @@
     out.ticks.innerHTML = ticks;
   }
 
-  function renderSummary(items, valid, totals) {
+  function listJoin(parts) {
+    if (parts.length <= 1) return parts.join('');
+    return parts.slice(0, -1).join(', ') + ' e ' + parts[parts.length - 1];
+  }
+
+  function renderSummary(data) {
     out.summaryRows.innerHTML = '';
-    if (!valid) {
+    var r = data.result;
+    if (!r) {
       out.summaryLine.textContent = 'Preencha os campos para ver o resumo.';
       return;
     }
-    var mode = currentMode();
     var syringe = 'Insulina, ' + SYRINGE_NAMES[currentSyringe()];
-    var rows = [];
-    var mg = function (v) { return numberFormat(v, 3) + ' mg'; };
-    var withMcg = function (v) { return mg(v) + ' (' + numberFormat(v * 1000, 1) + ' mcg)'; };
-    if (mode === 'reverse') {
-      var r = items[0];
-      out.summaryLine.textContent = numberFormat(r.unitsIn, 1) + ' unidades numa ' + syringeName() +
-        ' correspondem a ' + withMcg(r.result.amountMg) + '.';
+    var first = data.items[0];
+    var rows;
+    if (data.mode === 'reverse') {
+      out.summaryLine.textContent = numberFormat(data.unitsIn, 1) + ' unidades numa ' + syringeName() +
+        ' correspondem a ' + withMcg(r.amountMg) + '.';
       rows = [
-        ['Conteúdo do frasco', mg(r.vial)],
-        ['Diluente adicionado', numberFormat(r.water, 3) + ' mL'],
-        ['Concentração', numberFormat(r.result.concentration, 3) + ' mg/mL'],
-        ['Marcação na seringa', numberFormat(r.unitsIn, 1) + ' unidades'],
-        ['Volume', numberFormat(r.result.volumeMl, 3) + ' mL'],
-        ['Quantidade', withMcg(r.result.amountMg)],
+        ['Diluente adicionado', numberFormat(data.water, 3) + ' mL'],
+        ['Conteúdo do frasco', mg(first.vial)],
+        ['Concentração', numberFormat(r.concentration, 3) + ' mg/mL'],
+        ['Marcação na seringa', numberFormat(data.unitsIn, 1) + ' unidades'],
+        ['Volume', numberFormat(r.volumeMl, 3) + ' mL'],
+        ['Quantidade', withMcg(r.amountMg)],
         ['Seringa', syringe],
       ];
-    } else if (mode === 'blend') {
-      out.summaryLine.textContent = 'A mistura soma ' + numberFormat(totals.units, 1) + ' unidades (' +
-        numberFormat(totals.ml, 3) + ' mL) numa ' + syringeName() + '.';
-      items.forEach(function (item) {
-        rows.push([item.name, mg(item.amount) + ' de um frasco com ' + mg(item.vial) + ' em ' +
-          numberFormat(item.water, 3) + ' mL = ' + numberFormat(item.result.units, 1) + ' unidades (' +
-          numberFormat(item.result.volumeMl, 3) + ' mL)']);
+    } else if (data.mode === 'blend') {
+      var ref = data.items[data.refIndex];
+      var others = [];
+      data.items.forEach(function (item, i) {
+        if (i !== data.refIndex) others.push(mg(r.amounts[i]) + ' de ' + item.name);
       });
-      rows.push(['Total', numberFormat(totals.units, 1) + ' unidades (' + numberFormat(totals.ml, 3) + ' mL)', true]);
+      out.summaryLine.textContent = withMcg(data.amount) + ' de ' + ref.name + ' correspondem a ' +
+        unitsAndMl(r.units, r.volumeMl) + ' numa ' + syringeName() + '. Nesse mesmo volume vão também ' +
+        listJoin(others) + '.';
+      rows = [['Diluente adicionado', numberFormat(data.water, 3) + ' mL para todo o frasco']];
+      data.items.forEach(function (item, i) {
+        rows.push([item.name, mg(item.vial) + ' no frasco (' + numberFormat(r.concentrations[i], 3) +
+          ' mg/mL) → ' + mg(r.amounts[i]) + ' na seringa']);
+      });
+      rows.push(['Total no frasco', mg(r.totalMg)]);
+      rows.push(['Na seringa', unitsAndMl(r.units, r.volumeMl), true]);
       rows.push(['Seringa', syringe]);
+      rows.push(['O frasco rende', '~' + numberFormat(r.timesInVial, 1) + ' vezes (todos os produtos acabam juntos)']);
     } else {
-      var s = items[0];
-      out.summaryLine.textContent = withMcg(s.amount) + ' correspondem a ' + numberFormat(s.result.units, 1) +
-        ' unidades (' + numberFormat(s.result.volumeMl, 3) + ' mL) numa ' + syringeName() + '.';
+      out.summaryLine.textContent = withMcg(data.amount) + ' correspondem a ' + unitsAndMl(r.units, r.volumeMl) +
+        ' numa ' + syringeName() + '.';
       rows = [
-        ['Conteúdo do frasco', mg(s.vial)],
-        ['Diluente adicionado', numberFormat(s.water, 3) + ' mL'],
-        ['Concentração', numberFormat(s.result.concentration, 3) + ' mg/mL'],
-        ['Dose desejada', withMcg(s.amount)],
-        ['Na seringa', numberFormat(s.result.units, 1) + ' unidades (' + numberFormat(s.result.volumeMl, 3) + ' mL)', true],
+        ['Diluente adicionado', numberFormat(data.water, 3) + ' mL'],
+        ['Conteúdo do frasco', mg(first.vial)],
+        ['Concentração', numberFormat(r.concentration, 3) + ' mg/mL'],
+        ['Dose desejada', withMcg(data.amount)],
+        ['Na seringa', unitsAndMl(r.units, r.volumeMl), true],
         ['Seringa', syringe],
-        ['O frasco rende', '~' + numberFormat(s.result.timesInVial, 1) + ' vezes'],
+        ['O frasco rende', '~' + numberFormat(r.timesInVial, 1) + ' vezes'],
       ];
     }
     rows.forEach(function (row) {
@@ -298,108 +401,101 @@
     });
   }
 
+  function renderParts(data) {
+    out.parts.innerHTML = '';
+    if (data.mode !== 'blend' || !data.result) return;
+    data.items.forEach(function (item, i) {
+      var li = document.createElement('li');
+      var name = document.createElement('span');
+      name.textContent = item.name;
+      var value = document.createElement('strong');
+      value.textContent = mg(data.result.amounts[i]) + ' · ' + numberFormat(data.result.concentrations[i], 3) + ' mg/mL';
+      li.appendChild(name);
+      li.appendChild(value);
+      out.parts.appendChild(li);
+    });
+  }
+
   function update() {
+    syncRefOptions();
     var spec = SYRINGES[currentSyringe()];
-    var items = readItems();
-    var isBlend = currentMode() === 'blend';
-    var valid = items.every(function (item) { return item.result; });
+    var data = readForm();
+    var r = data.result;
+    var isReverse = data.mode === 'reverse';
+    var isBlend = data.mode === 'blend';
 
-    out.card.setAttribute('data-state', valid ? 'ok' : 'empty');
-    out.empty.hidden = valid;
+    out.card.setAttribute('data-state', r ? 'ok' : 'empty');
+    out.empty.hidden = !!r;
+    renderParts(data);
+    renderSummary(data);
 
-    if (!valid) {
+    if (!r) {
       out.units.textContent = '–';
       out.volume.textContent = '–';
       out.concentration.textContent = '–';
       out.times.textContent = '–';
-      out.parts.innerHTML = '';
       out.warning.hidden = true;
       out.caption.textContent = 'Preencha os campos para ver a conversão.';
       drawSyringe(0, spec.maxUnits);
-      renderSummary(items, false);
       return;
     }
 
-    // Sum the exact volumes, then round once (rounding each part first would add up errors).
-    var totalMl = items.reduce(function (sum, i) { return sum + i.result.volumeMl; }, 0);
-    var totalUnits = Math.round(totalMl * 1000 + 1e-9) / 10;
-    var isReverse = currentMode() === 'reverse';
-
+    var units = r.units;
     out.concRow.hidden = isBlend;
-    out.timesRow.hidden = isBlend;
-    out.volume.textContent = numberFormat(totalMl, 3) + ' mL';
+    out.timesRow.hidden = false;
+    out.volume.textContent = numberFormat(r.volumeMl, 3) + ' mL';
     if (isReverse) {
-      var r = items[0].result;
       out.units.textContent = numberFormat(r.amountMg, 3);
       out.bigLabel.textContent = 'mg nessa marcação';
       out.concentration.textContent = numberFormat(r.concentration, 3) + ' mg/mL';
       out.timesLabel.textContent = 'Em mcg';
       out.times.textContent = numberFormat(r.amountMg * 1000, 1) + ' mcg';
     } else {
-      out.units.textContent = numberFormat(totalUnits, 1);
+      out.units.textContent = numberFormat(units, 1);
       out.bigLabel.textContent = 'unidades na seringa';
       out.timesLabel.textContent = 'O frasco rende';
-      if (!isBlend) {
-        out.concentration.textContent = numberFormat(items[0].result.concentration, 3) + ' mg/mL';
-        out.times.textContent = '~' + numberFormat(items[0].result.timesInVial, 1) + ' vezes';
-      }
+      out.times.textContent = '~' + numberFormat(r.timesInVial, 1) + ' vezes';
+      if (!isBlend) out.concentration.textContent = numberFormat(r.concentration, 3) + ' mg/mL';
     }
 
-    out.parts.innerHTML = '';
-    if (isBlend) {
-      items.forEach(function (item) {
-        var li = document.createElement('li');
-        var name = document.createElement('span');
-        name.textContent = item.name;
-        var value = document.createElement('strong');
-        value.textContent =
-          numberFormat(item.result.units, 1) + ' unid. · ' + numberFormat(item.result.volumeMl, 3) + ' mL · ' +
-          numberFormat(item.result.concentration, 3) + ' mg/mL';
-        li.appendChild(name);
-        li.appendChild(value);
-        out.parts.appendChild(li);
-      });
+    var warnings = [];
+    if (!isReverse && r.timesInVial < 1) {
+      warnings.push('A dose passa do conteúdo do frasco (' + mg(data.items[isBlend ? data.refIndex : 0].vial) + ').');
     }
+    if (units > spec.maxUnits) {
+      warnings.push('O volume passa da capacidade desta seringa (' + spec.maxUnits + ' unidades, ' +
+        numberFormat(spec.maxMl, 1) + ' mL).');
+    }
+    out.warning.hidden = !warnings.length;
+    if (warnings.length) out.warning.textContent = warnings.join(' ') + ' Confira os valores digitados.';
 
-    var exceeded = totalUnits > spec.maxUnits;
-    out.warning.hidden = !exceeded;
-    if (exceeded) {
-      out.warning.textContent =
-        'O volume passa da capacidade desta seringa (' + spec.maxUnits + ' unidades, ' +
-        numberFormat(spec.maxMl, 1) + ' mL). Confira os valores digitados.';
-    }
-    out.caption.textContent =
-      numberFormat(totalUnits, 1) + ' de ' + spec.maxUnits + ' unidades (' + syringeName() + ').';
-    drawSyringe(totalUnits, spec.maxUnits);
-    renderSummary(items, true, { units: totalUnits, ml: totalMl });
+    out.caption.textContent = numberFormat(units, 1) + ' de ' + spec.maxUnits + ' unidades (' + syringeName() + ').';
+    drawSyringe(units, spec.maxUnits);
   }
 
-  list.addEventListener('input', update);
-  list.addEventListener('change', function (event) {
-    var select = event.target.closest('[data-field="unit"]');
-    if (select) {
-      select.closest('.cv-item').querySelector('[data-amount-unit]').textContent = select.value;
-    }
+  form.addEventListener('input', update);
+  form.addEventListener('change', function (event) {
+    if (event.target === field.unit) field.amountUnit.textContent = field.unit.value;
     update();
   });
-  list.addEventListener('click', function (event) {
+  form.addEventListener('click', function (event) {
     var preset = event.target.closest('[data-preset]');
     if (preset) {
-      var item = preset.closest('.cv-item');
-      var input = item.querySelector('[data-field="' + preset.getAttribute('data-target') + '"]');
-      input.value = preset.getAttribute('data-preset');
-      input.closest('.cv-other-input').setAttribute('data-open', 'false');
-      syncChips(item);
+      var presetField = preset.closest('.cv-field');
+      var box = presetField.querySelector('.cv-other-input');
+      box.querySelector('input').value = preset.getAttribute('data-preset');
+      box.setAttribute('data-open', 'false');
+      syncChips(presetField);
       update();
       return;
     }
     var other = event.target.closest('.cv-other');
     if (other) {
-      var otherItem = other.closest('.cv-item');
-      var box = otherItem.querySelector('[data-field="' + other.getAttribute('data-other') + '"]').closest('.cv-other-input');
-      box.setAttribute('data-open', 'true');
-      syncChips(otherItem);
-      box.querySelector('input').focus();
+      var otherField = other.closest('.cv-field');
+      var otherBox = otherField.querySelector('.cv-other-input');
+      otherBox.setAttribute('data-open', 'true');
+      syncChips(otherField);
+      otherBox.querySelector('input').focus();
       return;
     }
     var remove = event.target.closest('.cv-remove');
@@ -410,26 +506,34 @@
     }
   });
   addButton.addEventListener('click', function () {
-    addItem({ vial: '5', water: '1', amount: '1' });
+    var node = addItem('5');
     update();
-    var items = list.querySelectorAll('.cv-item');
-    items[items.length - 1].querySelector('[data-field="name"]').focus();
+    if (node) node.querySelector('[data-field="name"]').focus();
   });
-  resetButton.addEventListener('click', function () {
+
+  function start() {
     list.innerHTML = '';
-    addItem(DEFAULTS[0]);
-    if (currentMode() === 'blend') addItem(DEFAULTS[1]);
-    renumber();
-    update();
+    field.water.value = START.water;
+    field.water.closest('.cv-other-input').setAttribute('data-open', 'false');
+    syncChips(field.water.closest('.cv-field'));
+    field.amount.value = START.amount;
+    field.unit.value = 'mg';
+    field.amountUnit.textContent = 'mg';
+    field.unitsIn.value = START.unitsIn;
+    addItem(START.vials[0]);
+    if (currentMode() === 'blend') addItem(START.vials[1]);
+    field.ref.selectedIndex = 0;
+  }
+
+  resetButton.addEventListener('click', function () {
+    start();
+    setMode(currentMode());
   });
   modeInputs.forEach(function (input) {
     input.addEventListener('change', function () { setMode(currentMode()); });
   });
-  syringeInputs.forEach(function (input) {
-    input.addEventListener('change', update);
-  });
   form.addEventListener('submit', function (event) { event.preventDefault(); });
 
-  addItem(DEFAULTS[0]);
+  start();
   setMode(currentMode());
 })(this);

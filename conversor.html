@@ -27,9 +27,48 @@ permalink: /conversor
         <label><input type="radio" name="cv-mode" value="reverse" /><span><span class="cv-icon cv-tone-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 3 4 4M19 5l-3 3"/><path d="m15 6 3 3-9.5 9.5H5.5v-3L15 6Z"/><path d="m9.5 11.5 2 2M12 9l2 2"/><path d="M5.5 18.5 3 21"/></svg></span>Unidades → mg</span></label>
       </fieldset>
 
+      <section class="cv-item cv-shared card" aria-label="Diluente">
+        <div class="cv-field">
+          <div class="cv-field-head"><span class="cv-icon cv-tone-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8c-3.2 4.2-6 7.3-6 10.7a6 6 0 0 0 12 0c0-3.4-2.8-6.5-6-10.7Z"/><path d="M9.3 14a2.8 2.8 0 0 0 2.7 3"/></svg></span><div class="cv-field-text"><label for="cv-water">1. Diluente adicionado <small>mL</small></label><span class="cv-field-hint" id="cv-water-hint">Quanto diluente (água bacteriostática, soro…) foi colocado no frasco.</span></div></div>
+          <div class="cv-presets" data-field-for="water" aria-label="Valores rápidos de diluente">
+            <button type="button" aria-pressed="false" data-preset="1">1</button>
+            <button type="button" aria-pressed="false" data-preset="1,5">1,5</button>
+            <button type="button" aria-pressed="false" data-preset="2">2</button>
+            <button type="button" aria-pressed="false" data-preset="3">3</button>
+            <button type="button" class="cv-other" aria-pressed="false">Outro</button>
+          </div>
+          <div class="cv-other-input" hidden>
+            <input id="cv-water" data-field="water" type="text" inputmode="decimal" autocomplete="off" placeholder="Digite o valor em mL" />
+          </div>
+        </div>
+      </section>
+
       <div id="cv-items" class="cv-items"></div>
 
-      <button type="button" id="cv-add" class="cv-add" hidden>+ Adicionar produto à mistura</button>
+      <button type="button" id="cv-add" class="cv-add" hidden>+ Adicionar produto ao frasco</button>
+
+      <section class="cv-item cv-shared card" aria-label="Quantidade">
+        <div class="cv-field cv-amount-field">
+          <div class="cv-field-head"><span class="cv-icon cv-tone-magenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5V20M8 20h8M5.5 7.5h13M12 3.5l-6.5 4M12 3.5l6.5 4"/><path d="M5.5 7.5 3 13a2.6 2.6 0 0 0 5 0L5.5 7.5ZM18.5 7.5 16 13a2.6 2.6 0 0 0 5 0l-2.5-5.5Z"/></svg></span><div class="cv-field-text"><label for="cv-amount">3. Dose desejada <small id="cv-amount-unit">mg</small></label><span class="cv-field-hint" id="cv-amount-hint">Em mg ou mcg, escolha ao lado.</span></div></div>
+          <div class="cv-ref-row" id="cv-ref-row" hidden>
+            <label for="cv-ref">De qual produto</label>
+            <select id="cv-ref"></select>
+          </div>
+          <div class="cv-amount">
+            <input id="cv-amount" type="text" inputmode="decimal" autocomplete="off" />
+            <select id="cv-unit" aria-label="Unidade da quantidade">
+              <option value="mg" selected>mg</option>
+              <option value="mcg">mcg</option>
+            </select>
+          </div>
+          <p class="cv-hint">O valor que você já tem, informado por um profissional.</p>
+        </div>
+        <div class="cv-field cv-reverse-field" hidden>
+          <div class="cv-field-head"><span class="cv-icon cv-tone-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 3 4 4M19 5l-3 3"/><path d="m15 6 3 3-9.5 9.5H5.5v-3L15 6Z"/><path d="m9.5 11.5 2 2M12 9l2 2"/><path d="M5.5 18.5 3 21"/></svg></span><div class="cv-field-text"><label for="cv-units-in">3. Unidades na seringa <small>unidades</small></label><span class="cv-field-hint">A marcação que você lê na seringa.</span></div></div>
+          <input id="cv-units-in" type="text" inputmode="decimal" autocomplete="off" />
+          <p class="cv-hint">A marcação que você vê na seringa (seringas de insulina têm 100 unidades por mL).</p>
+        </div>
+      </section>
 
       <fieldset class="cv-segment cv-syringe">
         <legend>Seringa de insulina (U-100)</legend>
@@ -71,7 +110,7 @@ permalink: /conversor
         <div id="cv-conc-row"><dt><span class="cv-icon cv-tone-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7.2 15h9.6"/></svg></span>Concentração</dt><dd id="cv-concentration">–</dd></div>
         <div id="cv-times-row"><dt><span class="cv-icon cv-tone-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="2" width="9" height="3.6" rx="1"/><path d="M7.5 3.8h9"/><path d="M9.5 5.6v1.6M14.5 5.6v1.6"/><path d="M9.5 7.2C7.4 7.7 6.5 8.8 6.5 10.6v8.6A2.8 2.8 0 0 0 9.3 22h5.4a2.8 2.8 0 0 0 2.8-2.8v-8.6c0-1.8-.9-2.9-3-3.4"/><path d="M6.5 15.5h11"/></svg></span><span id="cv-times-label">O frasco rende</span></dt><dd id="cv-times">–</dd></div>
       </dl>
-      <ul class="cv-parts" id="cv-parts" aria-label="Unidades de cada produto da mistura"></ul>
+      <ul class="cv-parts" id="cv-parts" aria-label="Quanto de cada produto vai na seringa"></ul>
     </aside>
   </form>
 
@@ -106,9 +145,12 @@ permalink: /conversor
       quantidade = volume × concentração.
     </p>
     <p>
-      Na mistura, cada produto é convertido separadamente e as unidades são somadas. Quantidades em mcg são divididas
-      por 1.000 antes da conta.
+      Na <strong>mistura</strong>, todos os produtos estão no mesmo frasco e dividem o mesmo diluente. Cada um tem a
+      sua concentração (mg dele ÷ diluente), e o volume que vai para a seringa leva todos juntos, na mesma proporção em
+      que estão no frasco. Por isso você informa a dose de um dos produtos: o volume sai dessa dose, e a quantidade de
+      cada outro = volume × concentração dele. O frasco rende o mesmo número de vezes para todos.
     </p>
+    <p>Quantidades em mcg são divididas por 1.000 antes da conta.</p>
     <h2>Registre no PinLog</h2>
     <p>
       O app PinLog organiza a sua rotina: próxima data, rodízio das regiões do corpo, sintomas, peso e estoque.
@@ -129,48 +171,19 @@ permalink: /conversor
       <input data-field="name" type="text" maxlength="40" autocomplete="off" />
     </div>
     <div class="cv-field">
-      <div class="cv-field-head"><span class="cv-icon cv-tone-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="2" width="9" height="3.6" rx="1"/><path d="M7.5 3.8h9"/><path d="M9.5 5.6v1.6M14.5 5.6v1.6"/><path d="M9.5 7.2C7.4 7.7 6.5 8.8 6.5 10.6v8.6A2.8 2.8 0 0 0 9.3 22h5.4a2.8 2.8 0 0 0 2.8-2.8v-8.6c0-1.8-.9-2.9-3-3.4"/><path d="M6.5 15.5h11"/></svg></span><div class="cv-field-text"><label data-for="vial">1. Conteúdo do frasco <small>mg</small></label><span class="cv-field-hint">Qual concentração do ativo vem no frasco.</span></div></div>
+      <div class="cv-field-head"><span class="cv-icon cv-tone-violet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="2" width="9" height="3.6" rx="1"/><path d="M7.5 3.8h9"/><path d="M9.5 5.6v1.6M14.5 5.6v1.6"/><path d="M9.5 7.2C7.4 7.7 6.5 8.8 6.5 10.6v8.6A2.8 2.8 0 0 0 9.3 22h5.4a2.8 2.8 0 0 0 2.8-2.8v-8.6c0-1.8-.9-2.9-3-3.4"/><path d="M6.5 15.5h11"/></svg></span><div class="cv-field-text"><label data-for="vial">2. Conteúdo do frasco <small>mg</small></label><span class="cv-field-hint" data-vial-hint>Quantos mg do ativo vêm no frasco.</span></div></div>
       <div class="cv-presets" data-field-for="vial" aria-label="Valores rápidos de conteúdo">
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="5">5</button>
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="10">10</button>
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="15">15</button>
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="20">20</button>
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="30">30</button>
-        <button type="button" data-target="vial" aria-pressed="false" data-preset="60">60</button>
-        <button type="button" class="cv-other" data-other="vial" aria-pressed="false">Outro</button>
+        <button type="button" aria-pressed="false" data-preset="5">5</button>
+        <button type="button" aria-pressed="false" data-preset="10">10</button>
+        <button type="button" aria-pressed="false" data-preset="15">15</button>
+        <button type="button" aria-pressed="false" data-preset="20">20</button>
+        <button type="button" aria-pressed="false" data-preset="30">30</button>
+        <button type="button" aria-pressed="false" data-preset="60">60</button>
+        <button type="button" class="cv-other" aria-pressed="false">Outro</button>
       </div>
       <div class="cv-other-input" hidden>
         <input data-field="vial" type="text" inputmode="decimal" autocomplete="off" placeholder="Digite o valor em mg" />
       </div>
-    </div>
-    <div class="cv-field">
-      <div class="cv-field-head"><span class="cv-icon cv-tone-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8c-3.2 4.2-6 7.3-6 10.7a6 6 0 0 0 12 0c0-3.4-2.8-6.5-6-10.7Z"/><path d="M9.3 14a2.8 2.8 0 0 0 2.7 3"/></svg></span><div class="cv-field-text"><label data-for="water">2. Diluente adicionado <small>mL</small></label><span class="cv-field-hint">Quanto diluente (água bacteriostática, soro…) foi colocado no frasco.</span></div></div>
-      <div class="cv-presets" data-field-for="water" aria-label="Valores rápidos de diluente">
-        <button type="button" data-target="water" aria-pressed="false" data-preset="1">1</button>
-        <button type="button" data-target="water" aria-pressed="false" data-preset="1,5">1,5</button>
-        <button type="button" data-target="water" aria-pressed="false" data-preset="2">2</button>
-        <button type="button" data-target="water" aria-pressed="false" data-preset="3">3</button>
-        <button type="button" class="cv-other" data-other="water" aria-pressed="false">Outro</button>
-      </div>
-      <div class="cv-other-input" hidden>
-        <input data-field="water" type="text" inputmode="decimal" autocomplete="off" placeholder="Digite o valor em mL" />
-      </div>
-    </div>
-    <div class="cv-field cv-reverse-field" hidden>
-      <div class="cv-field-head"><span class="cv-icon cv-tone-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 3 4 4M19 5l-3 3"/><path d="m15 6 3 3-9.5 9.5H5.5v-3L15 6Z"/><path d="m9.5 11.5 2 2M12 9l2 2"/><path d="M5.5 18.5 3 21"/></svg></span><div class="cv-field-text"><label data-for="unitsIn">3. Unidades na seringa <small>unidades</small></label><span class="cv-field-hint">A marcação que você lê na seringa.</span></div></div>
-      <input data-field="unitsIn" type="text" inputmode="decimal" autocomplete="off" />
-      <p class="cv-hint">A marcação que você vê na seringa (seringas de insulina têm 100 unidades por mL).</p>
-    </div>
-    <div class="cv-field cv-amount-field">
-      <div class="cv-field-head"><span class="cv-icon cv-tone-magenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5V20M8 20h8M5.5 7.5h13M12 3.5l-6.5 4M12 3.5l6.5 4"/><path d="M5.5 7.5 3 13a2.6 2.6 0 0 0 5 0L5.5 7.5ZM18.5 7.5 16 13a2.6 2.6 0 0 0 5 0l-2.5-5.5Z"/></svg></span><div class="cv-field-text"><label data-for="amount">3. Dose desejada <small data-amount-unit>mg</small></label><span class="cv-field-hint">Em mg ou mcg, escolha ao lado.</span></div></div>
-      <div class="cv-amount">
-        <input data-field="amount" type="text" inputmode="decimal" autocomplete="off" />
-        <select data-field="unit">
-          <option value="mg" selected>mg</option>
-          <option value="mcg">mcg</option>
-        </select>
-      </div>
-      <p class="cv-hint">O valor que você já tem, informado por um profissional.</p>
     </div>
   </section>
 </template>

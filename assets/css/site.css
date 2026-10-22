@@ -1789,3 +1789,9 @@ a:hover {
 .cv-notice {
   margin-top: 0;
 }
+
+/* Converter: one vial shared by every product of a mixture */
+.cv-ref-row {
+  display: grid;
+  gap: 6px;
+}
