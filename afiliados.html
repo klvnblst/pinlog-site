@@ -65,19 +65,95 @@ permalink: /afiliados
         <p>Desconto exclusivo no plano anual usando seu código exclusivo.</p>
       </div>
     </div>
-    <div class="card sim" id="simulador">
-      <div class="sim-inputs">
-        <h3>Simule os seus ganhos</h3>
-        <label for="sim-m">Indicados no plano mensal <output id="sim-m-out" for="sim-m">100</output></label>
-        <input type="range" id="sim-m" min="0" max="500" step="5" value="100" />
-        <label for="sim-a">Indicados no plano anual <output id="sim-a-out" for="sim-a">20</output></label>
-        <input type="range" id="sim-a" min="0" max="500" step="5" value="20" />
+    <div class="calc" id="simulador">
+      <div class="calc-head">
+        <span class="calc-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M8 18h8"/></svg>Calculadora de ganhos</span>
+        <h3 class="calc-title">Veja quanto suas indicações <span class="gradient-text">podem gerar</span></h3>
+        <p>Você não começa do zero todo mês. Cada assinante que continua no PinLog continua gerando comissão para você, mês após mês.</p>
       </div>
-      <div class="sim-result" aria-live="polite">
-        <p class="sim-label">Você recebe por mês</p>
-        <p class="sim-big" id="sim-month">R$ 412,10</p>
-        <p class="sim-label">Você recebe por ano</p>
-        <p class="sim-big sim-year" id="sim-year">R$ 4.945,20</p>
+
+      <div class="calc-grid">
+        <div class="card calc-panel">
+          <h4 class="calc-q">Quantas novas assinaturas você acredita conseguir por mês?</h4>
+          <p class="calc-sub">Ajuste os valores e veja como sua renda recorrente cresce.</p>
+
+          <div class="calc-field">
+            <div class="calc-field-top">
+              <span class="calc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5M15 14.5c2.6 0 4.6 1.6 5.5 4.5"/></svg></span>
+              <label for="sim-m">Novas assinaturas no plano mensal</label>
+              <output id="sim-m-out" for="sim-m">50</output>
+            </div>
+            <input type="range" id="sim-m" min="0" max="200" step="1" value="50" />
+            <div class="calc-scale" aria-hidden="true"><span>0</span><span>50</span><span>100</span><span>150</span><span>200</span></div>
+          </div>
+
+          <div class="calc-field calc-field-annual">
+            <div class="calc-field-top">
+              <span class="calc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8" width="17" height="12.5" rx="2"/><path d="M3.5 12h17M12 8v12.5M12 8c-1.6-3.2-5.5-3.6-5.5-1.3C6.5 8 9.3 8 12 8c2.7 0 5.5 0 5.5-1.3 0-2.3-3.9-1.9-5.5 1.3"/></svg></span>
+              <label for="sim-a">Novas assinaturas no plano anual</label>
+              <output id="sim-a-out" for="sim-a">25</output>
+            </div>
+            <input type="range" id="sim-a" min="0" max="100" step="1" value="25" />
+            <div class="calc-scale" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+          </div>
+
+          <div class="calc-premises">
+            <h5><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Premissas da simulação</h5>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.8"/></svg><span>Comissão de 25% para você, em todas as mensalidades e renovações dos seus indicados.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.8"/></svg><span>20% de desconto no plano anual para o seu público.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.8"/></svg><span>Considera que os assinantes continuam ativos durante o período (sem cancelamentos).</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.3 2.4 2.4 4.6-4.8"/></svg><span>Planos: mensal R$ 14,90 e anual R$ 118,80 (com 20% OFF para o seu público: R$ 95,04).</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card calc-panel calc-results">
+          <div class="calc-kpis" aria-live="polite">
+            <div class="calc-kpi kpi-mint">
+              <span class="calc-kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V5.5A1.5 1.5 0 0 0 17.5 4h-12A2.5 2.5 0 0 0 3 6.5v11A2.5 2.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V9a1.5 1.5 0 0 0-1.5-1.5H5.5A2.5 2.5 0 0 1 3 5"/><circle cx="16" cy="13.8" r="1.2"/></svg></span>
+              <div><small>Sua comissão no 12º mês</small><strong id="sim-month">R$ 2.829,00</strong><em>por mês</em></div>
+            </div>
+            <div class="calc-kpi kpi-violet">
+              <span class="calc-kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V12M10 20V6M15 20v-9M20 20V9"/></svg></span>
+              <div><small>Total recebido em 12 meses</small><strong id="sim-year">R$ 21.655,50</strong></div>
+            </div>
+            <div class="calc-kpi kpi-rose">
+              <span class="calc-kpi-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c.9-4 3.9-6.3 7.5-6.3s6.6 2.3 7.5 6.3"/></svg></span>
+              <div><small>Sua base no 12º mês</small><strong id="sim-base">900</strong><em id="sim-base-detail">assinantes ativos: 600 no mensal e 300 no anual</em></div>
+            </div>
+          </div>
+
+          <div class="calc-chart">
+            <div class="calc-chart-head">
+              <h4>Evolução da sua comissão mensal</h4>
+              <ul class="calc-legend">
+                <li><i class="lg-m"></i>Assinantes mensais (acumulado)</li>
+                <li><i class="lg-a"></i>Novas anuais (no mês)</li>
+              </ul>
+            </div>
+            <div class="calc-plot" aria-hidden="true">
+              <div class="calc-grid-lines" id="sim-y"></div>
+              <div class="calc-bars" id="sim-bars"></div>
+            </div>
+          </div>
+
+          <div class="calc-examples">
+            <h4>Exemplos da sua comissão mensal</h4>
+            <div class="calc-ex-grid">
+              <div><small>Mês 1</small><strong id="sim-ex-1">R$ 780,25</strong></div>
+              <div><small>Mês 3</small><strong id="sim-ex-3">R$ 1.152,75</strong></div>
+              <div><small>Mês 6</small><strong id="sim-ex-6">R$ 1.711,50</strong></div>
+              <div class="hl"><small>Mês 12</small><strong id="sim-ex-12">R$ 2.829,00</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-foot">
+        <span class="calc-foot-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></span>
+        <strong class="calc-foot-title">E isso é só o começo.</strong>
+        <p>A partir do segundo ano, as renovações dos planos anuais também começam a gerar novas comissões, aumentando ainda mais o seu potencial de ganhos.</p>
       </div>
     </div>
     <p class="fine">As regras completas (prazo de confirmação, reembolsos e forma de pagamento) vão no contrato do programa.</p>
@@ -306,24 +382,74 @@ permalink: /afiliados
 </section>
 
 <script>
-  // Simulador: 25% do que os indicados pagam. Por ano = 12 x por mês.
-  // O anual é pago uma vez por ano; no "por mês" ele entra dividido por 12. Valores em centavos.
+  // Calculadora de ganhos: a pessoa escolhe quantas assinaturas novas traz por mês.
+  // Mensal: quem entrou continua pagando todo mês, então a comissão acumula.
+  // Anual: cada assinatura nova paga uma vez no ano (a renovação só vem no ano seguinte).
+  // Tudo em centavos para não errar no arredondamento.
   (function () {
     var monthly = document.getElementById('sim-m');
     var annual = document.getElementById('sim-a');
     if (!monthly || !annual) return;
-    var MONTHLY_PRICE = 1490; // R$ 14,90 por mês
-    var ANNUAL_PRICE = 9504; // R$ 118,80 por ano com 20% de desconto
-    var SHARE = 0.25;
+    var MONTHLY = 1490 * 0.25; // 25% de R$ 14,90 = R$ 3,725 por mês
+    var ANNUAL = 9504 * 0.25; // 25% de R$ 95,04 = R$ 23,76 por ano
+    var MONTHS = 12;
     var money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+    var moneyShort = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+    var count = new Intl.NumberFormat('pt-BR');
+    var byId = function (id) { return document.getElementById(id); };
+
+    function niceStep(raw) {
+      var exp = Math.pow(10, Math.floor(Math.log10(raw)));
+      var f = raw / exp;
+      return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * exp;
+    }
+
     function update() {
       var m = Number(monthly.value);
       var a = Number(annual.value);
-      var perYear = Math.round(m * MONTHLY_PRICE * SHARE * 12 + a * ANNUAL_PRICE * SHARE);
-      document.getElementById('sim-m-out').textContent = m;
-      document.getElementById('sim-a-out').textContent = a;
-      document.getElementById('sim-month').textContent = money.format(Math.round(perYear / 12) / 100);
-      document.getElementById('sim-year').textContent = money.format(perYear / 100);
+      var months = [];
+      var total = 0;
+      for (var k = 1; k <= MONTHS; k += 1) {
+        var fromMonthly = k * m * MONTHLY;
+        var fromAnnual = a * ANNUAL;
+        months.push({ m: fromMonthly, a: fromAnnual, t: fromMonthly + fromAnnual });
+        total += fromMonthly + fromAnnual;
+      }
+      var last = months[MONTHS - 1].t;
+      monthly.style.setProperty('--fill', (m / Number(monthly.max)) * 100 + '%');
+      annual.style.setProperty('--fill', (a / Number(annual.max)) * 100 + '%');
+      byId('sim-m-out').textContent = m;
+      byId('sim-a-out').textContent = a;
+      byId('sim-month').textContent = money.format(Math.round(last) / 100);
+      byId('sim-year').textContent = money.format(Math.round(total) / 100);
+      byId('sim-base').textContent = count.format((m + a) * MONTHS);
+      byId('sim-base-detail').textContent = 'assinantes ativos: ' + count.format(m * MONTHS) + ' no mensal e ' +
+        count.format(a * MONTHS) + ' no anual';
+      [1, 3, 6, 12].forEach(function (k) { byId('sim-ex-' + k).textContent = money.format(Math.round(months[k - 1].t) / 100); });
+
+      // Linhas do gráfico, em reais
+      var maxReais = last / 100;
+      var step = maxReais > 0 ? niceStep(maxReais / 4) : 250;
+      var top = Math.max(step * Math.ceil((maxReais * 1.08) / step), step);
+      var grid = '';
+      for (var v = 0; v <= top + 0.001; v += step) {
+        grid += '<div style="bottom:' + ((v / top) * 100).toFixed(2) + '%"><span>' + moneyShort.format(v) + '</span></div>';
+      }
+      byId('sim-y').innerHTML = grid;
+
+      var bars = '';
+      months.forEach(function (row, i) {
+        var h = (row.t / 100 / top) * 100;
+        var bubble = (i === 0 || i === MONTHS - 1)
+          ? '<span class="calc-bubble" style="bottom:calc(' + h.toFixed(2) + '% + 10px)">Mês ' + (i + 1) +
+            '<b>' + moneyShort.format(row.t / 100) + '</b></span>'
+          : '';
+        bars += '<div class="calc-col" title="Mês ' + (i + 1) + ': ' + money.format(Math.round(row.t) / 100) + '">' + bubble +
+          '<div class="calc-stack" style="height:' + h.toFixed(2) + '%">' +
+          '<i class="seg-a" style="flex-grow:' + row.a + '"></i><i class="seg-m" style="flex-grow:' + row.m + '"></i></div>' +
+          '<span class="calc-x"><span class="calc-x-long">Mês </span>' + (i + 1) + '</span></div>';
+      });
+      byId('sim-bars').innerHTML = bars;
     }
     monthly.addEventListener('input', update);
     annual.addEventListener('input', update);
