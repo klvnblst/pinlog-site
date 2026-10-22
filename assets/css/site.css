@@ -1459,13 +1459,83 @@ a:hover {
 
 .cv-liquid {
   fill: var(--primary-bright);
-  opacity: 0.55;
-  transition: width 0.2s ease;
+  opacity: 0.16;
+  transition: width 0.25s ease;
 }
 
+/* Graduated scale: lit up to the value, faded after it */
 .cv-tick-lines line {
+  stroke: var(--primary-bright);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.28;
+}
+
+.cv-tick-lines line.is-on {
+  stroke: var(--primary);
+  opacity: 1;
+}
+
+.cv-tick-lines line.is-major {
+  stroke-width: 3.2;
+}
+
+.cv-scale-labels text {
+  fill: var(--primary-bright);
+  opacity: 0.45;
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cv-scale-labels text.is-on {
+  fill: var(--primary);
+  opacity: 1;
+}
+
+.cv-marker {
+  transition: transform 0.25s ease;
+}
+
+.cv-marker-line {
   stroke: var(--muted);
-  stroke-width: 1;
+  stroke-width: 1.2;
+  stroke-dasharray: 2 3;
+}
+
+.cv-marker-pill {
+  fill: url(#cv-pill-grad);
+}
+
+.cv-grad-a {
+  stop-color: var(--primary-bright);
+}
+
+.cv-grad-b {
+  stop-color: var(--magenta);
+}
+
+.cv-marker-text {
+  fill: #fff;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cv-tick-lines line.is-on {
+    stroke: var(--primary-bright);
+  }
+  .cv-scale-labels text.is-on {
+    fill: var(--primary-bright);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-liquid,
+  .cv-marker {
+    transition: none;
+  }
 }
 
 .cv-plunger {

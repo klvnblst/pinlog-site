@@ -51,3 +51,9 @@ test('reverse: 50 units of 10 mg in 2 mL = 2.5 mg', () => {
   const r = cv.reverse(10, 2, 50);
   assert.equal(r.amountMg, 2.5);
 });
+
+test('syringe scale: one mark per unit (two on 1 mL), numbers every 5 (10 on 1 mL)', () => {
+  assert.deepEqual(cv.scaleMarks(100), { minor: 2, major: 10 });
+  assert.deepEqual(cv.scaleMarks(50), { minor: 1, major: 5 });
+  assert.deepEqual(cv.scaleMarks(30), { minor: 1, major: 5 });
+});

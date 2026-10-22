@@ -91,7 +91,13 @@
     return unit === 'mcg' ? value / 1000 : value;
   }
 
+  /** Graduation like a real insulin syringe: 1 mL marks every 2 units, smaller ones every unit. */
+  function scaleMarks(maxUnits) {
+    return maxUnits >= 100 ? { minor: 2, major: 10 } : { minor: 1, major: 5 };
+  }
+
   var api = {
+    scaleMarks: scaleMarks,
     convert: convert,
     convertBlend: convertBlend,
     reverse: reverse,
@@ -141,7 +147,10 @@
     empty: document.getElementById('cv-empty'),
     fill: document.getElementById('cv-fill'),
     ticks: document.getElementById('cv-ticks'),
-    scaleMax: document.getElementById('cv-scale-max'),
+    labels: document.getElementById('cv-labels'),
+    marker: document.getElementById('cv-marker'),
+    markerPill: document.getElementById('cv-marker-pill'),
+    markerText: document.getElementById('cv-marker-text'),
     caption: document.getElementById('cv-caption'),
     summaryLine: document.getElementById('cv-summary-line'),
     summaryRows: document.getElementById('cv-summary-rows'),
@@ -315,18 +324,50 @@
     return data;
   }
 
+  // Syringe drawing (SVG user units): the barrel spans 22–304, the scale sits inside it.
+  var BARREL_X = 22;
+  var SCALE_X0 = 36;
+  var SCALE_X1 = 290;
+  var VIEW_W = 340;
+
+  function round1(n) {
+    return Math.round(n * 10) / 10;
+  }
+
+  /** Draws the graduated scale, lights it up to the value and points the label at it. */
   function drawSyringe(units, maxUnits) {
-    var ratio = Math.max(0, Math.min(units / maxUnits, 1));
-    out.fill.setAttribute('width', String(Math.round(ratio * 260 * 10) / 10));
-    out.scaleMax.textContent = String(maxUnits);
-    var step = maxUnits === 100 ? 10 : 5;
+    var value = Math.max(0, units || 0);
+    var shown = Math.min(value, maxUnits);
+    var marks = scaleMarks(maxUnits);
+    var xAt = function (u) { return SCALE_X0 + (u / maxUnits) * (SCALE_X1 - SCALE_X0); };
     var ticks = '';
-    for (var u = 0; u <= maxUnits; u += step) {
-      var x = 20 + (u / maxUnits) * 260;
-      var major = u % (step * 2) === 0;
-      ticks += '<line x1="' + x + '" x2="' + x + '" y1="' + (major ? 22 : 28) + '" y2="40" />';
+    var labels = '';
+    for (var u = 0; u <= maxUnits; u += marks.minor) {
+      var x = round1(xAt(u));
+      var major = u % marks.major === 0;
+      var on = value > 0 && u <= value + 1e-9 ? ' is-on' : '';
+      ticks += '<line class="' + (major ? 'is-major' : '') + on + '" x1="' + x + '" x2="' + x + '" y1="' +
+        (major ? 34 : 41) + '" y2="' + (major ? 64 : 57) + '" />';
+      if (major) labels += '<text class="' + on + '" x="' + x + '" y="17" text-anchor="middle">' + u + '</text>';
     }
     out.ticks.innerHTML = ticks;
+    out.labels.innerHTML = labels;
+    out.fill.setAttribute('width', value > 0 ? String(round1(xAt(shown) - BARREL_X)) : '0');
+
+    // SVG elements have no .hidden property: toggle the attribute itself.
+    if (value > 0) out.marker.removeAttribute('hidden'); else out.marker.setAttribute('hidden', '');
+    if (!(value > 0)) return;
+    var mx = xAt(shown);
+    out.markerText.textContent = numberFormat(value, 1) + (value === 1 ? ' unidade' : ' unidades');
+    var textWidth = 0;
+    try { textWidth = out.markerText.getComputedTextLength(); } catch (e) { /* not rendered yet */ }
+    var width = Math.ceil((textWidth || out.markerText.textContent.length * 7.4) + 26);
+    // Keep the label inside the drawing near both ends; the dotted line still points at the value.
+    var left = Math.max(2, Math.min(mx - width / 2, VIEW_W - 2 - width));
+    out.markerPill.setAttribute('x', String(round1(left - mx)));
+    out.markerPill.setAttribute('width', String(width));
+    out.markerText.setAttribute('x', String(round1(left - mx + width / 2)));
+    out.marker.style.transform = 'translateX(' + round1(mx) + 'px)';
   }
 
   function listJoin(parts) {
