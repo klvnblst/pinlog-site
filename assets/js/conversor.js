@@ -408,8 +408,7 @@
         listJoin(others) + '.';
       rows = [['Diluente adicionado', numberFormat(data.water, 3) + ' mL para todo o frasco']];
       data.items.forEach(function (item, i) {
-        rows.push([item.name, mg(item.vial) + ' no frasco (' + numberFormat(r.concentrations[i], 3) +
-          ' mg/mL) → ' + mg(r.amounts[i]) + ' na seringa']);
+        rows.push([item.name, mg(item.vial) + ' no frasco → ' + mg(r.amounts[i]) + ' na seringa']);
       });
       rows.push(['Total no frasco', mg(r.totalMg)]);
       rows.push(['Na seringa', unitsAndMl(r.units, r.volumeMl), true]);
@@ -450,7 +449,7 @@
       var name = document.createElement('span');
       name.textContent = item.name;
       var value = document.createElement('strong');
-      value.textContent = mg(data.result.amounts[i]) + ' · ' + numberFormat(data.result.concentrations[i], 3) + ' mg/mL';
+      value.textContent = mg(data.result.amounts[i]);
       li.appendChild(name);
       li.appendChild(value);
       out.parts.appendChild(li);
