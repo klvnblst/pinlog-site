@@ -1227,7 +1227,7 @@ a:hover {
   margin: 0;
 }
 
-.cv-segment span {
+.cv-segment label > span {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1578,4 +1578,125 @@ a:hover {
   .cv-result {
     padding: 18px 16px;
   }
+}
+
+/* Converter: icons for every field, mode and result (visual only) */
+:root {
+  --amber: #d97706;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --amber: #ffb020;
+  }
+}
+
+.cv-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  color: var(--tone);
+  background: var(--card-soft);
+  background: color-mix(in srgb, var(--tone) 14%, transparent);
+  border: 1px solid var(--border);
+  border: 1px solid color-mix(in srgb, var(--tone) 30%, transparent);
+}
+
+.cv-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cv-tone-violet { --tone: var(--primary); }
+.cv-tone-cyan { --tone: var(--cyan); }
+.cv-tone-magenta { --tone: var(--magenta); }
+.cv-tone-mint { --tone: var(--mint); }
+.cv-tone-amber { --tone: var(--amber); }
+
+.cv-field-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.cv-field-text {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+}
+
+.cv-field-hint {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* Mode buttons: icon above the text */
+.cv-segment:not(.cv-syringe) label > span {
+  flex-direction: column;
+  gap: 6px;
+  min-height: 88px;
+  border-radius: var(--radius-md);
+  line-height: 1.2;
+}
+
+.cv-segment:not(.cv-syringe) label > span .cv-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
+
+.cv-segment input:checked + span .cv-icon {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Syringe models drawn to scale */
+.cv-syringe-option {
+  flex-direction: column;
+  gap: 4px;
+  min-height: 72px !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.cv-syringe-option > span {
+  white-space: nowrap;
+}
+
+.cv-mini-syringe {
+  width: 64px;
+  height: 16px;
+  color: var(--mint);
+}
+
+.cv-segment input:checked + span .cv-mini-syringe {
+  color: #fff;
+}
+
+/* Result rows with icons */
+.cv-stats dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cv-stats dt .cv-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+}
+
+.cv-stats dt .cv-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.cv-stats > div {
+  align-items: center;
 }
