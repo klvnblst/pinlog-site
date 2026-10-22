@@ -227,6 +227,7 @@ a:hover {
 
 .nav .nav-cta:hover {
   color: #fff;
+  background: var(--grad);
   filter: brightness(1.06);
 }
 
@@ -2049,6 +2050,20 @@ a:hover {
 }
 
 /* Programa de afiliados (/afiliados) */
+.h1-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 4px 16px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.5em;
+  letter-spacing: 0;
+  vertical-align: middle;
+  box-shadow: var(--shadow-glow);
+  transform: rotate(-3deg);
+}
+
 .aff-collage {
   position: relative;
   height: 470px;
@@ -2252,16 +2267,6 @@ a:hover {
 
 .btn-light:hover {
   color: #7c3aed;
-}
-
-.cta-panel .cta-mail {
-  margin: 18px 0 0;
-  font-size: 14px;
-}
-
-.cta-panel .cta-mail a {
-  color: #fff;
-  font-weight: 700;
 }
 
 .earn-card .earn-big {
