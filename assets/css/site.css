@@ -2047,3 +2047,270 @@ a:hover {
   border: 1px solid var(--border-soft);
   background: var(--card-soft);
 }
+
+/* Programa de afiliados (/afiliados) */
+.aff-collage {
+  position: relative;
+  height: 470px;
+}
+
+.aff-collage img {
+  position: absolute;
+  width: 60%;
+  aspect-ratio: 13 / 12;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 20px;
+  border: 1px solid var(--border-soft);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.aff-collage .shot-a {
+  left: 0;
+  top: 64px;
+  transform: rotate(-6deg);
+}
+
+.aff-collage .shot-b {
+  right: 0;
+  top: 0;
+  transform: rotate(5deg);
+}
+
+.aff-collage .shot-c {
+  left: 20%;
+  bottom: 0;
+  transform: rotate(-1.5deg);
+  z-index: 1;
+}
+
+.aff-chip {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px 10px 10px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow);
+  line-height: 1.2;
+}
+
+.aff-chip small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.aff-chip strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.aff-chip-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  color: #fff;
+  background: var(--grad);
+}
+
+.aff-chip-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.chip-code {
+  left: -8px;
+  top: 14px;
+}
+
+.chip-earn {
+  right: -8px;
+  bottom: 84px;
+}
+
+.chip-earn .aff-chip-icon {
+  background: linear-gradient(135deg, #10b981, #0ea5e9);
+}
+
+.chip-earn strong {
+  color: var(--mint);
+}
+
+.pain {
+  display: inline-block;
+  margin: 0 0 4px;
+  padding: 7px 13px;
+  border-radius: 14px 14px 14px 4px;
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.aff-extra {
+  max-width: 720px;
+  margin: 28px auto 0;
+  text-align: center;
+  color: var(--text-2);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  padding: 26px;
+}
+
+.step-num {
+  display: block;
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.step h3 {
+  margin: 14px 0 8px;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.earn-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.earn-card {
+  padding: 30px;
+}
+
+.earn-card h3 {
+  margin: 16px 0 8px;
+  font-size: 20px;
+}
+
+.earn-card p {
+  margin: 0;
+  color: var(--text-2);
+}
+
+.cta-panel {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 52px 40px;
+  border-radius: var(--radius-lg);
+  background: var(--grad);
+  color: #fff;
+  text-align: center;
+  box-shadow: var(--shadow-glow);
+}
+
+.cta-panel h2 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.cta-panel > p {
+  max-width: 600px;
+  margin: 0 auto 26px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.btn-light {
+  color: #141026;
+  background: #fff;
+}
+
+.btn-light:hover {
+  color: #7c3aed;
+}
+
+.cta-panel .cta-mail {
+  margin: 18px 0 0;
+  font-size: 14px;
+}
+
+.cta-panel .cta-mail a {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 960px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 880px) {
+  .aff-collage {
+    max-width: 520px;
+    width: 100%;
+    margin: 8px auto 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .aff-collage {
+    height: 330px;
+  }
+  .aff-collage img {
+    width: 64%;
+    border-radius: 16px;
+  }
+  .aff-collage .shot-a {
+    top: 50px;
+  }
+  .aff-chip {
+    padding: 8px 12px 8px 8px;
+  }
+  .chip-code {
+    left: 0;
+    top: 0;
+  }
+  .chip-earn {
+    right: 0;
+    bottom: 56px;
+  }
+  .steps,
+  .earn-grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-panel {
+    padding: 40px 22px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .pain {
+    background: rgba(168, 115, 255, 0.16);
+  }
+}
