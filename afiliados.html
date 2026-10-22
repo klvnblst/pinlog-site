@@ -56,28 +56,28 @@ permalink: /afiliados
         <span class="icon cool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg></span>
         <p class="earn-big">25%</p>
         <h3>Sua comissão</h3>
-        <p>De todas as mensalidades e renovações dos seus indicados.</p>
+        <p>Sobre todas as mensalidades e renovações dos seus indicados.</p>
       </div>
       <div class="card earn-card">
         <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8" width="17" height="12.5" rx="2"/><path d="M3.5 12h17M12 8v12.5M12 8c-1.6-3.2-5.5-3.6-5.5-1.3C6.5 8 9.3 8 12 8c2.7 0 5.5 0 5.5-1.3 0-2.3-3.9-1.9-5.5 1.3"/></svg></span>
         <p class="earn-big">20% OFF</p>
-        <h3>Benefício para seu público</h3>
+        <h3>Desconto para seu público</h3>
         <p>Desconto exclusivo no plano anual usando seu código exclusivo.</p>
       </div>
     </div>
     <div class="card sim" id="simulador">
       <div class="sim-inputs">
         <h3>Simule os seus ganhos</h3>
-        <label for="sim-m">Novos assinantes por mês no plano mensal <output id="sim-m-out" for="sim-m">10</output></label>
-        <input type="range" id="sim-m" min="0" max="200" step="1" value="10" />
-        <label for="sim-a">Novos assinantes por mês no plano anual <output id="sim-a-out" for="sim-a">5</output></label>
-        <input type="range" id="sim-a" min="0" max="200" step="1" value="5" />
+        <label for="sim-m">Indicados no plano mensal <output id="sim-m-out" for="sim-m">100</output></label>
+        <input type="range" id="sim-m" min="0" max="500" step="5" value="100" />
+        <label for="sim-a">Indicados no plano anual <output id="sim-a-out" for="sim-a">20</output></label>
+        <input type="range" id="sim-a" min="0" max="500" step="5" value="20" />
       </div>
       <div class="sim-result" aria-live="polite">
-        <p class="sim-label">Você recebe no 12º mês</p>
-        <p class="sim-big" id="sim-month">R$ 565,80</p>
-        <p class="sim-label">Total ganho em 12 meses</p>
-        <p class="sim-big sim-year" id="sim-year">R$ 4.331,10</p>
+        <p class="sim-label">Você recebe por mês</p>
+        <p class="sim-big" id="sim-month">R$ 412,10</p>
+        <p class="sim-label">Você recebe por ano</p>
+        <p class="sim-big sim-year" id="sim-year">R$ 4.945,20</p>
       </div>
     </div>
     <p class="fine">As regras completas (prazo de confirmação, reembolsos e forma de pagamento) vão no contrato do programa.</p>
@@ -306,8 +306,8 @@ permalink: /afiliados
 </section>
 
 <script>
-  // Simulador: a pessoa escolhe quantos assinantes novos traz por mês. Quem entra continua pagando nos meses
-  // seguintes, então os ganhos se acumulam. Valores em centavos para não errar no arredondamento.
+  // Simulador: 25% do que os indicados pagam. Por ano = 12 x por mês.
+  // O anual é pago uma vez por ano; no "por mês" ele entra dividido por 12. Valores em centavos.
   (function () {
     var monthly = document.getElementById('sim-m');
     var annual = document.getElementById('sim-a');
@@ -315,23 +315,15 @@ permalink: /afiliados
     var MONTHLY_PRICE = 1490; // R$ 14,90 por mês
     var ANNUAL_PRICE = 9504; // R$ 118,80 por ano com 20% de desconto
     var SHARE = 0.25;
-    var MONTHS = 12;
     var money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
     function update() {
       var m = Number(monthly.value);
       var a = Number(annual.value);
-      var lastMonth = 0;
-      var total = 0;
-      for (var month = 1; month <= MONTHS; month += 1) {
-        // Mensal: todos que entraram até este mês pagam de novo. Anual: só quem entrou neste mês paga (uma vez no ano).
-        var income = month * m * MONTHLY_PRICE * SHARE + a * ANNUAL_PRICE * SHARE;
-        total += income;
-        lastMonth = income;
-      }
+      var perYear = Math.round(m * MONTHLY_PRICE * SHARE * 12 + a * ANNUAL_PRICE * SHARE);
       document.getElementById('sim-m-out').textContent = m;
       document.getElementById('sim-a-out').textContent = a;
-      document.getElementById('sim-month').textContent = money.format(Math.round(lastMonth) / 100);
-      document.getElementById('sim-year').textContent = money.format(Math.round(total) / 100);
+      document.getElementById('sim-month').textContent = money.format(Math.round(perYear / 12) / 100);
+      document.getElementById('sim-year').textContent = money.format(perYear / 100);
     }
     monthly.addEventListener('input', update);
     annual.addEventListener('input', update);
