@@ -563,6 +563,174 @@ a:hover {
   }
 }
 
+/* Partes da página inicial: cada uma abre com um pino entre duas réguas graduadas (as mesmas
+   marcações da seringa do conversor), e Recursos e Premium ficam numa faixa de fundo claro. */
+.band {
+  --band-rgb: 139, 92, 246;
+  margin: 12px 12px;
+  border-radius: 40px;
+  background: linear-gradient(180deg, rgba(var(--band-rgb), 0.075), rgba(var(--band-rgb), 0.025));
+  border: 1px solid rgba(var(--band-rgb), 0.12);
+}
+
+.band-rose {
+  --band-rgb: 236, 72, 153;
+}
+
+.chapter {
+  --tick: rgba(124, 58, 237, 0.24);
+  --tick-mask:
+    linear-gradient(90deg, #000 2px, transparent 0) right center / 9px 8px repeat-x,
+    linear-gradient(90deg, #000 2px, transparent 0) right center / 45px 18px repeat-x;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto 26px;
+}
+
+.chapter-line {
+  position: relative;
+  flex: 1;
+  height: 18px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 80%);
+  mask-image: linear-gradient(90deg, transparent, #000 80%);
+}
+
+.chapter-line:last-child {
+  transform: scaleX(-1);
+}
+
+.chapter-line::before,
+.chapter-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  -webkit-mask: var(--tick-mask);
+  mask: var(--tick-mask);
+}
+
+.chapter-line::before {
+  background: var(--tick);
+}
+
+.chapter-line::after {
+  background: var(--grad);
+}
+
+.chapter-pin {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  margin-top: -8px;
+  color: #fff;
+}
+
+/* Gota de alfinete com a ponta para baixo, apontando para o título da parte */
+.chapter-pin::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50% 50% 50% 8px;
+  background: var(--grad);
+  box-shadow: var(--shadow-glow);
+  transform: rotate(-45deg);
+}
+
+.chapter-pin svg {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.chapter-num {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 20px;
+  margin-right: 8px;
+  padding: 0 7px;
+  border-radius: var(--radius-pill);
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--primary);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  vertical-align: 1px;
+}
+
+/* Onde o navegador permite, a régua acende do pino para fora enquanto a parte entra na tela */
+@supports (animation-timeline: view()) {
+  .chapter-line::after {
+    animation: chapter-fill linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 45%;
+  }
+
+  .chapter-pin {
+    animation: chapter-pop linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+  }
+}
+
+@keyframes chapter-fill {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes chapter-pop {
+  from {
+    opacity: 0.2;
+    transform: translateY(-14px) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .band {
+    background: linear-gradient(180deg, rgba(var(--band-rgb), 0.09), rgba(var(--band-rgb), 0.03));
+    border-color: rgba(var(--band-rgb), 0.14);
+  }
+
+  .band-violet {
+    --band-rgb: 168, 115, 255;
+  }
+
+  .band-rose {
+    --band-rgb: 255, 46, 147;
+  }
+
+  .chapter {
+    --tick: rgba(168, 115, 255, 0.3);
+  }
+
+  .chapter-num {
+    background: rgba(168, 115, 255, 0.18);
+  }
+}
+
+@media (max-width: 600px) {
+  .band {
+    margin: 8px 6px;
+    border-radius: 28px;
+  }
+
+  .chapter {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+}
+
 /* Trust strip */
 .trust {
   display: grid;
