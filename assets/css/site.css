@@ -1670,8 +1670,10 @@ a:hover {
 }
 
 .cv-mini-syringe {
-  width: 64px;
+  width: auto;
   height: 16px;
+  display: block;
+  margin: 0 auto;
   color: var(--mint);
 }
 
@@ -1699,4 +1701,97 @@ a:hover {
 
 .cv-stats > div {
   align-items: center;
+}
+
+/* Converter refinements: units, chips with "Outro", summary table */
+:root {
+  --red: #dc2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --red: #f87171;
+  }
+}
+
+.cv-field label small.cv-unit {
+  color: var(--red);
+  font-weight: 800;
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+.cv-presets button[aria-pressed='true'] {
+  color: #fff;
+  background: var(--grad);
+  border-color: transparent;
+}
+
+.cv-presets .cv-other {
+  padding-inline: 16px;
+}
+
+.cv-other-input input {
+  width: 100%;
+}
+
+.cv-summary {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.cv-summary h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.cv-summary-line {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--card-soft);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cv-summary-scroll {
+  overflow-x: auto;
+}
+
+.cv-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-summary-table th,
+.cv-summary-table td {
+  padding: 9px 4px;
+  border-top: 1px solid var(--border-soft);
+  text-align: left;
+  vertical-align: top;
+}
+
+.cv-summary-table th {
+  width: 46%;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cv-summary-table td {
+  font-weight: 800;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.cv-summary-table tr.cv-summary-total td,
+.cv-summary-table tr.cv-summary-total th {
+  color: var(--primary);
+}
+
+.cv-notice {
+  margin-top: 0;
 }
