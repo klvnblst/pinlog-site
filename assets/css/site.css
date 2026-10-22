@@ -2070,6 +2070,13 @@ a:hover {
   color: var(--text);
 }
 
+/* No computador, os três parágrafos do topo com o mesmo tamanho do primeiro */
+@media (min-width: 881px) {
+  .aff-lead-more {
+    font-size: clamp(17px, 2.2vw, 19px);
+  }
+}
+
 .aff-collage {
   position: relative;
   height: 470px;
@@ -2292,28 +2299,6 @@ a:hover {
   margin-top: 8px;
 }
 
-.code-note {
-  max-width: 860px;
-  margin: 18px auto 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: var(--radius-md);
-  background: rgba(236, 72, 153, 0.08);
-  border: 1px solid rgba(236, 72, 153, 0.22);
-  color: var(--text-2);
-  font-size: 15px;
-}
-
-.code-note svg {
-  flex: none;
-  width: 22px;
-  height: 22px;
-  margin-top: 1px;
-  color: var(--magenta);
-}
-
 .sim {
   max-width: 860px;
   margin: 24px auto 0;
@@ -2339,6 +2324,8 @@ a:hover {
 }
 
 .sim output {
+  flex: none;
+  align-self: flex-start;
   min-width: 54px;
   padding: 1px 10px;
   border-radius: var(--radius-pill);
