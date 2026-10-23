@@ -46,8 +46,9 @@ permalink: /afiliados/cadastro
       </div>
 
       <div class="af-field">
-        <label for="af-channels">Onde você pretende divulgar <span class="af-optional">(opcional)</span></label>
-        <textarea id="af-channels" name="channels" rows="3" maxlength="300" placeholder="Ex.: Instagram @seuperfil, grupo de WhatsApp, indicação para amigos"></textarea>
+        <label for="af-channels">Onde você pretende divulgar</label>
+        <textarea id="af-channels" name="channels" rows="3" minlength="3" maxlength="300" required placeholder="Ex.: Instagram @seuperfil, grupo de WhatsApp, indicação para amigos"></textarea>
+        <p class="af-hint">Pode ser mais de um lugar: redes sociais, blog, grupos, comunidades ou indicação direta.</p>
       </div>
 
       <!-- Campo escondido: pessoas não preenchem, robôs sim. -->
@@ -103,7 +104,7 @@ permalink: /afiliados/cadastro
       invalid_name: 'Confira o seu nome completo.',
       invalid_email: 'Confira o seu e-mail.',
       invalid_code: 'O cupom precisa ter de 4 a 16 letras ou números.',
-      invalid_channels: 'O campo de divulgação aceita até 300 caracteres.',
+      invalid_channels: 'Conte onde você pretende divulgar, em até 300 caracteres.',
       terms_required: 'Para continuar, aceite os termos e as regras de divulgação.',
       code_taken: 'Esse cupom já está em uso. Escolha outro.',
       code_blocked: 'Esse cupom não é permitido. Escolha outro.',
@@ -183,6 +184,7 @@ permalink: /afiliados/cadastro
         termsVersion: '{{ site.affiliates.terms_version }}',
         website: document.getElementById('af-website').value
       };
+      if (body.channels.trim().length < 3) return showError('invalid_channels');
       if (!body.acceptTerms) return showError('terms_required');
       if (codeState === 'taken') return showError('code_taken');
       if (codeState === 'blocked') return showError('code_blocked');

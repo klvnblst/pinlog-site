@@ -3172,11 +3172,6 @@ a:hover {
   font-size: 15px;
 }
 
-.af-optional {
-  font-weight: 500;
-  color: var(--muted);
-}
-
 .af-field input,
 .af-field textarea {
   display: block;
