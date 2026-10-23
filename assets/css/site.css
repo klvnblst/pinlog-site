@@ -2159,19 +2159,6 @@ a:hover {
   top: 14px;
 }
 
-.chip-earn {
-  right: -8px;
-  bottom: 84px;
-}
-
-.chip-earn .aff-chip-icon {
-  background: linear-gradient(135deg, #10b981, #0ea5e9);
-}
-
-.chip-earn strong {
-  color: var(--mint);
-}
-
 .pain {
   display: inline-block;
   margin: 0 0 4px;
@@ -3136,10 +3123,6 @@ a:hover {
   .chip-code {
     left: 0;
     top: 0;
-  }
-  .chip-earn {
-    right: 0;
-    bottom: 56px;
   }
   .steps {
     grid-template-columns: 1fr;

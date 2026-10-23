@@ -4,7 +4,7 @@ description: "Regras do programa de afiliados do PinLog: cupom, desconto para o 
 permalink: "/afiliados/termos"
 eyebrow: "Afiliados"
 lead: "As regras do programa de afiliados do PinLog."
-updated: "Versão 1.0 · 22 de outubro de 2026"
+updated: "Versão 1.1 · 22 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". Ao mudar regras, atualize também `terms_version` em _config.yml. -->
@@ -35,7 +35,7 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 
 ## 5. Comissão
 
-- Você recebe **25% do valor pago pelo cliente** em cada pagamento de assinatura feito com o seu cupom e confirmado pela App Store ou pelo Google Play: a primeira mensalidade ou anuidade e **todas as renovações**, enquanto a assinatura continuar ativa e você continuar no programa.
+- Você recebe **25% do valor pago pelo cliente** em cada pagamento de assinatura feito com o seu cupom e confirmado pela App Store ou pelo Google Play: a primeira mensalidade ou anuidade e **todas as renovações**, enquanto a assinatura continuar ativa, você continuar no programa e o programa existir (seção 9).
 - Não geram comissão: períodos de teste grátis, pagamentos reembolsados pela loja (a comissão daquele pagamento é descontada) e assinaturas feitas por você mesmo ou por contas controladas por você.
 - A comissão é calculada sobre o preço pago pelo cliente, antes de tributos. Os tributos sobre o que você recebe são de sua responsabilidade.
 
@@ -45,7 +45,9 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
   - a App Store ou o Google Play já repassou ao PinLog o dinheiro desse pagamento;
   - passaram **30 dias** desde o pagamento do cliente sem reembolso, cancelamento ou contestação (chargeback).
 - As comissões liberadas são pagas **uma vez por mês, até o dia 15**, em reais, por PIX para uma conta em seu nome (ou da sua empresa).
-- O pagamento mínimo é de **R$ 50,00**. Abaixo disso, o valor fica acumulado para os meses seguintes, até chegar ao mínimo.
+- O pagamento mínimo é de **R$ 50,00**. Abaixo disso, o valor fica acumulado para os meses seguintes.
+- Se o seu saldo liberado ficar **12 meses seguidos abaixo de R$ 50,00**, ou se você sair ou for desligado do programa, pagamos o valor liberado mesmo abaixo do mínimo, no dia 15 seguinte.
+- Para receber, você precisa informar uma chave PIX e o CPF ou CNPJ do titular, que deve ser você ou a sua empresa. Enquanto esses dados não forem informados, o valor fica guardado, e avisamos você por e-mail.
 - Se um pagamento já comissionado for reembolsado ou contestado depois, o valor da comissão é descontado dos próximos pagamentos.
 - No seu painel você acompanha as assinaturas, as renovações, o que já foi liberado, o que vai receber e o que já recebeu.
 
@@ -62,19 +64,25 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 
 - Você pode sair do programa quando quiser, avisando por e-mail.
 - Podemos encerrar a sua participação a qualquer momento, com aviso por e-mail. Em caso de descumprimento destes termos ou de fraude, o cupom é desativado na hora e as comissões ligadas à irregularidade não são pagas.
-- Ao sair, você recebe as comissões já confirmadas. Os pagamentos futuros dos seus indicados deixam de gerar comissão.
+- Ao sair, você recebe as comissões dos pagamentos feitos até a data de saída, assim que forem liberadas (seção 6), mesmo abaixo do mínimo. Os pagamentos dos seus indicados feitos depois da saída não geram comissão.
 
-## 9. Seus dados
+## 9. Encerramento do programa
+
+- O PinLog pode encerrar o programa de afiliados a qualquer momento, avisando todos os afiliados por e-mail com **30 dias de antecedência**.
+- Os pagamentos de assinaturas feitos até a data de encerramento geram comissão normalmente e são pagos assim que liberados, mesmo abaixo do mínimo. Os pagamentos feitos depois dessa data não geram comissão.
+- O mesmo vale se o aplicativo PinLog deixar de ser oferecido.
+
+## 10. Seus dados
 
 - Usamos o seu nome, e-mail, cupom e dados de pagamento só para operar o programa: cadastro, painel, cálculo e pagamento das comissões e avisos.
 - O painel de afiliados é fornecido por um parceiro de tecnologia, que recebe o seu nome e e-mail para criar o seu acesso.
 - **Você não vê quem assinou com o seu cupom.** Cada assinante aparece no painel só com um código anônimo.
 - Guardamos os registros de comissões e pagamentos pelo prazo exigido pela legislação fiscal. Para exercer seus direitos sobre seus dados, escreva para [privacidade@pinlog.life](mailto:privacidade@pinlog.life).
 
-## 10. Mudanças nestes termos
+## 11. Mudanças nestes termos
 
 Podemos alterar estes termos, inclusive o percentual de comissão e o desconto, avisando por e-mail com **30 dias de antecedência**. As mudanças valem para os pagamentos feitos depois desse prazo.
 
-## 11. Contato
+## 12. Contato
 
 Dúvidas sobre o programa: [suporte@pinlog.life](mailto:suporte@pinlog.life). Estes termos seguem a legislação brasileira.
