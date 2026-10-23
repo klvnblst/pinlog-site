@@ -4,7 +4,7 @@ description: "Regras do programa de afiliados do PinLog: cupom, desconto para o 
 permalink: "/afiliados/termos"
 eyebrow: "Afiliados"
 lead: "As regras do programa de afiliados do PinLog."
-updated: "Versão 1.1 · 22 de outubro de 2026"
+updated: "Versão 1.2 · 23 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". Ao mudar regras, atualize também `terms_version` em _config.yml. -->
@@ -54,10 +54,12 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 ## 7. Regras de divulgação
 
 - Identifique sempre que é publicidade, com a marcação de parceria paga da rede ou #publi, de forma visível, como pede o guia do CONAR.
-- Não associe o PinLog a medicamentos ou tratamentos específicos e não faça promessas de saúde. O PinLog é um organizador pessoal: não trata, não indica doses e não substitui o profissional de saúde.
+- Você pode falar com quem usa um composto, inclusive citando o nome, para mostrar como o PinLog ajuda na rotina. Não recomende, venda nem indique onde comprar medicamentos, compostos ou tratamentos, não fale de doses ou resultados e não sugira que o PinLog tem ligação com um fabricante, marca ou medicamento.
+- Não faça promessas de saúde. O PinLog é um organizador pessoal: não trata, não indica doses e não substitui o profissional de saúde.
 - Não direcione a divulgação a menores de 18 anos.
 - Não faça spam, não crie avaliações falsas e não se apresente como funcionário ou canal oficial do PinLog.
-- Anúncios pagos que usem o nome PinLog (em buscas, por exemplo) e a publicação do cupom em sites de cupons só com autorização por escrito.
+- Anúncios pagos são feitos sempre em seu nome e sob sua responsabilidade. Não crie anúncios, perfis, páginas ou domínios que se passem pelo PinLog ou pareçam oficiais.
+- Comprar o nome PinLog como palavra-chave em buscas e publicar o cupom em sites de cupons, só com autorização por escrito.
 - Você é responsável pelo conteúdo que publica. Podemos pedir a correção ou a remoção de um conteúdo que descumpra estas regras.
 
 ## 8. Desligamento
