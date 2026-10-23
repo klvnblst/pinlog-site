@@ -4,7 +4,7 @@ description: "Termos de Uso do PinLog: idade mínima, uso adequado, plano gratui
 permalink: "/termos"
 eyebrow: "Termos"
 lead: "As regras de uso do PinLog e da assinatura Premium."
-updated: "Versão 2.1 · vigente desde 21 de outubro de 2026"
+updated: "Versão 2.2 · vigente desde 23 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
@@ -90,4 +90,4 @@ Estes termos seguem as leis do Brasil. Fica eleito o foro do domicílio do consu
 
 ## 13. Contato
 
-Suporte: **<suporte@pinlog.life>** · Privacidade: **<privacidade@pinlog.life>**
+Suporte e privacidade: **<suporte@pinlog.life>**

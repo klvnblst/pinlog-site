@@ -30,7 +30,7 @@ Para conseguirmos entender e resolver o problema mais rápido, inclua no e-mail:
 
 Antes de entrar em contato, algumas situações podem ser resolvidas diretamente pelo app:
 
-- **Não recebi o e-mail de confirmação:** confira também as pastas de spam ou lixo eletrônico. Se ainda assim ele não chegar, escreva para [suporte@pinlog.life](mailto:suporte@pinlog.life).
+- **Não recebi o e-mail de confirmação:** confira também as pastas de spam ou lixo eletrônico. Se ainda não chegou, toque em **Reenviar e-mail** na tela de login. O reenvio fica disponível a cada 60 segundos.
 - **Esqueci minha senha:** na tela de login, toque em **Esqueceu sua senha?** para receber um link de redefinição por e-mail.
 - **Restaurar uma compra:** em um aparelho novo, abra a tela do **PinLog Premium** e toque em **Restaurar Compras**.
 - **Cancelar ou gerenciar a assinatura:** a assinatura é administrada pela App Store ou pelo Google Play. Na tela do **PinLog Premium**, toque em **Gerenciar ou cancelar assinatura** ou acesse diretamente a área de assinaturas da sua conta na loja.
@@ -42,7 +42,6 @@ Antes de entrar em contato, algumas situações podem ser resolvidas diretamente
 - [Política de Privacidade](/privacidade)
 - [Termos de Uso](/termos)
 - [Excluir minha conta](/excluir-conta)
-- **Dúvidas sobre dados pessoais:** [privacidade@pinlog.life](mailto:privacidade@pinlog.life)
 
 ## O suporte do PinLog é exclusivamente técnico
 

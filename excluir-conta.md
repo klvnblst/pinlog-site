@@ -24,7 +24,7 @@ O que acontece:
 
 ## Opção 2: sem o aplicativo
 
-1. Envie um e-mail para **<privacidade@pinlog.life>** com o assunto *"Exclusão de conta PinLog"*, **a partir do e-mail cadastrado na conta**.
+1. Envie um e-mail para **<suporte@pinlog.life>** com o assunto *"Exclusão de conta PinLog"*, **a partir do e-mail cadastrado na conta**.
 2. Não envie senhas, comprovantes de pagamento nem informações de saúde.
 3. Confirmaremos o pedido nesse mesmo e-mail e concluiremos a exclusão em até **15 dias**, avisando quando terminar.
 

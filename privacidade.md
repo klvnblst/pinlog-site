@@ -4,7 +4,7 @@ description: "Como o PinLog trata seus dados: o que guardamos, para quê, onde f
 permalink: "/privacidade"
 eyebrow: "Privacidade"
 lead: "O que o PinLog guarda, para quê, onde e como você controla tudo."
-updated: "Versão 2.2 · vigente desde 22 de outubro de 2026"
+updated: "Versão 2.3 · vigente desde 23 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
@@ -15,8 +15,7 @@ Esta política explica quais dados pessoais o aplicativo PinLog trata, por que, 
 
 O controlador dos dados é **T DE A ROCHA**, inscrita no CNPJ sob o nº **28.442.137/0001-15**, responsável pelo aplicativo PinLog.
 
-- **Privacidade e canal do encarregado:** <privacidade@pinlog.life>
-- **Suporte geral:** <suporte@pinlog.life>
+- **Suporte, privacidade e canal do encarregado:** <suporte@pinlog.life>
 
 ## 2. Quais dados tratamos e para quê
 
@@ -59,7 +58,7 @@ O PinLog **não usa** ferramentas de publicidade, análise de uso (analytics), g
 
 O PinLog existe para organizar registros pessoais de saúde. Por isso, **o aplicativo só abre depois do consentimento**. Sem ele, você pode sair da conta, e nenhum registro é carregado ou sincronizado.
 
-Você pode **retirar o consentimento a qualquer momento**, gratuitamente, escrevendo para <privacidade@pinlog.life> ou excluindo a conta no aplicativo. Como o serviço não funciona sem esses dados, a retirada leva à exclusão da conta e dos registros. A retirada não torna irregular o tratamento feito antes dela.
+Você pode **retirar o consentimento a qualquer momento**, gratuitamente, escrevendo para <suporte@pinlog.life> ou excluindo a conta no aplicativo. Como o serviço não funciona sem esses dados, a retirada leva à exclusão da conta e dos registros. A retirada não torna irregular o tratamento feito antes dela.
 
 Se esta política mudar de forma relevante, o aplicativo pedirá o seu consentimento de novo.
 
@@ -98,7 +97,7 @@ Nenhum sistema é totalmente imune a falhas. Se ocorrer um incidente de seguran�
 | Dados no aparelho, incluindo fotos | Até você excluir a conta, apagar os dados do aplicativo ou desinstalá-lo |
 | Backups exportados por você | Sob seu controle, onde você os salvou. Não temos acesso a eles |
 | Tentativas erradas de código, de cupom e consultas de convite | Apagadas automaticamente depois de 1 dia |
-| Lista de acesso VIP | Até a remoção do e-mail da lista. A exclusão da conta não remove o e-mail da lista; peça a remoção em <privacidade@pinlog.life> |
+| Lista de acesso VIP | Até a remoção do e-mail da lista. A exclusão da conta não remove o e-mail da lista; peça a remoção em <suporte@pinlog.life> |
 | Registros técnicos do provedor de infraestrutura | Pelo prazo definido pelo provedor para segurança e operação |
 | Dados de compra nas lojas | Pela Apple e pelo Google, conforme as regras fiscais e as políticas de cada loja |
 | Cupom de afiliado e registros de comissão | Pelo prazo exigido pela legislação fiscal, sempre ligados apenas ao código anônimo |
@@ -119,7 +118,7 @@ Pela LGPD (art. 18), você pode pedir a qualquer momento:
 8. informação sobre a possibilidade de não consentir e suas consequências (seção 4);
 9. retirada do consentimento.
 
-Para exercer seus direitos, escreva para **<privacidade@pinlog.life>** a partir do e-mail da conta. Responderemos em até 15 dias. Você também pode apresentar reclamação à ANPD (www.gov.br/anpd).
+Para exercer seus direitos, escreva para **<suporte@pinlog.life>** a partir do e-mail da conta. Responderemos em até 15 dias. Você também pode apresentar reclamação à ANPD (www.gov.br/anpd).
 
 ## 10. Idade mínima
 
@@ -137,7 +136,7 @@ Esta seção vale para quem se cadastra como afiliado em pinlog.life/afiliados.
 - **Para quê:** criar o cadastro e o painel, calcular e pagar as comissões, enviar avisos do programa, cumprir obrigações fiscais e evitar fraudes.
 - **Com quem:** Supabase (hospedagem) e FirstPromoter (painel e e-mails do programa), como descrito nas seções 5 e 6.
 - **O que o afiliado não vê:** quem assinou com o cupom. Cada assinante aparece no painel só como um código anônimo, sem nome, e-mail ou dados de saúde.
-- **Seus direitos:** os mesmos da seção 9, pelo e-mail <privacidade@pinlog.life>.
+- **Seus direitos:** os mesmos da seção 9, pelo e-mail <suporte@pinlog.life>.
 
 ## 13. Exclusão da conta
 

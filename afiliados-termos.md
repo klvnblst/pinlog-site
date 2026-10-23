@@ -84,7 +84,7 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 - Usamos o seu nome, e-mail, cupom e dados de pagamento só para operar o programa: cadastro, painel, cálculo e pagamento das comissões e avisos.
 - O painel de afiliados é fornecido por um parceiro de tecnologia, que recebe o seu nome e e-mail para criar o seu acesso.
 - **Você não vê quem assinou com o seu cupom.** Cada assinante aparece no painel só com um código anônimo.
-- Guardamos os registros de comissões e pagamentos pelo prazo exigido pela legislação fiscal. Para exercer seus direitos sobre seus dados, escreva para [privacidade@pinlog.life](mailto:privacidade@pinlog.life).
+- Guardamos os registros de comissões e pagamentos pelo prazo exigido pela legislação fiscal. Para exercer seus direitos sobre seus dados, escreva para [suporte@pinlog.life](mailto:suporte@pinlog.life).
 
 ## 11. Mudanças nestes termos
 
