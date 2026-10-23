@@ -29,6 +29,14 @@ stores:
   app_store: ""
   google_play: ""
 
+# Programa de afiliados. Quando a função `affiliates` estiver publicada no Supabase, cole o endereço dela
+# em `api` (ex.: https://SEU-PROJETO.supabase.co/functions/v1/affiliates). Com `api` vazio, o cadastro
+# mostra "em breve" e o botão da página de afiliados continua abrindo um e-mail.
+# `terms_version`: mude a data sempre que alterar os Termos do Programa de Afiliados.
+affiliates:
+  api: ""
+  terms_version: "2026-10-22"
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

@@ -7,6 +7,7 @@ description: >-
 body_class: home affiliates
 permalink: /afiliados
 ---
+{% assign signup_open = false %}{% if site.affiliates.api and site.affiliates.api != "" %}{% assign signup_open = true %}{% endif %}
 {% capture mail %}mailto:{{ site.company.support_email }}?subject=Quero%20ser%20afiliado%20do%20PinLog&body=Nome%3A%20%0AOnde%20pretendo%20divulgar%20(redes%2C%20blog%2C%20grupos%2C%20comunidades%2C%20indica%C3%A7%C3%A3o%20direta)%3A%20%0AMeu%20%40%20ou%20link%2C%20se%20tiver%3A%20%0A{% endcapture %}
 
 <section class="hero aff-hero">
@@ -26,7 +27,7 @@ permalink: /afiliados
         Seu indicado ganha 20% de desconto no plano anual. Você ganha 25% enquanto ele continuar com o PinLog.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#inscricao">Quero ser afiliado</a>
+        <a class="btn btn-primary" href="{% if signup_open %}{{ '/afiliados/cadastro' | relative_url }}{% else %}#inscricao{% endif %}">Quero ser afiliado</a>
         <a class="btn btn-ghost" href="#app">Ver o app por dentro</a>
       </div>
       <p class="hero-note">Pré-lançamento: quem se torna afiliado agora começa a divulgar antes da chegada às lojas.</p>
@@ -267,6 +268,28 @@ permalink: /afiliados
       <p>Sem roteiro obrigatório e sem meta mínima. Você mostra o PinLog do seu jeito.</p>
     </div>
     <ol class="steps">
+      {% if signup_open %}
+      <li class="card step">
+        <span class="step-num">1</span>
+        <h3>Cadastre-se em 2 minutos</h3>
+        <p>Preencha nome e e-mail no formulário. Sem aprovação demorada e sem conversa por e-mail.</p>
+      </li>
+      <li class="card step">
+        <span class="step-num">2</span>
+        <h3>Escolha o seu cupom</h3>
+        <p>Você mesmo escolhe, como o seu nome. Ele já vale na hora: quem assina com ele ganha 20% no plano anual.</p>
+      </li>
+      <li class="card step">
+        <span class="step-num">3</span>
+        <h3>Divulgue do seu jeito</h3>
+        <p>Crie seus próprios conteúdos, mostrando o app no seu dia a dia, nas redes, em grupos ou para quem você conhece.</p>
+      </li>
+      <li class="card step">
+        <span class="step-num">4</span>
+        <h3>Acompanhe e receba todo mês</h3>
+        <p>Cada assinatura e renovação aparece no seu painel. Você recebe 25% de cada pagamento, enquanto a pessoa for assinante.</p>
+      </li>
+      {% else %}
       <li class="card step">
         <span class="step-num">1</span>
         <h3>Inscreva-se</h3>
@@ -287,6 +310,7 @@ permalink: /afiliados
         <h3>Ganhe a cada pagamento</h3>
         <p>25% de cada pagamento, no mensal e no anual, enquanto a pessoa seguir assinando.</p>
       </li>
+      {% endif %}
     </ol>
   </div>
 </section>
@@ -366,8 +390,13 @@ permalink: /afiliados
   <div class="container">
     <div class="cta-panel">
       <h2>Gostaria de se tornar um afiliado oficial do PinLog?</h2>
+      {% if signup_open %}
+      <p>Cadastre-se em 2 minutos, escolha o seu cupom e comece a divulgar hoje mesmo.</p>
+      <a class="btn btn-light" href="{{ '/afiliados/cadastro' | relative_url }}">Criar meu cupom</a>
+      {% else %}
       <p>Mande um e-mail com seu nome e conte onde pretende divulgar o PinLog: redes sociais, blog, grupos, comunidades ou indicação direta. Respondemos em poucos dias.</p>
       <a class="btn btn-light" href="{{ mail | strip }}">Quero ser afiliado</a>
+      {% endif %}
     </div>
   </div>
 </section>

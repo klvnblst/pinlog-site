@@ -1,0 +1,214 @@
+---
+layout: default
+title: Cadastro de afiliado
+description: >-
+  Cadastre-se no programa de afiliados do PinLog e escolha o seu cupom. Seu público ganha 20% no
+  plano anual e você recebe 25% de cada pagamento.
+body_class: page
+permalink: /afiliados/cadastro
+---
+{% assign api = site.affiliates.api | strip %}
+<article class="container doc af-signup">
+  <header class="doc-header">
+    <p class="eyebrow">Programa de afiliados</p>
+    <h1>Cadastre-se e escolha o seu cupom</h1>
+    <p class="lead">Leva 2 minutos. Quem usar o seu cupom ganha 20% no plano anual, e você recebe 25% de cada pagamento enquanto a pessoa for assinante.</p>
+  </header>
+
+  <div class="doc-card af-card">
+    {% if api == "" %}
+    <p class="af-soon" role="status">
+      <strong>O cadastro abre em breve.</strong> Enquanto isso, se quiser garantir o seu cupom, escreva para
+      <a href="mailto:{{ site.company.support_email }}?subject=Quero%20ser%20afiliado%20do%20PinLog">{{ site.company.support_email }}</a>.
+    </p>
+    {% endif %}
+
+    <form class="af-form" id="af-form" novalidate data-api="{{ api }}">
+      <div class="af-field">
+        <label for="af-name">Nome completo</label>
+        <input id="af-name" name="name" type="text" autocomplete="name" maxlength="80" required />
+      </div>
+
+      <div class="af-field">
+        <label for="af-email">E-mail</label>
+        <input id="af-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+        <p class="af-hint">É por ele que você acessa o seu painel e recebe os avisos.</p>
+      </div>
+
+      <div class="af-field">
+        <label for="af-code">Seu cupom</label>
+        <div class="af-code-row">
+          <input id="af-code" name="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="20" required aria-describedby="af-code-status" />
+          <span class="af-code-status" id="af-code-status" aria-live="polite"></span>
+        </div>
+        <p class="af-hint">De 4 a 16 letras ou números, sem espaços. Algo fácil de falar no vídeo, como o seu nome.</p>
+        <p class="af-suggest" id="af-suggest" hidden>Sugestão: <button type="button" class="af-chip" id="af-suggest-btn"></button></p>
+      </div>
+
+      <div class="af-field">
+        <label for="af-channels">Onde você pretende divulgar <span class="af-optional">(opcional)</span></label>
+        <textarea id="af-channels" name="channels" rows="3" maxlength="300" placeholder="Ex.: Instagram @seuperfil, grupo de WhatsApp, indicação para amigos"></textarea>
+      </div>
+
+      <!-- Campo escondido: pessoas não preenchem, robôs sim. -->
+      <div class="af-trap" aria-hidden="true">
+        <label for="af-website">Site</label>
+        <input id="af-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <label class="af-check">
+        <input id="af-terms" name="acceptTerms" type="checkbox" required />
+        <span>Li e aceito os <a href="{{ '/afiliados/termos' | relative_url }}" target="_blank" rel="noopener">Termos do Programa de Afiliados</a> e as <a href="{{ '/afiliados' | relative_url }}#regras" target="_blank" rel="noopener">regras de divulgação</a>.</span>
+      </label>
+
+      <p class="af-error" id="af-error" role="alert" hidden></p>
+
+      <button class="btn btn-primary af-submit" id="af-submit" type="submit" {% if api == "" %}disabled{% endif %}>
+        {% if api == "" %}Cadastro abre em breve{% else %}Criar meu cupom{% endif %}
+      </button>
+
+      <p class="af-privacy">
+        Usamos seu nome e e-mail só para o programa de afiliados: painel, comissões, pagamentos e avisos.
+        Veja a <a href="{{ '/privacidade' | relative_url }}">Política de Privacidade</a>.
+      </p>
+    </form>
+
+    <div class="af-done" id="af-done" hidden tabindex="-1">
+      <span class="af-done-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></svg></span>
+      <p class="af-done-title" id="af-done-title"></p>
+      <p class="af-done-code" id="af-done-code"></p>
+      <p class="af-done-text" id="af-done-text"></p>
+      <a class="btn btn-ghost" href="{{ '/afiliados' | relative_url }}">Voltar para o programa</a>
+    </div>
+  </div>
+</article>
+
+<script>
+  // Cadastro de afiliado. Fala só com a função `affiliates` do servidor do PinLog (endereço em _config.yml).
+  (function () {
+    var form = document.getElementById('af-form');
+    var api = form.getAttribute('data-api');
+    var code = document.getElementById('af-code');
+    var nameInput = document.getElementById('af-name');
+    var status = document.getElementById('af-code-status');
+    var suggest = document.getElementById('af-suggest');
+    var suggestBtn = document.getElementById('af-suggest-btn');
+    var errorBox = document.getElementById('af-error');
+    var submit = document.getElementById('af-submit');
+    var codeState = '';
+    var timer = null;
+    var lastChecked = '';
+
+    var MESSAGES = {
+      invalid_name: 'Confira o seu nome completo.',
+      invalid_email: 'Confira o seu e-mail.',
+      invalid_code: 'O cupom precisa ter de 4 a 16 letras ou números.',
+      invalid_channels: 'O campo de divulgação aceita até 300 caracteres.',
+      terms_required: 'Para continuar, aceite os termos e as regras de divulgação.',
+      code_taken: 'Esse cupom já está em uso. Escolha outro.',
+      code_blocked: 'Esse cupom não é permitido. Escolha outro.',
+      email_taken: 'Já existe um cadastro com esse e-mail. Se precisar de ajuda, escreva para suporte@pinlog.life.',
+      too_many_attempts: 'Muitas tentativas seguidas. Aguarde uma hora e tente de novo.',
+      network: 'Não foi possível enviar agora. Verifique a conexão e tente de novo.'
+    };
+    var STATUS = {
+      available: ['ok', 'Disponível'],
+      taken: ['bad', 'Já está em uso'],
+      invalid: ['bad', '4 a 16 letras ou números'],
+      blocked: ['bad', 'Não permitido'],
+      checking: ['wait', 'Conferindo…']
+    };
+
+    function normalize(value) {
+      return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+    }
+
+    function showStatus(key) {
+      codeState = key;
+      var entry = STATUS[key];
+      status.className = 'af-code-status' + (entry ? ' is-' + entry[0] : '');
+      status.textContent = entry ? entry[1] : '';
+    }
+
+    function showError(key) {
+      errorBox.textContent = key ? MESSAGES[key] || MESSAGES.network : '';
+      errorBox.hidden = !key;
+    }
+
+    function check(value) {
+      if (!api) return;
+      if (!/^[A-Z0-9]{4,16}$/.test(value)) return showStatus(value ? 'invalid' : '');
+      showStatus('checking');
+      lastChecked = value;
+      fetch(api + '?code=' + encodeURIComponent(value))
+        .then(function (r) { return r.json(); })
+        .then(function (data) { if (lastChecked === value) showStatus(data.status || ''); })
+        .catch(function () { if (lastChecked === value) showStatus(''); });
+    }
+
+    code.addEventListener('input', function () {
+      var value = normalize(code.value);
+      if (code.value !== value) code.value = value;
+      clearTimeout(timer);
+      timer = setTimeout(function () { check(value); }, 350);
+    });
+
+    // Sugere um cupom a partir do primeiro nome.
+    nameInput.addEventListener('blur', function () {
+      var first = normalize((nameInput.value.trim().split(/\s+/)[0] || '')).slice(0, 12);
+      if (first.length < 3 || code.value) { suggest.hidden = true; return; }
+      suggestBtn.textContent = first + '10';
+      suggest.hidden = false;
+    });
+    suggestBtn.addEventListener('click', function () {
+      clearTimeout(timer);
+      code.value = suggestBtn.textContent;
+      suggest.hidden = true;
+      check(code.value);
+      code.focus();
+    });
+
+    document.getElementById('af-terms').addEventListener('change', function () { showError(''); });
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!api) return;
+      showError('');
+      var body = {
+        name: nameInput.value,
+        email: document.getElementById('af-email').value,
+        code: normalize(code.value),
+        channels: document.getElementById('af-channels').value,
+        acceptTerms: document.getElementById('af-terms').checked,
+        termsVersion: '{{ site.affiliates.terms_version }}',
+        website: document.getElementById('af-website').value
+      };
+      if (!body.acceptTerms) return showError('terms_required');
+      if (codeState === 'taken') return showError('code_taken');
+      if (codeState === 'blocked') return showError('code_blocked');
+      submit.disabled = true;
+      submit.textContent = 'Criando…';
+      fetch(api, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.data.error || 'network');
+          var active = res.data.status === 'active';
+          document.getElementById('af-done-title').textContent = active ? 'Pronto! Seu cupom já está valendo.' : 'Recebemos o seu cadastro.';
+          document.getElementById('af-done-code').textContent = res.data.code;
+          document.getElementById('af-done-text').textContent = active
+            ? 'Quem digitar ' + res.data.code + ' no app ganha 20% no plano anual, e você recebe 25% de cada pagamento. ' +
+              (res.data.panel ? 'Enviamos um e-mail para você criar a senha do seu painel.' : 'Em breve você recebe por e-mail o acesso ao seu painel.')
+            : 'Seu cupom fica ativo assim que o cadastro for aprovado. Avisamos por e-mail.';
+          form.hidden = true;
+          var done = document.getElementById('af-done');
+          done.hidden = false;
+          done.focus();
+        })
+        .catch(function (error) {
+          showError(error.message);
+          submit.disabled = false;
+          submit.textContent = 'Criar meu cupom';
+        });
+    });
+  })();
+</script>
