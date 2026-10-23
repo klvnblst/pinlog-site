@@ -54,13 +54,18 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 ## 7. Regras de divulgação
 
 - Identifique sempre que é publicidade, com a marcação de parceria paga da rede ou #publi, de forma visível, como pede o guia do CONAR.
-- Você pode falar com quem usa um composto, inclusive citando o nome, para mostrar como o PinLog ajuda na rotina. Não recomende, venda nem indique onde comprar medicamentos, compostos ou tratamentos, não fale de doses ou resultados e não sugira que o PinLog tem ligação com um fabricante, marca ou medicamento.
-- Não faça promessas de saúde. O PinLog é um organizador pessoal: não trata, não indica doses e não substitui o profissional de saúde.
+- **Fale do app, não do composto.** Você pode falar do PinLog para qualquer público adulto, inclusive para quem usa determinados compostos ou produtos, e pode citar o nome deles para mostrar a quem o PinLog interessa (por exemplo: "Se você usa X, conheça o PinLog para organizar sua rotina"). O foco da divulgação deve ser sempre o PinLog e as suas funcionalidades. Não é permitido usar a divulgação do PinLog para:
+  - recomendar ou incentivar o uso de um composto, medicamento ou tratamento;
+  - indicar doses, diluições ou protocolos;
+  - prometer ou sugerir resultados de saúde;
+  - vender ou informar onde comprar esses produtos;
+  - afirmar ou dar a entender que o PinLog tem parceria, vínculo ou aprovação de fabricantes, marcas ou medicamentos.
+- Regra simples: você pode mostrar como o PinLog ajuda a organizar uma rotina, mas não deve transformar o conteúdo em propaganda ou orientação sobre o produto usado nessa rotina. O PinLog é um organizador pessoal: não trata, não indica doses e não substitui o profissional de saúde.
 - Não direcione a divulgação a menores de 18 anos.
 - Não faça spam, não crie avaliações falsas e não se apresente como funcionário ou canal oficial do PinLog.
-- Anúncios pagos são feitos sempre em seu nome e sob sua responsabilidade. Não crie anúncios, perfis, páginas ou domínios que se passem pelo PinLog ou pareçam oficiais.
-- Comprar o nome PinLog como palavra-chave em buscas e publicar o cupom em sites de cupons, só com autorização por escrito.
-- Você é responsável pelo conteúdo que publica. Podemos pedir a correção ou a remoção de um conteúdo que descumpra estas regras.
+- **Impulsionamento.** Você pode impulsionar posts e outros conteúdos sobre o PinLog, desde que o anúncio seja publicado pelo seu próprio perfil ou canal. Não crie anúncios, perfis, páginas, contas ou domínios que possam parecer canais oficiais do PinLog.
+- Não é permitido comprar "PinLog" ou variações do nome da marca como palavra-chave em mecanismos de busca ou plataformas de anúncios. A publicação do cupom em sites de cupons depende de autorização por escrito.
+- **Responsabilidade.** Você é responsável pelo conteúdo que publica e deve seguir estas regras e as políticas das plataformas que usa. Como a divulgação também pode afetar o PinLog e a sua marca, podemos pedir a correção ou a remoção de um conteúdo que descumpra estas regras e suspender ou encerrar a sua participação no programa (seção 8).
 
 ## 8. Desligamento
 

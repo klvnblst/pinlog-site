@@ -877,6 +877,28 @@ a:hover {
   color: var(--muted);
 }
 
+.checks .check-list {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--muted);
+  list-style: disc;
+}
+
+.checks .check-list li {
+  display: list-item;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.privacy-panel > div > p.rule-tip {
+  padding: 14px 16px;
+  border-left: 3px solid var(--mint);
+  border-radius: var(--radius-md);
+  background: var(--card-soft);
+}
+
 @media (max-width: 880px) {
   .privacy-panel {
     grid-template-columns: 1fr;
