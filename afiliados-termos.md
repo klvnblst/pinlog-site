@@ -41,10 +41,13 @@ O programa de afiliados do PinLog é oferecido por **T DE A ROCHA**, CNPJ **28.4
 
 ## 6. Pagamento
 
-- Cada comissão fica em confirmação por **30 dias** depois do pagamento do cliente, prazo em que a loja ainda pode devolver o dinheiro.
-- As comissões confirmadas são pagas **uma vez por mês, até o dia 15**, em reais, por PIX para uma conta em seu nome (ou da sua empresa).
-- Abaixo de **R$ 50,00**, o valor fica acumulado para o mês seguinte.
-- No seu painel você acompanha as assinaturas, as renovações, o que vai receber e o que já recebeu.
+- A comissão de um pagamento só fica **liberada** quando as duas condições abaixo estão cumpridas:
+  - a App Store ou o Google Play já repassou ao PinLog o dinheiro desse pagamento;
+  - passaram **30 dias** desde o pagamento do cliente sem reembolso, cancelamento ou contestação (chargeback).
+- As comissões liberadas são pagas **uma vez por mês, até o dia 15**, em reais, por PIX para uma conta em seu nome (ou da sua empresa).
+- O pagamento mínimo é de **R$ 50,00**. Abaixo disso, o valor fica acumulado para os meses seguintes, até chegar ao mínimo.
+- Se um pagamento já comissionado for reembolsado ou contestado depois, o valor da comissão é descontado dos próximos pagamentos.
+- No seu painel você acompanha as assinaturas, as renovações, o que já foi liberado, o que vai receber e o que já recebeu.
 
 ## 7. Regras de divulgação
 

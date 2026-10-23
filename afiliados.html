@@ -7,8 +7,6 @@ description: >-
 body_class: home affiliates
 permalink: /afiliados
 ---
-{% assign signup_open = false %}{% if site.affiliates.api and site.affiliates.api != "" %}{% assign signup_open = true %}{% endif %}
-{% capture mail %}mailto:{{ site.company.support_email }}?subject=Quero%20ser%20afiliado%20do%20PinLog&body=Nome%3A%20%0AOnde%20pretendo%20divulgar%20(redes%2C%20blog%2C%20grupos%2C%20comunidades%2C%20indica%C3%A7%C3%A3o%20direta)%3A%20%0AMeu%20%40%20ou%20link%2C%20se%20tiver%3A%20%0A{% endcapture %}
 
 <section class="hero aff-hero">
   <div class="container hero-grid">
@@ -27,7 +25,7 @@ permalink: /afiliados
         Seu indicado ganha 20% de desconto no plano anual. Você ganha 25% enquanto ele continuar com o PinLog.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="{% if signup_open %}{{ '/afiliados/cadastro' | relative_url }}{% else %}#inscricao{% endif %}">Quero ser afiliado</a>
+        <a class="btn btn-primary" href="{{ '/afiliados/cadastro' | relative_url }}">Quero ser afiliado</a>
         <a class="btn btn-ghost" href="#app">Ver o app por dentro</a>
       </div>
       <p class="hero-note">Pré-lançamento: quem se torna afiliado agora começa a divulgar antes da chegada às lojas.</p>
@@ -156,7 +154,7 @@ permalink: /afiliados
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Comissão de cada pagamento</strong><span>Cada assinatura e renovação aparece assim que a loja confirma o pagamento.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>A receber e já recebido</strong><span>Saiba quanto vem no próximo pagamento e veja o histórico do que já caiu.</span></div></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Aviso por e-mail</strong><span>Receba um aviso quando entrar uma nova assinatura com o seu código.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Conteúdo do seu jeito</strong><span>Você cria seus próprios vídeos e posts. Se quiser, enviamos os prints e a logo oficiais do app.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7"/></svg><div><strong>Conteúdo do seu jeito</strong><span>Você divulga como quiser: vídeos, posts, grupos ou mensagens. Se quiser, enviamos os prints e a logo oficiais do app.</span></div></li>
       </ul>
 
       <div class="dash" aria-label="Exemplo ilustrativo do painel do afiliado" role="img">
@@ -170,7 +168,7 @@ permalink: /afiliados
             <div>
               <small>Saldo a receber</small>
               <strong>R$ 515,46</strong>
-              <span class="dash-payday">Pagamento em 05/11</span>
+              <span class="dash-payday">Pagamento em 15/11</span>
             </div>
             <span class="dash-code"><small>Seu código</small>SEUNOME</span>
           </div>
@@ -264,53 +262,30 @@ permalink: /afiliados
     <div class="chapter" aria-hidden="true"><span class="chapter-line"></span><span class="chapter-pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.5"/></svg></span><span class="chapter-line"></span></div>
     <div class="section-head">
       <p class="eyebrow"><span class="chapter-num" aria-hidden="true">04</span>Como funciona</p>
-      <h2>Do primeiro vídeo à comissão</h2>
-      <p>Sem roteiro obrigatório e sem meta mínima. Você mostra o PinLog do seu jeito.</p>
+      <h2>Do cadastro à comissão</h2>
+      <p>Sem roteiro, sem meta mínima e sem precisar ser influencer. Você divulga o seu cupom onde e como quiser.</p>
     </div>
     <ol class="steps">
-      {% if signup_open %}
       <li class="card step">
         <span class="step-num">1</span>
         <h3>Cadastre-se em 2 minutos</h3>
-        <p>Preencha nome e e-mail no formulário. Sem aprovação demorada e sem conversa por e-mail.</p>
+        <p>Preencha nome e e-mail no formulário. Sem aprovação demorada e sem troca de e-mails.</p>
       </li>
       <li class="card step">
         <span class="step-num">2</span>
         <h3>Escolha o seu cupom</h3>
-        <p>Você mesmo escolhe, como o seu nome. Ele já vale na hora: quem assina com ele ganha 20% no plano anual.</p>
+        <p>Você mesmo escolhe, como o seu nome, e ele já vale na hora. Quem assina com ele ganha 20% no plano anual.</p>
       </li>
       <li class="card step">
         <span class="step-num">3</span>
         <h3>Divulgue do seu jeito</h3>
-        <p>Crie seus próprios conteúdos, mostrando o app no seu dia a dia, nas redes, em grupos ou para quem você conhece.</p>
+        <p>Em vídeos, posts e stories, em grupos de WhatsApp e Telegram, em comunidades ou indicando para quem você conhece.</p>
       </li>
       <li class="card step">
         <span class="step-num">4</span>
         <h3>Acompanhe e receba todo mês</h3>
         <p>Cada assinatura e renovação aparece no seu painel. Você recebe 25% de cada pagamento, enquanto a pessoa for assinante.</p>
       </li>
-      {% else %}
-      <li class="card step">
-        <span class="step-num">1</span>
-        <h3>Inscreva-se</h3>
-        <p>Mande seu nome e conte onde pretende divulgar: redes, grupos, comunidades ou indicação direta. Respondemos em poucos dias.</p>
-      </li>
-      <li class="card step">
-        <span class="step-num">2</span>
-        <h3>Receba o seu código</h3>
-        <p>Um código fácil de falar no vídeo e de pôr na bio. Quem assina com ele ganha 20% no plano anual e fica ligado a você.</p>
-      </li>
-      <li class="card step">
-        <span class="step-num">3</span>
-        <h3>Mostre o app</h3>
-        <p>Crie seus próprios conteúdos, do seu jeito, mostrando o app no seu dia a dia. O público vê o app funcionando.</p>
-      </li>
-      <li class="card step">
-        <span class="step-num">4</span>
-        <h3>Ganhe a cada pagamento</h3>
-        <p>25% de cada pagamento, no mensal e no anual, enquanto a pessoa seguir assinando.</p>
-      </li>
-      {% endif %}
     </ol>
   </div>
 </section>
@@ -360,7 +335,7 @@ permalink: /afiliados
       </details>
       <details>
         <summary>E se a pessoa assinar sem o meu código?</summary>
-        <p>Aí a assinatura segue o preço normal da loja, sem desconto para ela e sem comissão para você. Por isso vale falar o código no vídeo e deixar na bio.</p>
+        <p>Aí a assinatura segue o preço normal da loja, sem desconto para ela e sem comissão para você. Por isso vale sempre mostrar o cupom junto com a indicação: no vídeo, na legenda, na bio ou na mensagem.</p>
       </details>
       <details>
         <summary>Onde a pessoa coloca o código?</summary>
@@ -372,7 +347,7 @@ permalink: /afiliados
       </details>
       <details>
         <summary>Como e quando eu recebo?</summary>
-        <p>Uma vez por mês, em reais, sobre os pagamentos que a App Store e o Google Play já confirmaram. No seu painel você vê quanto vai receber e o histórico do que já recebeu.</p>
+        <p>Uma vez por mês, até o dia 15, por PIX. A comissão de cada pagamento é liberada depois que a loja repassa o dinheiro ao PinLog e passam 30 dias sem reembolso ou contestação. O pagamento mínimo é R$ 50; abaixo disso, o valor fica acumulado para o mês seguinte. No seu painel você acompanha tudo.</p>
       </details>
       <details>
         <summary>E se a pessoa cancelar ou pedir reembolso?</summary>
@@ -390,13 +365,8 @@ permalink: /afiliados
   <div class="container">
     <div class="cta-panel">
       <h2>Gostaria de se tornar um afiliado oficial do PinLog?</h2>
-      {% if signup_open %}
-      <p>Cadastre-se em 2 minutos, escolha o seu cupom e comece a divulgar hoje mesmo.</p>
-      <a class="btn btn-light" href="{{ '/afiliados/cadastro' | relative_url }}">Criar meu cupom</a>
-      {% else %}
-      <p>Mande um e-mail com seu nome e conte onde pretende divulgar o PinLog: redes sociais, blog, grupos, comunidades ou indicação direta. Respondemos em poucos dias.</p>
-      <a class="btn btn-light" href="{{ mail | strip }}">Quero ser afiliado</a>
-      {% endif %}
+      <p>Cadastre-se em 2 minutos, escolha o seu cupom e comece a divulgar onde quiser.</p>
+      <a class="btn btn-light" href="{{ '/afiliados/cadastro' | relative_url }}">Quero ser afiliado</a>
     </div>
   </div>
 </section>
