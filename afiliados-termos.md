@@ -4,7 +4,7 @@ description: "Regras do programa de afiliados do PinLog: cupom, desconto para o 
 permalink: "/afiliados/termos"
 eyebrow: "Afiliados"
 lead: "As regras do programa de afiliados do PinLog."
-updated: "Minuta · versão 1.0 · em revisão antes da abertura do cadastro"
+updated: "Versão 1.0 · 22 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". Ao mudar regras, atualize também `terms_version` em _config.yml. -->

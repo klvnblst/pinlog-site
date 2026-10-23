@@ -4,7 +4,7 @@ description: "Como o PinLog trata seus dados: o que guardamos, para quê, onde f
 permalink: "/privacidade"
 eyebrow: "Privacidade"
 lead: "O que o PinLog guarda, para quê, onde e como você controla tudo."
-updated: "Versão 2.1 · vigente desde 21 de outubro de 2026"
+updated: "Versão 2.2 · vigente desde 22 de outubro de 2026"
 ---
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
@@ -31,8 +31,9 @@ O controlador dos dados é **T DE A ROCHA**, inscrita no CNPJ sob o nº **28.442
 | **Lembretes** | se os lembretes estão ligados e se o aviso mostra o nome dos compostos | Agendar, no próprio aparelho, avisos no dia da aplicação e na hora de repor o estoque. Os avisos são criados pelo sistema do celular e não passam por nenhum servidor. Por padrão, o texto não diz o que é, para ninguém ver na tela bloqueada | A escolha fica no aparelho e na nuvem; os avisos agendados, só no aparelho |
 | **Preferências** | idioma, tema, sistema de unidades | Personalizar o aplicativo | Aparelho e nuvem |
 | **Assinatura** | situação da assinatura e prazo de validade informados pela loja | Liberar os recursos do PinLog Premium | Aparelho e nuvem. Os dados de pagamento ficam apenas com a Apple ou o Google |
+| **Cupom de afiliado** (só se você usar um) | o cupom digitado e, para cada pagamento feito com ele, o valor, a data e o plano | Dar o desconto do cupom e calcular a comissão de quem indicou | Junto da sua assinatura (na nuvem e no serviço de gestão de assinaturas). Quem indicou **nunca recebe** seu nome, e-mail ou dados de saúde: no painel dele, você aparece só como um código anônimo |
 | **Acesso VIP** (quando aplicável) | e-mail incluído na lista de acesso de cortesia e uma nota interna sobre a origem do convite ou do código | Liberar o Premium de cortesia | Nuvem |
-| **Segurança** | tentativas erradas de código promocional (vinculadas à conta); consultas de convite feitas na tela de login (a origem da conexão é guardada apenas como um código irreversível, sem o endereço IP em si); registros técnicos de acesso mantidos pelo provedor de infraestrutura | Impedir tentativas de adivinhação, abuso e fraude e manter o serviço seguro | Nuvem |
+| **Segurança** | tentativas erradas de código promocional e de cupom de afiliado (vinculadas à conta); consultas de convite feitas na tela de login (a origem da conexão é guardada apenas como um código irreversível, sem o endereço IP em si); registros técnicos de acesso mantidos pelo provedor de infraestrutura | Impedir tentativas de adivinhação, abuso e fraude e manter o serviço seguro | Nuvem |
 | **Atendimento** | mensagens que você envia aos nossos e-mails | Responder às suas solicitações | Caixa de e-mail do PinLog |
 
 **Compromisso sobre os dados de saúde.** Seus dados de saúde (registros, corpo, metas, fotos e segundo perfil) têm uma única finalidade: permitir que você acesse seus registros e não os perca se trocar, perder ou danificar o celular. A cópia na nuvem existe só para isso. Esses dados **não são vendidos, não são usados para publicidade e não são usados para nenhum outro fim**: não fazemos análises, estatísticas, perfis de consumo nem pesquisas com eles, e não os usamos para treinar sistemas de inteligência artificial. Se um dia quisermos usar algum dado para outra finalidade, pediremos uma nova autorização específica antes, e você poderá recusar.
@@ -49,6 +50,8 @@ O PinLog **não usa** ferramentas de publicidade, análise de uso (analytics), g
 |---|---|
 | Registros de saúde, corpo, metas, fotos e dados do segundo perfil | **Consentimento específico e destacado** (art. 11, I), dado no primeiro acesso, quando você confirma ter 18 anos ou mais e autoriza o PinLog a armazenar seus dados de saúde com a finalidade única descrita na seção 2 |
 | Conta, preferências e assinatura | **Execução de contrato** (art. 7º, V) |
+| Cupom de afiliado e cálculo das comissões | **Execução de contrato** (art. 7º, V) e **legítimo interesse** (art. 7º, IX) para evitar fraudes no programa de afiliados |
+| Dados dos afiliados (seção 12) | **Execução de contrato** (art. 7º, V), **cumprimento de obrigação legal** fiscal (art. 7º, II) e **legítimo interesse** (art. 7º, IX) para evitar fraudes |
 | Segurança, limites de tentativa e prevenção de fraudes | **Legítimo interesse** (art. 7º, IX), restrito ao mínimo necessário e sem uso de dados de saúde |
 | Atendimento e defesa em processos | **Execução de contrato** e **exercício regular de direitos** (art. 7º, V e VI) |
 
@@ -66,12 +69,16 @@ Compartilhamos dados apenas com fornecedores necessários para o serviço funcio
 
 - **Supabase Inc.** — hospedagem do banco de dados, autenticação e envio dos e-mails da conta (confirmação e recuperação de senha).
 - **Apple Inc. (App Store)** e **Google LLC (Google Play)** — distribuição do aplicativo e cobrança das assinaturas. Elas tratam os dados de pagamento segundo as próprias políticas.
+- **RevenueCat, Inc.** — gestão das assinaturas: recebe das lojas a situação da sua assinatura e, se você usar um cupom de afiliado, o cupom.
+- **FirstPromoter** — painel do programa de afiliados: recebe o nome e o e-mail dos afiliados e, dos assinantes que usaram um cupom, **apenas um código anônimo** e o valor de cada pagamento, para calcular a comissão.
 
 Também podemos fornecer dados quando a lei ou uma ordem de autoridade competente exigir.
 
 ## 6. Transferência internacional
 
 Os dados da nuvem ficam em servidores na **América do Sul (São Paulo, Brasil)**. A Supabase é uma empresa sediada nos Estados Unidos; se houver acesso a partir de outro país, por exemplo por suporte técnico ou infraestrutura do fornecedor, ele seguirá as garantias do art. 33 da LGPD, como cláusulas contratuais de proteção de dados.
+
+A RevenueCat e o FirstPromoter tratam dados fora do Brasil. Para eles vão apenas os dados descritos na seção 5, nunca dados de saúde, com as garantias do art. 33 da LGPD.
 
 ## 7. Segurança
 
@@ -90,10 +97,12 @@ Nenhum sistema é totalmente imune a falhas. Se ocorrer um incidente de seguran�
 | Conta, consentimento e registros na nuvem | Enquanto a conta existir. Ao excluir a conta, são apagados na hora |
 | Dados no aparelho, incluindo fotos | Até você excluir a conta, apagar os dados do aplicativo ou desinstalá-lo |
 | Backups exportados por você | Sob seu controle, onde você os salvou. Não temos acesso a eles |
-| Tentativas erradas de código e consultas de convite | Apagadas automaticamente depois de 1 dia |
+| Tentativas erradas de código, de cupom e consultas de convite | Apagadas automaticamente depois de 1 dia |
 | Lista de acesso VIP | Até a remoção do e-mail da lista. A exclusão da conta não remove o e-mail da lista; peça a remoção em <privacidade@pinlog.life> |
 | Registros técnicos do provedor de infraestrutura | Pelo prazo definido pelo provedor para segurança e operação |
 | Dados de compra nas lojas | Pela Apple e pelo Google, conforme as regras fiscais e as políticas de cada loja |
+| Cupom de afiliado e registros de comissão | Pelo prazo exigido pela legislação fiscal, sempre ligados apenas ao código anônimo |
+| Dados dos afiliados | Enquanto a pessoa participar do programa e, depois, pelo prazo exigido pela legislação fiscal e para defesa em processos |
 | Mensagens de atendimento | Pelo tempo necessário para resolver a solicitação e cumprir obrigações legais |
 
 ## 9. Seus direitos
@@ -120,12 +129,24 @@ O PinLog é destinado **somente a maiores de 18 anos**, e a idade é confirmada 
 
 O segundo perfil (recurso do PinLog Premium) serve para acompanhar a rotina de **outra pessoa adulta**. Ao criá-lo, você declara que essa pessoa autorizou o registro dos dados dela. Ela pode exercer os direitos da seção 9 pelo mesmo e-mail.
 
-## 12. Exclusão da conta
+## 12. Programa de afiliados
+
+Esta seção vale para quem se cadastra como afiliado em pinlog.life/afiliados.
+
+- **Dados:** nome, e-mail, cupom escolhido, onde pretende divulgar (se você informar), versão dos termos aceitos com data e hora, dados para pagamento (chave PIX e CPF ou CNPJ, pedidos só na hora de pagar) e o histórico de comissões e pagamentos. No cadastro, a origem da conexão é guardada só como um código irreversível, para limitar tentativas repetidas.
+- **Para quê:** criar o cadastro e o painel, calcular e pagar as comissões, enviar avisos do programa, cumprir obrigações fiscais e evitar fraudes.
+- **Com quem:** Supabase (hospedagem) e FirstPromoter (painel e e-mails do programa), como descrito nas seções 5 e 6.
+- **O que o afiliado não vê:** quem assinou com o cupom. Cada assinante aparece no painel só como um código anônimo, sem nome, e-mail ou dados de saúde.
+- **Seus direitos:** os mesmos da seção 9, pelo e-mail <privacidade@pinlog.life>.
+
+## 13. Exclusão da conta
 
 Em **Ajustes › Zona de Perigo › Excluir Conta Permanentemente**, a conta e todos os registros na nuvem são apagados na hora, e os dados e fotos do aparelho são removidos. Sem o aplicativo, veja a página /excluir-conta.
 
 Excluir a conta **não cancela a assinatura**. Cancele na App Store ou no Google Play para evitar novas cobranças.
 
-## 13. Alterações
+Se você assinou com um cupom de afiliado, os registros de comissão continuam guardados pelo prazo fiscal, ligados apenas ao código anônimo.
+
+## 14. Alterações
 
 Quando esta política mudar, a nova versão e a data serão publicadas nesta página. Mudanças relevantes serão avisadas no aplicativo, que pedirá o seu consentimento de novo.
