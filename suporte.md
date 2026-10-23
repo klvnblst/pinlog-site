@@ -8,30 +8,48 @@ lead: "Fale com a gente ou resolva as dúvidas mais comuns em poucos passos."
 
 <!-- Para editar: altere o texto abaixo e clique em "Commit changes". O site atualiza sozinho em cerca de 1 minuto. -->
 
-- **Canal oficial:** <suporte@pinlog.life>
-- **Privacidade e dados pessoais:** <privacidade@pinlog.life>
+## Fale com o suporte
+
+Se precisar de ajuda com o PinLog, entre em contato pelo nosso canal oficial:
+
+- **E-mail:** [suporte@pinlog.life](mailto:suporte@pinlog.life)
 
 ## Como relatar um problema
 
-Descreva no e-mail:
+Para conseguirmos entender e resolver o problema mais rápido, inclua no e-mail:
 
-1. o que você estava tentando fazer e o que aconteceu;
-2. o modelo do aparelho e a versão do sistema (ex.: iOS 18, Android 15);
-3. a versão do PinLog (no fim da tela **Ajustes**);
-4. se o problema envolveu troca de aparelho, restauração de backup ou login recente.
+1. o que você estava tentando fazer;
+2. o que aconteceu ou qual mensagem apareceu;
+3. o modelo do aparelho e a versão do sistema, como iOS 18 ou Android 15;
+4. a versão do PinLog, disponível no fim da tela **Ajustes**;
+5. se o problema aconteceu após troca de aparelho, restauração de backup ou novo login.
 
-*Segurança:* nunca envie senhas, códigos recebidos por e-mail, dados de cartão ou capturas de tela com seu histórico de saúde.
+**Importante:** nunca envie senhas, códigos de acesso recebidos por e-mail, dados de cartão ou capturas de tela que exponham informações pessoais ou de saúde desnecessárias para o atendimento.
 
-## Autoatendimento
+## Soluções rápidas
 
-- **Confirmação de e-mail:** se a mensagem não chegou, confira a pasta de spam. O botão de reenvio tem intervalo de 60 segundos entre tentativas.
-- **Esqueci a senha:** na tela de login, toque em *"Esqueceu sua senha?"* para receber o link de redefinição.
-- **Restaurar compras:** em um aparelho novo, abra a tela do PinLog Premium e toque em *"Restaurar Compras"*.
-- **Cancelar a assinatura:** a assinatura é gerenciada pela loja. Na tela do PinLog Premium, toque em *"Gerenciar ou cancelar assinatura"*, ou acesse as assinaturas da sua conta na App Store ou no Google Play.
-- **Código promocional:** depois de 5 códigos errados em 1 hora, novas tentativas ficam bloqueadas por 1 hora.
-- **Backup:** em **Ajustes › Backup & Relatórios** você exporta uma cópia completa dos seus dados e fotos em arquivo JSON. Guarde o arquivo em local protegido: ele não é criptografado.
-- **Privacidade:** /privacidade · **Termos:** /termos · **Excluir conta:** /excluir-conta
+Antes de entrar em contato, algumas situações podem ser resolvidas diretamente pelo app:
 
-## O suporte não presta orientação de saúde
+- **Não recebi o e-mail de confirmação:** confira também as pastas de spam ou lixo eletrônico. Se ainda assim ele não chegar, escreva para [suporte@pinlog.life](mailto:suporte@pinlog.life).
+- **Esqueci minha senha:** na tela de login, toque em **Esqueceu sua senha?** para receber um link de redefinição por e-mail.
+- **Restaurar uma compra:** em um aparelho novo, abra a tela do **PinLog Premium** e toque em **Restaurar Compras**.
+- **Cancelar ou gerenciar a assinatura:** a assinatura é administrada pela App Store ou pelo Google Play. Na tela do **PinLog Premium**, toque em **Gerenciar ou cancelar assinatura** ou acesse diretamente a área de assinaturas da sua conta na loja.
+- **Código promocional bloqueado:** após 5 tentativas incorretas dentro de 1 hora, novas tentativas ficam temporariamente bloqueadas por 1 hora.
+- **Fazer backup:** acesse **Ajustes › Backup & Relatórios** para exportar uma cópia dos seus dados e fotos em arquivo JSON. Guarde esse arquivo em um local seguro, pois ele não é criptografado.
 
-Nosso atendimento é apenas técnico. Não fazemos diagnósticos, não analisamos exames, não prescrevemos e não orientamos sobre doses, diluições ou tratamentos. Para decisões de saúde, consulte um médico ou profissional de saúde habilitado. O PinLog não é um serviço de emergência.
+## Privacidade, termos e exclusão da conta
+
+- [Política de Privacidade](/privacidade)
+- [Termos de Uso](/termos)
+- [Excluir minha conta](/excluir-conta)
+- **Dúvidas sobre dados pessoais:** [privacidade@pinlog.life](mailto:privacidade@pinlog.life)
+
+## O suporte do PinLog é exclusivamente técnico
+
+Nosso atendimento ajuda com o funcionamento do aplicativo, conta, assinatura, backup e outros recursos do PinLog.
+
+Não realizamos diagnósticos, não analisamos exames e não orientamos sobre doses, diluições, medicamentos, substâncias ou tratamentos.
+
+Para qualquer decisão relacionada à sua saúde, procure um médico ou outro profissional de saúde habilitado.
+
+**O PinLog não é um serviço de emergência.**
